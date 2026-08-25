@@ -15,10 +15,10 @@ export const AVAILABLE_SCREENS: ScreenId[] = ["home", "info"];
 
 export function nextScreen(current: ScreenId): ScreenId {
   const index = SCREENS.indexOf(current);
-  return SCREENS[Math.min(index + 1, SCREENS.length - 1)];
+  return SCREENS[Math.min(index + 1, SCREENS.length - 1)]!;
 }
 
 export function previousScreen(current: ScreenId): ScreenId {
   const index = SCREENS.indexOf(current);
-  return SCREENS[Math.max(index - 1, 0)];
+  return SCREENS[Math.max(index - 1, 0)]!;
 }
