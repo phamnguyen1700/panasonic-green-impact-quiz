@@ -38,8 +38,8 @@ export function CampaignButton({
 }: CampaignButtonProps) {
   return (
     <motion.button
-      whileHover={props.disabled ? undefined : buttonHover}
-      whileTap={props.disabled ? undefined : buttonTap}
+      whileHover={props.disabled ? {} : buttonHover}
+      whileTap={props.disabled ? {} : buttonTap}
       className={cn(
         "group inline-flex items-center justify-center gap-3 rounded-full font-semibold tracking-tight",
         "outline-none focus-visible:ring-2 focus-visible:ring-lime-soft focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",

@@ -1,6 +1,6 @@
 export interface PlayerInfo {
   name: string;
-  phone?: string;
+  phone?: string | undefined;
   createdAt: string;
 }
 
@@ -10,6 +10,6 @@ export interface PlayerInfoDraft {
 }
 
 export interface PlayerInfoErrors {
-  name?: string;
-  phone?: string;
+  name?: string | undefined;
+  phone?: string | undefined;
 }

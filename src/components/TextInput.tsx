@@ -5,8 +5,8 @@ import { cn } from "@/utils/cn";
 
 interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  hint?: string;
-  error?: string;
+  hint?: string | undefined;
+  error?: string | undefined;
 }
 
 export function TextInput({ label, hint, error, className, ...props }: TextInputProps) {

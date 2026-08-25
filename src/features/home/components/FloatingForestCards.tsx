@@ -17,19 +17,22 @@ export function FloatingForestCards() {
     <CardStack className="relative h-[34rem] w-full">
       <div className="absolute size-[26rem] rounded-full bg-lime-soft/20 blur-[90px]" />
 
-      {rest.slice(0, 4).map((personality, index) => (
+      {rest.slice(0, 4).map((personality, index) => {
+        const place = layout[index]!;
+        return (
         <FloatingAsset
           key={personality.id}
-          speed={layout[index].speed}
-          delay={layout[index].delay}
-          className={`absolute hidden opacity-90 lg:block ${layout[index].className}`}
+          speed={place.speed}
+          delay={place.delay}
+          className={`absolute hidden opacity-90 lg:block ${place.className}`}
         >
           <ForestCard personality={personality} />
         </FloatingAsset>
-      ))}
+        );
+      })}
 
       <FloatingAsset speed="slow" delay={0.4} className="absolute z-10">
-        <ForestCard personality={hero} className="w-[15.5rem] scale-105" />
+        <ForestCard personality={hero!} className="w-[15.5rem] scale-105" />
       </FloatingAsset>
     </CardStack>
   );

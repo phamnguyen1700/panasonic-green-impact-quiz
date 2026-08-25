@@ -41,7 +41,7 @@ export function ForestCard({
   return (
     <motion.article
       variants={staggerItem}
-      whileHover={interactive ? cardHover : undefined}
+      whileHover={interactive ? cardHover : {}}
       style={{ backgroundImage: toneGradient[personality.tone] }}
       className={cn(
         "relative flex flex-col justify-between overflow-hidden rounded-[1.75rem] border border-white/40",

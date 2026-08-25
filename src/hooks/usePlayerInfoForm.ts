@@ -35,7 +35,7 @@ export function usePlayerInfoForm(onValid?: (player: PlayerInfo) => void) {
 
       const player: PlayerInfo = {
         name: values.name.trim(),
-        phone: values.phone.trim() || undefined,
+        ...(values.phone.trim() ? { phone: values.phone.trim() } : {}),
         createdAt: new Date().toISOString(),
       };
       writeStorage(STORAGE_KEYS.player, player);

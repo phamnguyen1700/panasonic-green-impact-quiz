@@ -26,9 +26,9 @@ export function GlassPanel({
 }: GlassPanelProps) {
   return (
     <motion.div
-      variants={animated ? fadeScale : undefined}
-      initial={animated ? "hidden" : undefined}
-      animate={animated ? "visible" : undefined}
+      variants={animated ? fadeScale : {}}
+      initial={animated ? "hidden" : false}
+      animate={animated ? "visible" : false}
       className={cn("rounded-[2rem] p-6 sm:p-8", toneClass[tone], className)}
       {...props}
     >
