@@ -1,0 +1,75 @@
+/* Campaign theme layer — mirrors src/config/theme.config.ts */
+
+:root {
+  --forest-900: oklch(0.26 0.06 155);
+  --forest-800: oklch(0.34 0.09 155);
+  --forest-700: oklch(0.44 0.12 152);
+  --forest-600: oklch(0.55 0.15 150);
+  --forest-500: oklch(0.66 0.17 148);
+  --lime-500: oklch(0.88 0.2 128);
+  --lime-400: oklch(0.92 0.19 125);
+  --cyan-500: oklch(0.78 0.12 200);
+  --cyan-400: oklch(0.86 0.09 202);
+  --sky-500: oklch(0.82 0.07 232);
+  --sky-200: oklch(0.93 0.03 230);
+  --sun-500: oklch(0.86 0.13 82);
+  --sun-300: oklch(0.93 0.08 88);
+  --ink: oklch(0.18 0.03 160);
+  --mist: oklch(0.98 0.01 150);
+
+  --gradient-cta: linear-gradient(100deg, var(--lime-500), var(--forest-500));
+  --gradient-headline: linear-gradient(96deg, var(--lime-400), var(--cyan-400));
+  --shadow-glass: 0 24px 60px -24px oklch(0.2 0.05 160 / 0.55);
+  --shadow-card: 0 30px 70px -30px oklch(0.2 0.06 160 / 0.65);
+  --shadow-cta: 0 18px 40px -16px oklch(0.66 0.17 148 / 0.75);
+}
+
+@theme inline {
+  --color-forest-900: var(--forest-900);
+  --color-forest-800: var(--forest-800);
+  --color-forest-700: var(--forest-700);
+  --color-forest-600: var(--forest-600);
+  --color-forest-500: var(--forest-500);
+  --color-lime-glow: var(--lime-500);
+  --color-lime-soft: var(--lime-400);
+  --color-cyan-glow: var(--cyan-500);
+  --color-cyan-soft: var(--cyan-400);
+  --color-sky-glow: var(--sky-500);
+  --color-sky-soft: var(--sky-200);
+  --color-sun-glow: var(--sun-500);
+  --color-sun-soft: var(--sun-300);
+  --color-ink: var(--ink);
+  --color-mist: var(--mist);
+}
+
+@utility text-shadow-scene {
+  text-shadow: 0 2px 24px oklch(0.18 0.03 160 / 0.5);
+}
+
+@utility headline-gradient {
+  background-image: var(--gradient-headline);
+  background-clip: text;
+  color: transparent;
+}
+
+@utility glass-surface {
+  background: linear-gradient(
+    140deg,
+    color-mix(in oklab, white 26%, transparent),
+    color-mix(in oklab, white 7%, transparent)
+  );
+  border: 1px solid color-mix(in oklab, white 32%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: var(--shadow-glass);
+}
+
+@utility scene-scrim {
+  background:
+    radial-gradient(70% 60% at 72% 18%, color-mix(in oklab, var(--sun-300) 30%, transparent), transparent 70%),
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--ink) 76%, transparent),
+      color-mix(in oklab, var(--ink) 28%, transparent) 62%,
+      color-mix(in oklab, var(--ink) 12%, transparent)
+    );
+}

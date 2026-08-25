@@ -1,0 +1,19 @@
+/* Campaign global base styles (imported from src/styles.css) */
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--forest-900);
+  color: var(--mist);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--lime-500) 55%, transparent);
+  color: var(--forest-900);
+}
