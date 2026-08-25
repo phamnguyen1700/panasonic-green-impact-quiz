@@ -1,0 +1,17 @@
+/* Web fonts are loaded via <link> in src/routes/__root.tsx (Lightning CSS cannot
+   resolve remote @import). This file only maps families to tokens. */
+
+:root {
+  --font-display: "Be Vietnam Pro", system-ui, sans-serif;
+  --font-body: "Be Vietnam Pro", system-ui, sans-serif;
+  --font-script: "Playfair Display", Georgia, serif;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-script {
+  font-family: var(--font-script);
+  font-style: italic;
+}
