@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { AppProviders } from "@/app/AppProviders";
-import { HomeScreen } from "@/features/home/HomeScreen";
+import { InfoScreen } from "@/features/info/InfoScreen";
 
-const title = "Bạn là loại rừng nào? | 5 năm Sống khỏe góp xanh";
+const title = "Trước khi vào rừng | Sống khỏe góp xanh";
 const description =
-  "Quiz cảm hứng thiên nhiên: khám phá tính cách rừng của bạn qua 5 dấu ấn xanh của chiến dịch Sống khỏe góp xanh.";
+  "Để lại tên của bạn để nhận tấm thẻ tính cách rừng cá nhân hóa từ chiến dịch Sống khỏe góp xanh.";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/info")({
   head: () => ({
     meta: [
       { title },
@@ -18,13 +18,13 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: HomePage,
+  component: InfoPage,
 });
 
-function HomePage() {
+function InfoPage() {
   return (
     <AppProviders>
-      <HomeScreen />
+      <InfoScreen />
     </AppProviders>
   );
 }
