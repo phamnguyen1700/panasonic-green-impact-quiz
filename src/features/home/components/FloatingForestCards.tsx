@@ -4,10 +4,10 @@ import { CardStack } from "@/components/layout/CardStack";
 import { forestPersonalities } from "@/config/campaign.config";
 
 const layout = [
-  { className: "-rotate-[9deg] -translate-x-[9rem] -translate-y-[7rem]", speed: "slow" as const, delay: 0 },
-  { className: "rotate-[10deg] translate-x-[9.5rem] -translate-y-[8rem]", speed: "medium" as const, delay: 0.8 },
-  { className: "-rotate-[7deg] -translate-x-[11rem] translate-y-[6rem]", speed: "medium" as const, delay: 1.6 },
-  { className: "rotate-[8deg] translate-x-[10.5rem] translate-y-[7rem]", speed: "slow" as const, delay: 2.2 },
+  { className: "-rotate-[9deg] -translate-x-[13rem] -translate-y-[9rem]", speed: "slow" as const, delay: 0 },
+  { className: "rotate-[10deg] translate-x-[13.5rem] -translate-y-[9.5rem]", speed: "medium" as const, delay: 0.8 },
+  { className: "-rotate-[7deg] -translate-x-[14rem] translate-y-[8.5rem]", speed: "medium" as const, delay: 1.6 },
+  { className: "rotate-[8deg] translate-x-[14rem] translate-y-[9rem]", speed: "slow" as const, delay: 2.2 },
 ];
 
 export function FloatingForestCards() {
