@@ -42,4 +42,32 @@ export interface CampaignCopy {
     };
     previewTitle: string;
   };
+  quiz: {
+    eyebrow: string;
+    progressLabel: string;
+    timerLabel: string;
+    timerWarning: string;
+    next: string;
+    finish: string;
+    back: string;
+    hint: string;
+  };
+  result: {
+    eyebrow: string;
+    revealLine: string;
+    revealName: string;
+    cardBadge: string;
+    traitsLabel: string;
+    impactLabel: string;
+    download: string;
+    downloading: string;
+    share: string;
+    sharing: string;
+    replay: string;
+    sharePreviewTitle: string;
+    sharePreviewCaption: string;
+    shareHashtags: string;
+    saved: string;
+    shareFallback: string;
+  };
 }

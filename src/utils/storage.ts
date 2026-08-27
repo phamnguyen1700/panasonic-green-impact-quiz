@@ -30,4 +30,6 @@ export function clearStorage(key: string): void {
 
 export const STORAGE_KEYS = {
   player: "player",
+  quizAnswers: "quiz-answers",
+  outcome: "outcome",
 } as const;

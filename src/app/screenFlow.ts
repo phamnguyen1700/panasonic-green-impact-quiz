@@ -11,7 +11,7 @@ export const SCREEN_ROUTES: Record<ScreenId, string> = {
 };
 
 /** Screens that are implemented today — used to guard navigation. */
-export const AVAILABLE_SCREENS: ScreenId[] = ["home", "info"];
+export const AVAILABLE_SCREENS: ScreenId[] = ["home", "info", "quiz", "result"];
 
 export function nextScreen(current: ScreenId): ScreenId {
   const index = SCREENS.indexOf(current);
