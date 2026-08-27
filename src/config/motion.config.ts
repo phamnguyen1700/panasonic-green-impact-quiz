@@ -95,6 +95,106 @@ export const particleDrift = (index: number) => ({
   },
 });
 
+/* ---------------------------------------------------------------
+ * Quiz motion
+ * ------------------------------------------------------------- */
+
+export const questionTransition: Variants = {
+  hidden: (direction: number = 1) => ({
+    opacity: 0,
+    x: direction * 48,
+    filter: "blur(10px)",
+  }),
+  visible: {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",
+    transition: { duration: duration.slow, ease: easing.entrance },
+  },
+  exit: (direction: number = 1) => ({
+    opacity: 0,
+    x: direction * -40,
+    filter: "blur(10px)",
+    transition: { duration: duration.fast, ease: easing.exit },
+  }),
+};
+
+export const answerStagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07, delayChildren: 0.16 } },
+};
+
+export const answerItem: Variants = {
+  hidden: { opacity: 0, y: 18, filter: "blur(5px)" },
+  visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: transitions.organic },
+};
+
+export const answerSelected = {
+  scale: 1.015,
+  transition: { duration: duration.fast, ease: easing.organic },
+};
+
+export const progressFill = {
+  transition: { duration: duration.base, ease: easing.organic },
+} as const;
+
+export const timerTension = {
+  scale: [1, 1.06, 1],
+  transition: { duration: 1, ease: easing.breeze, repeat: Infinity },
+};
+
+/* ---------------------------------------------------------------
+ * Result motion
+ * ------------------------------------------------------------- */
+
+export const resultReveal: Variants = {
+  hidden: { opacity: 0, scale: 0.9, filter: "blur(18px)" },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: { duration: duration.scene, ease: easing.entrance },
+  },
+};
+
+export const modalOverlay: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: transitions.organic },
+  exit: { opacity: 0, transition: transitions.fast },
+};
+
+export const modalCard: Variants = {
+  hidden: { opacity: 0, y: 42, scale: 0.96, filter: "blur(12px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: { duration: duration.slow, ease: easing.entrance },
+  },
+  exit: { opacity: 0, y: 24, scale: 0.97, transition: transitions.fast },
+};
+
+export const lightSweep = {
+  x: ["-130%", "130%"],
+  transition: {
+    duration: 2.6,
+    ease: easing.breeze,
+    repeat: Infinity,
+    repeatDelay: 2.4,
+  },
+};
+
+export const sharePreviewEnter: Variants = {
+  hidden: { opacity: 0, y: 26, rotate: -1.5 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    rotate: 0,
+    transition: { duration: duration.slow, ease: easing.entrance, delay: 0.25 },
+  },
+};
+
 export const motionPresets = {
   screenEnter,
   screenExit,
@@ -110,4 +210,15 @@ export const motionPresets = {
   revealText,
   particleDrift,
   transitions,
+  questionTransition,
+  answerStagger,
+  answerItem,
+  answerSelected,
+  progressFill,
+  timerTension,
+  resultReveal,
+  modalOverlay,
+  modalCard,
+  lightSweep,
+  sharePreviewEnter,
 };
