@@ -49,7 +49,7 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(functi
         style={{ backgroundImage: gradients.cta }}
       />
 
-      <div className={cn("relative", compact ? "p-4" : "p-6 sm:p-8")}>
+      <div className={cn("relative", compact ? "p-4" : "p-5 sm:p-6")}>
         <p
           className={cn(
             "tracking-[0.2em] text-lime-soft uppercase",
@@ -69,7 +69,7 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(functi
         <h2
           className={cn(
             "mt-1 font-display font-extrabold tracking-tight text-mist",
-            compact ? "text-lg leading-tight" : "text-3xl leading-[1.05] sm:text-5xl",
+            compact ? "text-lg leading-tight" : "text-[clamp(1.6rem,3.4vw,2.5rem)] leading-[1.05]",
           )}
         >
           {result.title}
@@ -77,14 +77,14 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(functi
         <p
           className={cn(
             "mt-1 font-script text-lime-soft",
-            compact ? "text-xs" : "text-xl sm:text-2xl",
+            compact ? "text-xs" : "text-lg sm:text-xl",
           )}
         >
           {result.subtitle}
         </p>
 
         {!compact ? (
-          <p className="mt-3 line-clamp-4 max-w-md text-[0.8rem] leading-relaxed text-mist/80">
+          <p className="mt-3 line-clamp-3 max-w-md text-[0.8rem] leading-relaxed text-mist/80">
             {result.description}
           </p>
         ) : null}
