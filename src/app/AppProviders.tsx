@@ -8,11 +8,11 @@ export function AppProviders({ children }: { children: ReactNode }) {
       {children}
 
       <WaterSurface
-        color="hsl(193 67% 36%)"
+        color="hsl(0, 0%, 0%)"
         highlightColor="hsl(186 100% 96%)"
         shadowColor="hsl(213 82% 2%)"
         opacity={0.65}
-        hoverStrength={0.95}
+        hoverStrength={0.35}
         clickStrength={10}
         style={{
           position: "fixed",
