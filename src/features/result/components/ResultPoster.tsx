@@ -84,7 +84,9 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(functi
         </p>
 
         {!compact ? (
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-mist/80">{result.description}</p>
+          <p className="mt-3 line-clamp-4 max-w-md text-[0.8rem] leading-relaxed text-mist/80">
+            {result.description}
+          </p>
         ) : null}
 
         <div className={cn("flex flex-wrap gap-2", compact ? "mt-2" : "mt-5")}>
