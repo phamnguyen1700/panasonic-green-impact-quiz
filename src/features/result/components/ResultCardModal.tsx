@@ -55,7 +55,7 @@ export function ResultCardModal({
               type="button"
               onClick={onClose}
               aria-label="Đóng"
-              className="absolute top-4 right-4 grid size-10 place-items-center rounded-full border border-white/25 bg-white/10 text-mist transition-colors hover:bg-white/20"
+              className="absolute top-4 right-4 z-10 grid size-10 place-items-center rounded-full border border-white/25 bg-white/10 text-mist backdrop-blur-md transition-colors hover:bg-white/20"
             >
               <X className="size-4" aria-hidden />
             </button>
