@@ -61,8 +61,7 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(functi
 
         {playerName ? (
           <p className={cn("mt-2 text-mist/70", compact ? "text-[0.6rem]" : "text-sm")}>
-            {copy.revealName} <span className="font-semibold text-mist">{playerName}</span> —{" "}
-            {copy.revealLine}
+            {copy.revealName} <span className="font-semibold text-mist">{playerName}</span>
           </p>
         ) : null}
 
@@ -84,12 +83,12 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(functi
         </p>
 
         {!compact ? (
-          <p className="mt-3 line-clamp-3 max-w-md text-[0.8rem] leading-relaxed text-mist/80">
+          <p className="mt-3 line-clamp-3 max-w-md text-[0.78rem] leading-relaxed text-mist/80">
             {result.description}
           </p>
         ) : null}
 
-        <div className={cn("flex flex-wrap gap-2", compact ? "mt-2" : "mt-5")}>
+        <div className={cn("flex flex-wrap gap-2", compact ? "mt-2" : "mt-4")}>
           {result.traits.map((trait) => (
             <span
               key={trait}
