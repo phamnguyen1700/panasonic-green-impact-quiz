@@ -17,3 +17,19 @@ body {
   background: color-mix(in oklab, var(--lime-500) 55%, transparent);
   color: var(--forest-900);
 }
+
+.home-forest-carousel__swiper {
+  width: 100%;
+  height: min(43svh, 20.5rem);
+  min-height: 16.5rem;
+  padding-block: 0.5rem;
+  overflow: visible;
+}
+
+.home-forest-carousel__slide {
+  width: min(56vw, 13rem);
+  height: 100%;
+  display: grid;
+  place-items: center;
+  border-radius: 1.75rem;
+}

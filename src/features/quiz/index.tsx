@@ -1,6 +1,5 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
-import { useCallback, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+import { useCallback, useEffect, useState } from "react";
 
 import { CampaignButton } from "@/components/CampaignButton";
 import { campaign } from "@/config/campaign.config";
@@ -8,13 +7,13 @@ import { useAppFlow } from "@/hooks/useAppFlow";
 import { useQuizEngine } from "@/hooks/useQuizEngine";
 import { useQuizTimer } from "@/hooks/useQuizTimer";
 import { analytics } from "@/services/analytics.service";
+import { getPlayerAvatar } from "@/services/playerAvatar.service";
 import { submitResult } from "@/services/submitResult.service";
 import type { PlayerInfo } from "@/types/player.types";
 import { STORAGE_KEYS, readStorage } from "@/utils/storage";
 
 import { QuestionCard } from "./components/QuestionCard";
 import { QuizLayout } from "./components/QuizLayout";
-import { QuizProgress } from "./components/QuizProgress";
 import { QuizTimer } from "./components/QuizTimer";
 
 const SECONDS_PER_QUESTION = 25;
@@ -22,6 +21,8 @@ const SECONDS_PER_QUESTION = 25;
 export function QuizScreen() {
   const copy = campaign.quiz;
   const { go, goBack } = useAppFlow("quiz");
+  const [player, setPlayer] = useState<PlayerInfo | null>(null);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
 
   const engine = useQuizEngine({
     onComplete: (outcome, answers) => {
@@ -39,6 +40,8 @@ export function QuizScreen() {
   useEffect(() => {
     analytics.screenView("quiz");
     analytics.quizStarted();
+    setPlayer(readStorage<PlayerInfo>(STORAGE_KEYS.player));
+    setAvatarUrl(getPlayerAvatar());
   }, []);
 
   const handleExpire = useCallback(() => {
@@ -55,30 +58,27 @@ export function QuizScreen() {
 
   return (
     <QuizLayout
-      header={<QuizProgress index={engine.index} total={engine.total} />}
       footer={
-        <div className="flex flex-col-reverse items-stretch gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <button
+        <div className="grid grid-cols-2 gap-4 sm:mx-auto sm:w-full sm:max-w-md">
+          <CampaignButton
             type="button"
+            variant="ghost"
+            size="md"
             onClick={handleBack}
-            className="inline-flex items-center justify-center gap-2 text-sm text-mist/70 transition-colors hover:text-mist"
+            wrapperClassName="w-full"
+            className="h-12 w-full px-5 text-sm"
           >
-            <ArrowLeft className="size-4" aria-hidden />
             {copy.back}
-          </button>
-
-          <div className="flex items-center justify-between gap-4 sm:justify-end">
-            <QuizTimer remaining={timer.remaining} ratio={timer.ratio} isLow={timer.isLow} />
-            <CampaignButton
-              onClick={engine.next}
-              disabled={!engine.canAdvance}
-              withArrow
-              size="md"
-              className="min-w-[11rem]"
-            >
-              {engine.isLast ? copy.finish : copy.next}
-            </CampaignButton>
-          </div>
+          </CampaignButton>
+          <CampaignButton
+            onClick={engine.next}
+            disabled={!engine.canAdvance}
+            size="md"
+            wrapperClassName="w-full"
+            className="h-12 w-full px-5 text-sm"
+          >
+            {engine.isLast ? copy.finish : copy.next}
+          </CampaignButton>
         </div>
       }
     >
@@ -89,16 +89,14 @@ export function QuizScreen() {
           direction={engine.direction}
           selectedOptionId={engine.selectedOptionId}
           onSelect={engine.select}
+          index={engine.index}
+          total={engine.total}
+          player={player}
+          avatarUrl={avatarUrl}
+          timer={<QuizTimer ratio={timer.ratio} isLow={timer.isLow} />}
         />
       </AnimatePresence>
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: engine.canAdvance ? 0 : 1 }}
-        className="mt-5 text-center text-xs text-mist/50"
-      >
-        {copy.hint}
-      </motion.p>
     </QuizLayout>
   );
 }

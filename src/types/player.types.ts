@@ -1,6 +1,7 @@
 export interface PlayerInfo {
   name: string;
   phone?: string | undefined;
+  avatarFileName?: string | undefined;
   createdAt: string;
 }
 

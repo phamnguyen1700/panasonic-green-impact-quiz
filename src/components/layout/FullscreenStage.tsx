@@ -12,7 +12,7 @@ interface FullscreenStageProps {
 export function FullscreenStage({ children, className }: FullscreenStageProps) {
   return (
     <div
-      className={cn("relative flex min-h-[100svh] w-full flex-col", className)}
+      className={cn("relative flex min-h-[var(--stage-min-height)] w-full flex-col", className)}
       style={{ zIndex: zIndex.content }}
     >
       {children}

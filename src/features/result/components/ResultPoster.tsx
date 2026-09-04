@@ -1,3 +1,4 @@
+import { Badge } from "@elemental-fx/crystall-ui";
 import { forwardRef } from "react";
 
 import { campaign } from "@/config/campaign.config";
@@ -87,7 +88,7 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(functi
 
         <div className={cn("flex flex-wrap gap-2", compact ? "mt-2" : "mt-4")}>
           {result.traits.map((trait) => (
-            <span
+            <Badge
               key={trait}
               className={cn(
                 "rounded-full border border-white/30 font-medium text-forest-900",
@@ -96,7 +97,7 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(functi
               style={{ backgroundImage: toneGradient[result.tone] }}
             >
               {trait}
-            </span>
+            </Badge>
           ))}
         </div>
       </div>

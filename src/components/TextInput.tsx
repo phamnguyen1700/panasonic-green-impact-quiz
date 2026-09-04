@@ -1,3 +1,4 @@
+import { Input } from "@elemental-fx/crystall-ui";
 import { motion } from "framer-motion";
 import { useId, type InputHTMLAttributes } from "react";
 
@@ -21,7 +22,7 @@ export function TextInput({ label, hint, error, className, ...props }: TextInput
         {hint ? <span className="text-xs text-mist/55">{hint}</span> : null}
       </div>
 
-      <input
+      <Input
         id={id}
         className={cn(
           "h-14 w-full rounded-2xl border bg-white/10 px-5 text-base text-mist backdrop-blur-md",

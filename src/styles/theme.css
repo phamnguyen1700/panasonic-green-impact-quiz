@@ -17,6 +17,38 @@
   --ink: oklch(0.18 0.03 160);
   --mist: oklch(0.98 0.01 150);
 
+  --container-page: 82rem;
+  --container-narrow: 48rem;
+  --container-form: 28rem;
+  --container-result: 64rem;
+  --container-gutter: clamp(1.5rem, 4vw, 2.5rem);
+  --stage-min-height: 100svh;
+
+  --efx-crystall-bg: 0 0% 5%;
+  --efx-crystall-fg: 0 0% 98%;
+  --efx-crystall-muted: 0 0% 72%;
+  --efx-crystall-subtle: 0 0% 46%;
+  --efx-crystall-panel: 0 0% 100%;
+  --efx-crystall-panel-alpha: 0;
+  --efx-crystall-panel-strong-alpha: 0.055;
+  --efx-crystall-sheen-alpha: 0.055;
+  --efx-crystall-sheen-muted-alpha: 0;
+  --efx-crystall-control-alpha: 0;
+  --efx-crystall-control-hover-alpha: 0.095;
+  --efx-crystall-border: 0 0% 100%;
+  --efx-crystall-border-width: 1px;
+  --efx-crystall-border-alpha: 0.25;
+  --efx-crystall-glow: 45 94% 55%;
+  --efx-crystall-accent: 340 92% 58%;
+  --efx-crystall-success: 145 60% 50%;
+  --efx-crystall-warning: 44 94% 63%;
+  --efx-crystall-danger: 0 80% 62%;
+  --efx-crystall-radius-sm: 14px;
+  --efx-crystall-radius-md: 24px;
+  --efx-crystall-radius-lg: 36px;
+  --efx-crystall-blur: 0px;
+  --efx-crystall-shadow: 0 22px 70px hsl(0 0% 0% / 0.36);
+
   --gradient-cta: linear-gradient(100deg, var(--lime-500), var(--forest-500));
   --gradient-headline: linear-gradient(96deg, var(--lime-400), var(--cyan-400));
   --shadow-glass: 0 24px 60px -24px oklch(0.2 0.05 160 / 0.55);
@@ -40,6 +72,15 @@
   --color-sun-soft: var(--sun-300);
   --color-ink: var(--ink);
   --color-mist: var(--mist);
+
+  --breakpoint-xs: 30rem;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
+
+  --spacing-container-gutter: var(--container-gutter);
 }
 
 @utility text-shadow-scene {
@@ -76,4 +117,29 @@
       color-mix(in oklab, var(--ink) 28%, transparent) 62%,
       color-mix(in oklab, var(--ink) 12%, transparent)
     );
+}
+
+@utility app-container {
+  width: 100%;
+  max-width: var(--container-page);
+  margin-inline: auto;
+  padding-inline: var(--container-gutter);
+}
+
+.crystall-button[data-campaign-button] {
+  background:
+    linear-gradient(135deg, hsl(0 0% 100% / 0.055), hsl(0 0% 100% / 0)), hsl(0 0% 100% / 0.035);
+  border-color: hsl(0 0% 100% / 0.28);
+  border-radius: 999px;
+  color: hsl(0 0% 100%);
+}
+
+.crystall-button[data-campaign-button]::before {
+  border-radius: inherit;
+}
+
+.crystall-button[data-campaign-button]:hover {
+  background:
+    linear-gradient(135deg, hsl(0 0% 100% / 0.09), hsl(0 0% 100% / 0.02)), hsl(0 0% 100% / 0.075);
+  border-color: hsl(0 0% 100% / 0.42);
 }

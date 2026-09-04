@@ -9,7 +9,5 @@ export function ContentContainer({
   children: ReactNode;
   className?: string;
 }) {
-  return (
-    <div className={cn("mx-auto w-full max-w-[82rem] px-6 sm:px-10", className)}>{children}</div>
-  );
+  return <div className={cn("app-container", className)}>{children}</div>;
 }

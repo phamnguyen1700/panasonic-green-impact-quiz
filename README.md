@@ -42,6 +42,9 @@ Routes are declared in `src/App.tsx`:
 
 Screen navigation is centralized in `src/app/screenFlow.ts`, and route metadata is applied by `src/app/RouteMeta.tsx`.
 
+Responsive sizing tokens live in `src/config/theme.config.ts` and are mirrored to `src/styles/theme.css`.
+Shared layout wrappers should use these tokens instead of page-level hardcoded container sizes.
+
 ## Development
 
 ```sh

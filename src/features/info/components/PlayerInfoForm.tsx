@@ -55,12 +55,24 @@ export function PlayerInfoForm({ onSubmitted, onBack }: PlayerInfoFormProps) {
           {copy.consent}
         </motion.p>
 
-        <motion.div variants={staggerItem} className="flex items-center gap-4 pt-1">
-          <CampaignButton type="submit" withArrow disabled={!isValid} className="flex-1">
-            {copy.cta}
-          </CampaignButton>
-          <CampaignButton type="button" variant="ghost" size="md" onClick={onBack}>
+        <motion.div variants={staggerItem} className="grid grid-cols-2 gap-4 pt-1">
+          <CampaignButton
+            type="button"
+            variant="ghost"
+            size="md"
+            onClick={onBack}
+            wrapperClassName="w-full"
+            className="h-12 w-full px-6 text-sm"
+          >
             {copy.back}
+          </CampaignButton>
+          <CampaignButton
+            type="submit"
+            disabled={!isValid}
+            wrapperClassName="w-full"
+            className="h-12 w-full px-6 text-sm"
+          >
+            {copy.cta}
           </CampaignButton>
         </motion.div>
       </motion.form>

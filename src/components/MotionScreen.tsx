@@ -17,7 +17,7 @@ export function MotionScreen({ children, className }: MotionScreenProps) {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className={cn("relative min-h-[100svh] w-full overflow-hidden", className)}
+      className={cn("relative min-h-[var(--stage-min-height)] w-full overflow-hidden", className)}
     >
       {children}
     </motion.main>

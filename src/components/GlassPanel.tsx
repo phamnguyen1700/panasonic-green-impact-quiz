@@ -1,3 +1,4 @@
+import { Card } from "@elemental-fx/crystall-ui";
 import { motion, type HTMLMotionProps } from "framer-motion";
 import type { ReactNode } from "react";
 
@@ -17,6 +18,8 @@ const toneClass = {
   light: "glass-surface bg-white/25",
 } as const;
 
+const MotionCard = motion(Card);
+
 export function GlassPanel({
   children,
   tone = "default",
@@ -25,7 +28,7 @@ export function GlassPanel({
   ...props
 }: GlassPanelProps) {
   return (
-    <motion.div
+    <MotionCard
       variants={animated ? fadeScale : {}}
       initial={animated ? "hidden" : false}
       animate={animated ? "visible" : false}
@@ -33,6 +36,6 @@ export function GlassPanel({
       {...props}
     >
       {children}
-    </motion.div>
+    </MotionCard>
   );
 }

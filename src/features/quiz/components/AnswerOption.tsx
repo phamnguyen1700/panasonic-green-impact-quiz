@@ -22,20 +22,18 @@ interface AnswerOptionProps {
   onSelect: (optionId: string) => void;
 }
 
-const letters = ["A", "B", "C", "D", "E", "F"];
-
-export function AnswerOption({ option, index, selected, onSelect }: AnswerOptionProps) {
+export function AnswerOption({ option, selected, onSelect }: AnswerOptionProps) {
   return (
     <motion.button
       type="button"
       variants={answerItem}
-      whileHover={{ y: -4, transition: transitions.fast }}
-      whileTap={{ scale: 0.985 }}
+      whileHover={{ scale: 1.01, transition: transitions.fast }}
+      whileTap={{ scale: 0.99 }}
       animate={selected ? answerSelected : { scale: 1 }}
       onClick={() => onSelect(option.id)}
       aria-pressed={selected}
       className={cn(
-        "group relative flex w-full items-center gap-4 overflow-hidden rounded-[1.5rem] border p-4 text-left backdrop-blur-xl sm:p-5",
+        "group relative flex min-h-20 w-full items-center gap-4 overflow-hidden rounded-[1.5rem] border p-4 text-left backdrop-blur-xl sm:min-h-24 sm:p-5",
         "transition-colors outline-none focus-visible:ring-2 focus-visible:ring-lime-soft",
         selected
           ? "border-lime-soft/80 shadow-[var(--shadow-card)]"
@@ -46,33 +44,22 @@ export function AnswerOption({ option, index, selected, onSelect }: AnswerOption
         backgroundColor: selected ? undefined : "oklch(1 0 0 / 0.08)",
       }}
     >
-      <span
-        className={cn(
-          "grid size-11 shrink-0 place-items-center rounded-2xl font-display text-sm font-bold transition-colors",
-          selected ? "bg-forest-900/20 text-forest-900" : "bg-white/12 text-mist/80",
-        )}
-      >
-        {selected ? <Check className="size-5" aria-hidden /> : letters[index]}
-      </span>
-
       <span className="min-w-0 flex-1">
         <span
           className={cn(
-            "block font-display text-base leading-snug font-semibold sm:text-lg",
+            "block text-sm leading-relaxed font-normal sm:text-base",
             selected ? "text-forest-900" : "text-mist",
           )}
         >
-          {option.label}
-        </span>
-        <span
-          className={cn(
-            "mt-1 block text-xs leading-relaxed sm:text-sm",
-            selected ? "text-forest-900/70" : "text-mist/60",
-          )}
-        >
-          {option.caption}
+          {option.label}. {option.caption}
         </span>
       </span>
+
+      {selected ? (
+        <span className="grid size-8 shrink-0 place-items-center rounded-full bg-white/18 text-forest-900">
+          <Check className="size-4" aria-hidden />
+        </span>
+      ) : null}
 
       {selected ? (
         <motion.span

@@ -5,7 +5,7 @@ import { WaterSurface } from "@/components/effects/water-surface";
 export function AppProviders({ children }: { children: ReactNode }) {
   return (
     <>
-      {children}
+      <div className="crystall-scope contents">{children}</div>
 
       <WaterSurface
         color="hsl(0, 0%, 0%)"

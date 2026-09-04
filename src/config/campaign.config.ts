@@ -14,7 +14,7 @@ export const campaign: CampaignCopy = {
     supporting:
       "Năm cánh rừng, năm tính cách. Trả lời vài câu hỏi nhẹ nhàng để khám phá khu rừng đang lớn lên trong bạn — và dấu ấn xanh bạn để lại cho thiên nhiên.",
     cta: "Chơi ngay",
-    footnote: "Chỉ mất 1 phút · 5 câu hỏi",
+    footnote: "",
   },
   info: {
     eyebrow: "Trước khi vào rừng",
@@ -28,11 +28,11 @@ export const campaign: CampaignCopy = {
     ],
     form: {
       nameLabel: "Tên của bạn",
-      namePlaceholder: "Ví dụ: Minh Anh",
+      namePlaceholder: "Nhập tên của bạn để tiếp tục",
       nameRequiredError: "Bạn hãy điền tên để nhận thẻ rừng nhé",
       phoneLabel: "Số điện thoại",
-      phonePlaceholder: "09xx xxx xxx",
-      phoneOptionalHint: "Không bắt buộc",
+      phonePlaceholder: "Nhập số điện thoại của bạn để tiếp tục",
+      phoneOptionalHint: "",
       phoneInvalidError: "Số điện thoại chưa hợp lệ",
       consent: "Thông tin được bảo mật và chỉ dùng cho chiến dịch Sống khỏe góp xanh.",
       cta: "Bắt đầu",
@@ -48,7 +48,7 @@ export const campaign: CampaignCopy = {
     next: "Câu tiếp theo",
     finish: "Xem kết quả",
     back: "Quay lại",
-    hint: "Chọn một đáp án để đi tiếp",
+    hint: "Chọn điều gần với bạn nhất",
   },
   result: {
     eyebrow: "Kết quả của bạn",

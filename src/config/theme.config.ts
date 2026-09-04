@@ -79,6 +79,27 @@ export const spacing = {
   "3xl": "7rem",
 } as const;
 
+export const layout = {
+  breakpoints: {
+    xs: "30rem",
+    sm: "40rem",
+    md: "48rem",
+    lg: "64rem",
+    xl: "80rem",
+    "2xl": "96rem",
+  },
+  container: {
+    page: "82rem",
+    narrow: "48rem",
+    form: "28rem",
+    result: "64rem",
+    gutter: "clamp(1.5rem, 4vw, 2.5rem)",
+  },
+  viewport: {
+    screen: "100svh",
+  },
+} as const;
+
 export const radius = {
   sm: "0.75rem",
   md: "1.25rem",
@@ -132,6 +153,7 @@ export const theme = {
   gradients,
   typography,
   spacing,
+  layout,
   radius,
   shadows,
   blur,
