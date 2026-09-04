@@ -15,8 +15,7 @@ export const analytics = {
     emit("question_answered", { questionId, optionId, index }),
   quizCompleted: (resultId: string) => emit("quiz_completed", { resultId }),
   resultDownloaded: (resultId: string) => emit("result_downloaded", { resultId }),
-  resultShared: (resultId: string, channel: string) =>
-    emit("result_shared", { resultId, channel }),
+  resultShared: (resultId: string, channel: string) => emit("result_shared", { resultId, channel }),
 };
 
 export type Analytics = typeof analytics;

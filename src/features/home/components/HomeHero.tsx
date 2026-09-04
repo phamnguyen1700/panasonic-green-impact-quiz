@@ -8,12 +8,7 @@ export function HomeHero({ onStart }: { onStart: () => void }) {
   const copy = campaign.home;
 
   return (
-    <motion.div
-      variants={staggerContainer}
-      initial="hidden"
-      animate="visible"
-      className="max-w-xl"
-    >
+    <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="max-w-xl">
       <motion.p
         variants={staggerItem}
         className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-medium tracking-[0.16em] text-mist/90 uppercase backdrop-blur-md"

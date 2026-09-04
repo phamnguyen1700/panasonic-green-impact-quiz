@@ -18,8 +18,7 @@ interface CampaignButtonProps extends Omit<HTMLMotionProps<"button">, "children"
 const variantClass: Record<Variant, string> = {
   primary:
     "text-forest-900 [background-image:var(--gradient-cta)] shadow-[var(--shadow-cta)] hover:brightness-105",
-  outline:
-    "border border-white/45 text-mist bg-white/8 backdrop-blur-md hover:bg-white/16",
+  outline: "border border-white/45 text-mist bg-white/8 backdrop-blur-md hover:bg-white/16",
   ghost: "text-mist/85 hover:text-mist",
 };
 

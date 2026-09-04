@@ -5,7 +5,6 @@
 @import "./styles/theme.css";
 @import "./styles/index.css";
 
-
 @custom-variant dark (&:is(.dark *));
 
 /*

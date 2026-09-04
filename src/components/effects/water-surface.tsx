@@ -6,8 +6,7 @@ import {
 } from "@elemental-fx/canvas-effects";
 
 export interface WaterSurfaceProps
-  extends WaterSurfaceConfig,
-    Omit<CanvasHTMLAttributes<HTMLCanvasElement>, "children" | "color"> {
+  extends WaterSurfaceConfig, Omit<CanvasHTMLAttributes<HTMLCanvasElement>, "children" | "color"> {
   paused?: boolean | undefined;
 }
 
@@ -68,7 +67,7 @@ export function WaterSurface({
       shadowColor,
       spread,
       tension,
-    ]
+    ],
   );
   const configRef = useRef(config);
   configRef.current = config;

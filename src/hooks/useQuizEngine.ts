@@ -22,7 +22,11 @@ export function useQuizEngine({ onComplete }: UseQuizEngineOptions = {}) {
   const isLast = index === TOTAL_QUESTIONS - 1;
 
   const progress = useMemo(
-    () => ({ index, total: TOTAL_QUESTIONS, ratio: (index + (selectedOptionId ? 1 : 0)) / TOTAL_QUESTIONS }),
+    () => ({
+      index,
+      total: TOTAL_QUESTIONS,
+      ratio: (index + (selectedOptionId ? 1 : 0)) / TOTAL_QUESTIONS,
+    }),
     [index, selectedOptionId],
   );
 

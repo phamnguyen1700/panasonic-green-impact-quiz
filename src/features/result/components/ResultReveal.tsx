@@ -42,7 +42,10 @@ export function ResultReveal({ result, playerName }: ResultRevealProps) {
         />
       </motion.h1>
 
-      <motion.p variants={revealText} className="mt-3 font-script text-xl text-lime-soft sm:text-2xl">
+      <motion.p
+        variants={revealText}
+        className="mt-3 font-script text-xl text-lime-soft sm:text-2xl"
+      >
         {result.subtitle}
       </motion.p>
     </motion.div>

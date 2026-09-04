@@ -44,10 +44,7 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(functi
         loading="lazy"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-forest-900 via-forest-900/55 to-forest-900/10" />
-      <div
-        className="absolute inset-x-0 top-0 h-1.5"
-        style={{ backgroundImage: gradients.cta }}
-      />
+      <div className="absolute inset-x-0 top-0 h-1.5" style={{ backgroundImage: gradients.cta }} />
 
       <div className={cn("relative", compact ? "p-4" : "p-5 sm:p-6")}>
         <p

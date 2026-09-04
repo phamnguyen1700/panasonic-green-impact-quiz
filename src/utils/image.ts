@@ -12,7 +12,11 @@ export function slugify(value: string): string {
 }
 
 export function buildFileName(parts: Array<string | undefined>, extension = "png"): string {
-  const slug = parts.filter(Boolean).map((part) => slugify(part!)).filter(Boolean).join("-");
+  const slug = parts
+    .filter(Boolean)
+    .map((part) => slugify(part!))
+    .filter(Boolean)
+    .join("-");
   return `${slug || "ket-qua"}.${extension}`;
 }
 

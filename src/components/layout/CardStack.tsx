@@ -5,13 +5,7 @@ import { staggerContainer } from "@/config/motion.config";
 import { cn } from "@/utils/cn";
 
 /** Staggered, loosely scattered arrangement for forest cards. */
-export function CardStack({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+export function CardStack({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <motion.div
       variants={staggerContainer}

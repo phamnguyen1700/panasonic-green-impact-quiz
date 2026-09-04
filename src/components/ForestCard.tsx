@@ -68,12 +68,7 @@ export function ForestCard({
         <p className={size === "md" ? "text-3xl leading-tight" : "text-xl leading-tight"}>
           {personality.traits[0]}
         </p>
-        <p
-          className={cn(
-            "pl-5 leading-tight",
-            size === "md" ? "text-3xl" : "text-xl",
-          )}
-        >
+        <p className={cn("pl-5 leading-tight", size === "md" ? "text-3xl" : "text-xl")}>
           <span className="pr-2 opacity-60">&</span>
           {personality.traits[1]}
         </p>

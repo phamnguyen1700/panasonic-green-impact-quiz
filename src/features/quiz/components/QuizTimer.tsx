@@ -28,7 +28,15 @@ export function QuizTimer({ remaining, ratio, isLow, className }: QuizTimerProps
     >
       <div className="relative grid size-12 place-items-center">
         <svg viewBox="0 0 52 52" className="absolute size-12 -rotate-90">
-          <circle cx="26" cy="26" r="22" fill="none" stroke="currentColor" strokeWidth="3" className="text-white/15" />
+          <circle
+            cx="26"
+            cy="26"
+            r="22"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3"
+            className="text-white/15"
+          />
           <motion.circle
             cx="26"
             cy="26"

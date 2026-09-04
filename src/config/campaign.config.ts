@@ -34,8 +34,7 @@ export const campaign: CampaignCopy = {
       phonePlaceholder: "09xx xxx xxx",
       phoneOptionalHint: "Không bắt buộc",
       phoneInvalidError: "Số điện thoại chưa hợp lệ",
-      consent:
-        "Thông tin được bảo mật và chỉ dùng cho chiến dịch Sống khỏe góp xanh.",
+      consent: "Thông tin được bảo mật và chỉ dùng cho chiến dịch Sống khỏe góp xanh.",
       cta: "Bắt đầu",
       back: "Quay lại",
     },
@@ -64,8 +63,7 @@ export const campaign: CampaignCopy = {
     sharing: "Đang mở chia sẻ…",
     replay: "Chơi lại",
     sharePreviewTitle: "Xem trước khi chia sẻ",
-    sharePreviewCaption:
-      "Mình vừa khám phá khu rừng trong mình. Còn bạn là loại rừng nào?",
+    sharePreviewCaption: "Mình vừa khám phá khu rừng trong mình. Còn bạn là loại rừng nào?",
     shareHashtags: "#SongKhoeGopXanh #PanasonicGreenImpact",
     saved: "Đã lưu thẻ kết quả về máy",
     shareFallback: "Đã sao chép nội dung chia sẻ",

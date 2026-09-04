@@ -1,5 +1,5 @@
-import { useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   AVAILABLE_SCREENS,
@@ -15,7 +15,7 @@ export function useAppFlow(current: ScreenId) {
   const go = useCallback(
     (screen: ScreenId) => {
       if (!AVAILABLE_SCREENS.includes(screen)) return;
-      void navigate({ to: SCREEN_ROUTES[screen] });
+      void navigate(SCREEN_ROUTES[screen]);
     },
     [navigate],
   );

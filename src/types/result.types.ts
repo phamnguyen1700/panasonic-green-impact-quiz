@@ -2,12 +2,7 @@ import type { ForestTone } from "@/types/campaign.types";
 import type { QuizAnswer } from "@/types/quiz.types";
 import type { PlayerInfo } from "@/types/player.types";
 
-export type ForestResultId =
-  | "phong-ho"
-  | "dau-nguon"
-  | "bao-ton"
-  | "phuc-hoi"
-  | "sinh-ke";
+export type ForestResultId = "phong-ho" | "dau-nguon" | "bao-ton" | "phuc-hoi" | "sinh-ke";
 
 export interface ForestResult {
   id: ForestResultId;

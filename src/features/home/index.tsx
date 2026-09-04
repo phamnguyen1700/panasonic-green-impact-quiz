@@ -14,11 +14,7 @@ export function HomeScreen() {
 
   return (
     <MotionScreen>
-      <ScreenBackground
-        image={assets.backgrounds.home}
-        scrim="medium"
-        particles={16}
-      />
+      <ScreenBackground image={assets.backgrounds.home} scrim="medium" particles={16} />
 
       <FullscreenStage>
         <ContentContainer className="flex items-center justify-between py-8">
