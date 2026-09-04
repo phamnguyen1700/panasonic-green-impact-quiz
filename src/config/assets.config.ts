@@ -16,6 +16,11 @@ export const assets = {
     quiz: quizBackground,
     result: resultBackground,
   },
+  brand: {
+    badge: "/assets/5-năm-sống-khỏe-góp-xanh.png",
+    headline: "/assets/bạn-là-loại-rừng-nào.png",
+    logo: "/assets/pana-green-impact.png",
+  },
   resultCards: {
     "phong-ho": forestPhongHo,
     "dau-nguon": forestDauNguon,

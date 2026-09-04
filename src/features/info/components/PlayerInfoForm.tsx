@@ -18,13 +18,13 @@ export function PlayerInfoForm({ onSubmitted, onBack }: PlayerInfoFormProps) {
   const { values, errors, setField, handleSubmit, isValid } = usePlayerInfoForm(onSubmitted);
 
   return (
-    <GlassPanel tone="deep" className="w-full max-w-md rounded-[2.25rem]">
+    <GlassPanel tone="deep" className="flex h-[23rem] w-[28rem] max-w-full rounded-[2.25rem]">
       <motion.form
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
         onSubmit={handleSubmit}
-        className="space-y-5"
+        className="flex w-full flex-col space-y-5"
         noValidate
       >
         <motion.div variants={staggerItem}>
@@ -55,7 +55,7 @@ export function PlayerInfoForm({ onSubmitted, onBack }: PlayerInfoFormProps) {
           {copy.consent}
         </motion.p>
 
-        <motion.div variants={staggerItem} className="grid grid-cols-2 gap-4 pt-1">
+        <motion.div variants={staggerItem} className="mt-auto grid grid-cols-2 gap-4 pt-1">
           <CampaignButton
             type="button"
             variant="ghost"

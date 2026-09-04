@@ -69,30 +69,30 @@ export function PlayerPhotoForm({ player, onSubmitted, onBack }: PlayerPhotoForm
   };
 
   return (
-    <GlassPanel tone="deep" className="w-full max-w-md rounded-[2.25rem]">
+    <GlassPanel tone="deep" className="flex h-[23rem] w-[28rem] max-w-full rounded-[2.25rem]">
       <motion.form
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
         onSubmit={handleSubmit}
-        className="space-y-5"
+        className="flex w-full flex-col space-y-5"
         noValidate
       >
         <motion.div variants={staggerItem} className="space-y-3">
           <p className="text-sm font-medium text-mist/90">Ảnh của bạn</p>
           <label
             htmlFor={inputId}
-            className="flex min-h-52 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-dashed border-white/30 bg-white/[0.04] text-center transition-colors hover:border-white/45 hover:bg-white/[0.07]"
+            className="mx-auto flex size-55 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-full border border-transparent bg-white/[0.04] text-center transition-colors hover:border-transparent hover:bg-white/[0.07]"
           >
             {preview ? (
-              <img src={preview} alt="" className="h-52 w-full object-cover" />
+              <img src={preview} alt="" className="size-full object-cover" />
             ) : (
-              <span className="flex flex-col items-center gap-3 px-6 text-mist/70">
-                <span className="grid size-12 place-items-center rounded-full border border-white/25 bg-white/10">
-                  <ImageUp className="size-5" aria-hidden />
+              <span className="flex flex-col items-center gap-2 px-4 text-mist/70">
+                <ImageUp className="size-7" aria-hidden />
+                <span className="text-sm">CHỌN ẢNH</span>
+                <span className="text-[0.65rem] leading-tight text-mist/45">
+                  JPG, PNG, dưới 400MB
                 </span>
-                <span className="text-sm">Chọn ảnh để làm avatar trong quiz</span>
-                <span className="text-xs text-mist/45">JPG, PNG, WEBP dưới 400MB</span>
               </span>
             )}
           </label>
@@ -106,7 +106,7 @@ export function PlayerPhotoForm({ player, onSubmitted, onBack }: PlayerPhotoForm
           {error ? <p className="text-xs text-sun-soft">{error}</p> : null}
         </motion.div>
 
-        <motion.div variants={staggerItem} className="grid grid-cols-2 gap-4 pt-1">
+        <motion.div variants={staggerItem} className="mt-auto grid grid-cols-2 gap-4 pt-1">
           <CampaignButton
             type="button"
             variant="ghost"
@@ -123,7 +123,7 @@ export function PlayerPhotoForm({ player, onSubmitted, onBack }: PlayerPhotoForm
             wrapperClassName="w-full"
             className="h-12 w-full px-6 text-sm"
           >
-            Vào quiz
+            Bắt đầu
           </CampaignButton>
         </motion.div>
       </motion.form>

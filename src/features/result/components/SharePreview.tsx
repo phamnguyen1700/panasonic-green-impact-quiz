@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Heart, MessageCircle, Share2 } from "lucide-react";
 
+import { PanasonicGreenImpactImage } from "@/components/BrandAssets";
 import { campaign } from "@/config/campaign.config";
 import { sharePreviewEnter } from "@/config/motion.config";
 import type { ForestResult } from "@/types/result.types";
@@ -37,7 +38,7 @@ export function SharePreview({ result, playerName }: SharePreviewProps) {
           </span>
           <div className="leading-tight">
             <p className="text-sm font-semibold text-mist">{playerName ?? campaign.brand.name}</p>
-            <p className="text-[0.65rem] text-mist/55">{campaign.brand.tagline}</p>
+            <PanasonicGreenImpactImage className="mt-1 h-4 opacity-70" />
           </div>
         </header>
 

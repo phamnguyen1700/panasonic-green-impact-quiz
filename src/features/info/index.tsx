@@ -1,11 +1,11 @@
 import { useState } from "react";
 
+import { CampaignBadgeImage, PanasonicGreenImpactImage } from "@/components/BrandAssets";
 import { MotionScreen } from "@/components/MotionScreen";
 import { ScreenBackground } from "@/components/ScreenBackground";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullscreenStage } from "@/components/layout/FullscreenStage";
 import { assets } from "@/config/assets.config";
-import { campaign } from "@/config/campaign.config";
 import { FloatingForestCards } from "@/features/home/components/FloatingForestCards";
 import { useAppFlow } from "@/hooks/useAppFlow";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -26,33 +26,24 @@ export function InfoScreen() {
 
       <FullscreenStage>
         {isMobile ? (
-          <ContentContainer className="flex flex-col items-center gap-5 py-8 text-center">
-            <div>
-              <p className="font-display text-2xl font-extrabold tracking-[0.18em] text-mist text-shadow-scene uppercase">
-                Panasonic
-              </p>
-              <p className="mt-2 text-xs tracking-[0.28em] text-mist/75 uppercase">Green Impact</p>
-            </div>
-            <p className="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-medium tracking-[0.16em] text-mist/90 uppercase backdrop-blur-md">
-              {campaign.home.eyebrow}
-            </p>
+          <ContentContainer className="flex items-center justify-between pt-12 pb-3">
+            <CampaignBadgeImage className="h-16" />
+            <PanasonicGreenImpactImage className="h-14" />
           </ContentContainer>
         ) : (
           <ContentContainer className="flex items-center justify-between py-8">
-            <p className="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-medium tracking-[0.16em] text-mist/90 uppercase backdrop-blur-md">
-              {campaign.home.eyebrow}
-            </p>
-            <p className="text-xs tracking-[0.16em] text-mist/70 uppercase">
-              {campaign.brand.tagline}
-            </p>
+            <CampaignBadgeImage className="h-15" />
+            <PanasonicGreenImpactImage className="h-12" />
           </ContentContainer>
         )}
 
         {isMobile ? (
           <ContentContainer className="flex flex-1 flex-col items-center gap-8 pb-8">
-            <CampaignIntro align="center" />
+            <div className="mt-30">
+              <CampaignIntro align="center" />
+            </div>
 
-            <div className="mt-auto flex w-full justify-center">
+            <div className="mt-5 flex w-full justify-center">
               {player ? (
                 <PlayerPhotoForm
                   player={player}

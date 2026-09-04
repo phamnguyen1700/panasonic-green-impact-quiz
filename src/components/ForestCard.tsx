@@ -50,7 +50,7 @@ export function ForestCard({
       <Card
         style={{ backgroundImage: toneGradient[personality.tone] }}
         className={cn(
-          "relative flex size-full flex-col justify-between overflow-hidden rounded-[1.75rem] border border-white/40",
+          "relative flex size-full flex-col justify-between overflow-hidden rounded-[1.75rem] border border-transparent",
           "backdrop-blur-xl shadow-[var(--shadow-card)]",
           paddingClass,
         )}

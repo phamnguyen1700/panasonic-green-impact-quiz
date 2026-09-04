@@ -18,10 +18,14 @@ body {
   color: var(--forest-900);
 }
 
+.home-forest-carousel {
+  height: min(40svh, 19.5rem);
+}
+
 .home-forest-carousel__swiper {
   width: 100%;
-  height: min(43svh, 20.5rem);
-  min-height: 16.5rem;
+  height: 100%;
+  min-height: 13.5rem;
   padding-block: 0.5rem;
   overflow: visible;
 }

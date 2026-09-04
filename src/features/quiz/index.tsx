@@ -96,7 +96,6 @@ export function QuizScreen() {
           timer={<QuizTimer ratio={timer.ratio} isLow={timer.isLow} />}
         />
       </AnimatePresence>
-
     </QuizLayout>
   );
 }

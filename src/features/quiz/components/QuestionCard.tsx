@@ -134,7 +134,7 @@ export function QuestionCard({
               </div>
             </aside>
 
-            <section className="relative min-w-0 border-white/20 pt-2 lg:border-l lg:pl-9">
+            <section className="relative min-w-0 pt-2 lg:pl-9">
               <div className="absolute right-0 top-0">{timer}</div>
 
               <motion.h1

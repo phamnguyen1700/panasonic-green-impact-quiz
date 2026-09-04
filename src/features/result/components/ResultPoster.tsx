@@ -1,6 +1,7 @@
 import { Badge } from "@elemental-fx/crystall-ui";
 import { forwardRef } from "react";
 
+import { CampaignBadgeImage } from "@/components/BrandAssets";
 import { campaign } from "@/config/campaign.config";
 import { gradients } from "@/config/theme.config";
 import type { ForestTone } from "@/types/campaign.types";
@@ -48,14 +49,7 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(functi
       <div className="absolute inset-x-0 top-0 h-1.5" style={{ backgroundImage: gradients.cta }} />
 
       <div className={cn("relative", compact ? "p-4" : "p-5 sm:p-6")}>
-        <p
-          className={cn(
-            "tracking-[0.2em] text-lime-soft uppercase",
-            compact ? "text-[0.55rem]" : "text-xs",
-          )}
-        >
-          {copy.cardBadge}
-        </p>
+        <CampaignBadgeImage className={compact ? "h-5" : "h-7"} />
 
         {playerName ? (
           <p className={cn("mt-2 text-mist/70", compact ? "text-[0.6rem]" : "text-sm")}>
@@ -91,7 +85,7 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(functi
             <Badge
               key={trait}
               className={cn(
-                "rounded-full border border-white/30 font-medium text-forest-900",
+                "rounded-full border border-transparent font-medium text-forest-900",
                 compact ? "px-2 py-0.5 text-[0.55rem]" : "px-3 py-1.5 text-xs",
               )}
               style={{ backgroundImage: toneGradient[result.tone] }}

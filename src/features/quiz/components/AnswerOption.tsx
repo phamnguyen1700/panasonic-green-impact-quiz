@@ -37,7 +37,7 @@ export function AnswerOption({ option, selected, onSelect }: AnswerOptionProps) 
         "transition-colors outline-none focus-visible:ring-2 focus-visible:ring-lime-soft",
         selected
           ? "border-lime-soft/80 shadow-[var(--shadow-card)]"
-          : "border-white/25 hover:border-white/45",
+          : "border-transparent hover:border-transparent",
       )}
       style={{
         backgroundImage: selected ? toneGradient[option.tone] : undefined,

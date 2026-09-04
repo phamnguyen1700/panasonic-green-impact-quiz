@@ -1,9 +1,9 @@
 /* Web fonts are loaded via <link> in index.html (Lightning CSS cannot
    resolve remote @import). This file only maps families to tokens. */
 :root {
-  --font-display: "Fraunces", Georgia, serif;
-  --font-body: "Inter", system-ui, sans-serif;
-  --font-script: "Fraunces", Georgia, serif;
+  --font-display: "Be Vietnam Pro", system-ui, sans-serif;
+  --font-body: "Be Vietnam Pro", system-ui, sans-serif;
+  --font-script: "Playfair Display", Georgia, serif;
 }
 
 body {

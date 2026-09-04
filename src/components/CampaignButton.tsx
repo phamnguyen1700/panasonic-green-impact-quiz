@@ -25,11 +25,11 @@ interface CampaignButtonProps
 
 const variantClass: Record<Variant, string> = {
   primary:
-    "border-white/28 bg-white/[0.035] text-mist shadow-[var(--efx-crystall-shadow)] hover:border-white/42 hover:bg-white/[0.075]",
+    "border-transparent bg-white/[0.035] text-mist shadow-[var(--efx-crystall-shadow)] hover:border-transparent hover:bg-white/[0.075]",
   outline:
-    "border-white/24 bg-white/[0.02] text-mist shadow-[var(--efx-crystall-shadow)] hover:border-white/38 hover:bg-white/[0.065]",
+    "border-transparent bg-white/[0.02] text-mist shadow-[var(--efx-crystall-shadow)] hover:border-transparent hover:bg-white/[0.065]",
   ghost:
-    "border-white/0 bg-white/0 text-mist/85 hover:border-white/20 hover:bg-white/[0.055] hover:text-mist",
+    "border-transparent bg-white/0 text-mist/85 hover:border-transparent hover:bg-white/[0.055] hover:text-mist",
 };
 
 const sizeClass: Record<Size, string> = {

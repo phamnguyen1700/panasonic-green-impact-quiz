@@ -24,11 +24,12 @@ export function TextInput({ label, hint, error, className, ...props }: TextInput
 
       <Input
         id={id}
+        data-campaign-input
         className={cn(
-          "h-14 w-full rounded-2xl border bg-white/10 px-5 text-base text-mist backdrop-blur-md",
+          "h-14 w-full rounded-full !border bg-white/10 px-6 text-base text-mist backdrop-blur-md",
           "placeholder:text-mist/40 transition-colors outline-none",
-          "focus:border-lime-soft/80 focus:bg-white/16",
-          error ? "border-sun-glow/80" : "border-white/25",
+          "focus:!border-white/35 focus:bg-white/12 focus:!ring-0 focus:!outline-none",
+          error ? "!border-sun-glow/80" : "!border-white/35",
           className,
         )}
         aria-invalid={Boolean(error)}

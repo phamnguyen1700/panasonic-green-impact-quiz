@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 
+import { CampaignBadgeImage, HomeTitleImage } from "@/components/BrandAssets";
 import { CampaignButton } from "@/components/CampaignButton";
 import { campaign } from "@/config/campaign.config";
 import { revealText, staggerContainer, staggerItem } from "@/config/motion.config";
@@ -24,12 +25,9 @@ export function HomeHero({
   const copy = campaign.home;
   const isCentered = align === "center";
   const eyebrow = (
-    <motion.p
-      variants={staggerItem}
-      className="inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-medium tracking-[0.16em] text-mist/90 uppercase backdrop-blur-md"
-    >
-      {copy.eyebrow}
-    </motion.p>
+    <motion.div variants={staggerItem} className="inline-flex items-center">
+      <CampaignBadgeImage className={isCentered ? "h-8" : "h-10"} />
+    </motion.div>
   );
 
   return (
@@ -39,39 +37,20 @@ export function HomeHero({
       animate="visible"
       className={isCentered ? "mx-auto max-w-2xl text-center" : "max-w-xl"}
     >
-      {eyebrowPlacement === "top" ? <div className="mb-6">{eyebrow}</div> : null}
+      {eyebrowPlacement === "top" ? (
+        <div className={isCentered ? "mb-4" : "mb-7"}>{eyebrow}</div>
+      ) : null}
 
-      <h1 className="font-display leading-[0.92] tracking-tight text-shadow-scene">
-        <motion.span
-          variants={revealText}
-          className={`block font-medium text-mist ${
-            isCentered ? "text-[clamp(2.25rem,10vw,3.4rem)]" : "text-[clamp(1.6rem,3.6vw,2.5rem)]"
-          }`}
-        >
-          {copy.headlineTop}
-        </motion.span>
-        <motion.span
-          variants={revealText}
-          className={`headline-gradient block font-extrabold ${
-            isCentered ? "text-[clamp(4.45rem,20vw,7rem)]" : "text-[clamp(3rem,8vw,6.5rem)]"
-          }`}
-        >
-          {copy.headlineMain}
-        </motion.span>
-        <motion.span
-          variants={revealText}
-          className={`font-script block text-mist ${
-            isCentered ? "text-[clamp(3rem,13.5vw,4.8rem)]" : "pl-6 text-[clamp(2rem,5vw,4rem)]"
-          }`}
-        >
-          {copy.headlineTail}
-        </motion.span>
-      </h1>
+      <motion.div variants={revealText} className={isCentered ? "mx-auto" : ""}>
+        <HomeTitleImage
+          className={isCentered ? "mx-auto max-h-45 max-w-[28rem]" : "max-w-[34rem]"}
+        />
+      </motion.div>
 
       {showSupporting ? (
         <motion.p
           variants={staggerItem}
-          className={`mt-7 text-base leading-relaxed text-mist/80 text-shadow-scene sm:text-lg ${
+          className={`mt-7 ml-5 text-base leading-relaxed text-mist/80 text-shadow-scene sm:text-lg ${
             isCentered ? "mx-auto max-w-2xl" : "max-w-md"
           }`}
         >

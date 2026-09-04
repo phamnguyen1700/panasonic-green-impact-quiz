@@ -37,7 +37,7 @@
   --efx-crystall-control-hover-alpha: 0.095;
   --efx-crystall-border: 0 0% 100%;
   --efx-crystall-border-width: 1px;
-  --efx-crystall-border-alpha: 0.25;
+  --efx-crystall-border-alpha: 0;
   --efx-crystall-glow: 45 94% 55%;
   --efx-crystall-accent: 340 92% 58%;
   --efx-crystall-success: 145 60% 50%;
@@ -99,7 +99,7 @@
     color-mix(in oklab, white 26%, transparent),
     color-mix(in oklab, white 7%, transparent)
   );
-  border: 1px solid color-mix(in oklab, white 32%, transparent);
+  border: 1px solid transparent;
   backdrop-filter: blur(18px) saturate(140%);
   box-shadow: var(--shadow-glass);
 }
@@ -129,7 +129,7 @@
 .crystall-button[data-campaign-button] {
   background:
     linear-gradient(135deg, hsl(0 0% 100% / 0.055), hsl(0 0% 100% / 0)), hsl(0 0% 100% / 0.035);
-  border-color: hsl(0 0% 100% / 0.28);
+  border-color: transparent;
   border-radius: 999px;
   color: hsl(0 0% 100%);
 }
@@ -141,5 +141,26 @@
 .crystall-button[data-campaign-button]:hover {
   background:
     linear-gradient(135deg, hsl(0 0% 100% / 0.09), hsl(0 0% 100% / 0.02)), hsl(0 0% 100% / 0.075);
-  border-color: hsl(0 0% 100% / 0.42);
+  border-color: transparent;
+}
+
+[data-campaign-input] {
+  box-shadow: none !important;
+  border-radius: 999px !important;
+  overflow: hidden;
+  outline: none !important;
+}
+
+[data-campaign-input]::before,
+[data-campaign-input]::after {
+  border-radius: inherit !important;
+}
+
+[data-campaign-input]:hover,
+[data-campaign-input]:focus,
+[data-campaign-input]:focus-visible,
+[data-campaign-input]:autofill,
+[data-campaign-input]:-webkit-autofill {
+  box-shadow: none !important;
+  outline: none !important;
 }

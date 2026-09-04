@@ -55,7 +55,7 @@ export function ResultCardModal({
               type="button"
               onClick={onClose}
               aria-label="Đóng"
-              className="absolute top-4 right-4 z-10 grid size-10 place-items-center rounded-full border border-white/25 bg-white/10 text-mist backdrop-blur-md transition-colors hover:bg-white/20"
+              className="absolute top-4 right-4 z-10 grid size-10 place-items-center rounded-full border border-transparent bg-white/10 text-mist backdrop-blur-md transition-colors hover:bg-white/20"
             >
               <X className="size-4" aria-hidden />
             </button>
@@ -83,7 +83,7 @@ export function ResultCardModal({
                       {result.traits.map((trait) => (
                         <li
                           key={trait}
-                          className="rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-xs text-mist"
+                          className="rounded-full border border-transparent bg-white/10 px-3 py-1.5 text-xs text-mist"
                         >
                           {trait}
                         </li>

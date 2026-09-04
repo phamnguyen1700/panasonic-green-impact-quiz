@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { RotateCcw } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
+import { CampaignBadgeImage, PanasonicGreenImpactImage } from "@/components/BrandAssets";
 import { MotionScreen } from "@/components/MotionScreen";
 import { ScreenBackground } from "@/components/ScreenBackground";
 import { ContentContainer } from "@/components/layout/ContentContainer";
@@ -102,14 +103,9 @@ export function ResultScreen() {
       />
 
       <FullscreenStage>
-        <ContentContainer className="flex items-center justify-between py-7">
-          <p className="font-display text-sm leading-tight font-semibold text-mist">
-            <span className="mr-2 text-2xl font-extrabold">5</span>
-            {campaign.brand.name}
-          </p>
-          <p className="hidden text-xs tracking-[0.16em] text-mist/70 uppercase sm:block">
-            {campaign.brand.tagline}
-          </p>
+        <ContentContainer className="flex items-center justify-between pt-12 pb-3 sm:py-8">
+          <CampaignBadgeImage className="h-16 sm:h-15" />
+          <PanasonicGreenImpactImage className="h-14 sm:h-12" />
         </ContentContainer>
 
         <ContentContainer className="flex flex-1 flex-col justify-center gap-12 pb-20">

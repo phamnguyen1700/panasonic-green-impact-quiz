@@ -1,3 +1,4 @@
+import { CampaignBadgeImage, PanasonicGreenImpactImage } from "@/components/BrandAssets";
 import { CampaignButton } from "@/components/CampaignButton";
 import { MotionScreen } from "@/components/MotionScreen";
 import { ScreenBackground } from "@/components/ScreenBackground";
@@ -22,32 +23,36 @@ export function HomeScreen() {
 
       <FullscreenStage>
         {isMobile ? (
-          <ContentContainer className="flex justify-center py-8 text-center">
-            <div>
-              <p className="font-display text-2xl font-extrabold tracking-[0.18em] text-mist text-shadow-scene uppercase">
-                Panasonic
-              </p>
-              <p className="mt-2 text-xs tracking-[0.28em] text-mist/75 uppercase">Green Impact</p>
-            </div>
+          <ContentContainer className="flex items-center justify-between pt-12 pb-3">
+            <CampaignBadgeImage className="h-16" />
+            <PanasonicGreenImpactImage className="h-14" />
           </ContentContainer>
         ) : (
           <ContentContainer className="flex items-center justify-between py-8">
-            <p className="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-medium tracking-[0.16em] text-mist/90 uppercase backdrop-blur-md">
-              {campaign.home.eyebrow}
-            </p>
-            <p className="text-xs tracking-[0.16em] text-mist/70 uppercase">
-              {campaign.brand.tagline}
-            </p>
+            <CampaignBadgeImage className="h-15" />
+            <PanasonicGreenImpactImage className="h-12" />
           </ContentContainer>
         )}
 
         {isMobile ? (
-          <ContentContainer className="flex flex-1 flex-col items-center justify-start pb-12">
-            <HomeHero onStart={goNext} align="center" showActions={false} showSupporting={false} />
-            <HomeForestCarousel className="mt-10" />
-            <CampaignButton withArrow onClick={goNext} className="mt-3 h-14 min-w-[13.75rem] px-8">
-              {campaign.home.cta}
-            </CampaignButton>
+          <ContentContainer className="relative flex min-h-0 flex-1 flex-col items-center">
+            <div className="mt-35">
+              <HomeHero
+                onStart={goNext}
+                align="center"
+                eyebrowPlacement="hidden"
+                showActions={false}
+                showSupporting={false}
+              />
+            </div>
+            <div className="relative z-10 min-h-[15rem] w-full flex-1">
+              <HomeForestCarousel className="absolute inset-x-0 top-2" />
+            </div>
+            <ContentContainer className="pointer-events-auto absolute inset-x-0 bottom-20 z-30 flex justify-center">
+              <CampaignButton withArrow onClick={goNext} className="h-14 min-w-[13.75rem] px-8">
+                {campaign.home.cta}
+              </CampaignButton>
+            </ContentContainer>
           </ContentContainer>
         ) : (
           <ContentContainer className="flex flex-1 flex-col items-center gap-10 pb-20 lg:flex-row lg:justify-between lg:gap-6">

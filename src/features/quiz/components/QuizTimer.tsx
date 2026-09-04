@@ -18,7 +18,7 @@ export function QuizTimer({ ratio, isLow, className }: QuizTimerProps) {
     <motion.div
       animate={isLow ? timerTension : { scale: 1 }}
       className={cn(
-        "relative grid size-11 place-items-center rounded-full border border-white/25 bg-white/8 backdrop-blur-md",
+        "relative grid size-11 place-items-center rounded-full border border-transparent bg-white/8 backdrop-blur-md",
         isLow && "border-sun-glow/60",
         className,
       )}
