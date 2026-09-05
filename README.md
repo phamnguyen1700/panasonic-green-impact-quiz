@@ -8,6 +8,9 @@ React + Vite + TypeScript campaign quiz microsite.
 - React
 - TypeScript
 - React Router DOM
+- Axios
+- TanStack Query
+- Zustand
 - Tailwind CSS
 - Framer Motion
 - Radix UI primitives for reusable UI controls
@@ -22,12 +25,13 @@ src/
   assets/               # Imported image assets
   components/           # Shared campaign UI and layout primitives
   components/ui/        # Reusable low-level UI controls
-  config/               # Campaign copy, assets, theme, motion config
+  config/               # Env, API endpoints, campaign copy, assets, theme, motion config
   data/                 # Quiz questions and result rules
-  features/             # Screen-level feature modules
-  hooks/                # Reusable React logic
+  features/             # Screen-level feature modules and feature components
+  hooks/                # React logic and TanStack Query hooks
   lib/                  # Shared infrastructure helpers
-  services/             # Analytics and submission integrations
+  services/             # Axios API client, API services, analytics
+  store/                # Zustand client state
   styles/               # Global theme and campaign styles
   types/                # Shared TypeScript models
   utils/                # Storage, className, and image helpers
@@ -63,4 +67,9 @@ The build output is generated in `dist/`.
 
 ## Environment Variables
 
-Set `VITE_GOOGLE_SHEET_ENDPOINT` to an Apps Script or webhook URL to enable result submission.
+```env
+VITE_API_BASE_URL=/api
+VITE_ENABLE_API_SUBMIT=true
+```
+
+The default `/api` base URL is proxied by Vite to `http://127.0.0.1:8000` during local development, keeping admin cookies same-origin in the browser. Public quiz submission is enabled by default; set `VITE_ENABLE_API_SUBMIT=false` to temporarily skip `POST /players` during UI-only work.
