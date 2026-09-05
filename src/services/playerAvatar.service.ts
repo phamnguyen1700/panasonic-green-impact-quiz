@@ -1,6 +1,6 @@
 let currentAvatarUrl: string | null = null;
 
-export function setPlayerAvatar(file: File): string {
+export function createPlayerAvatarPreview(file: File): string {
   if (currentAvatarUrl) URL.revokeObjectURL(currentAvatarUrl);
   currentAvatarUrl = URL.createObjectURL(file);
   return currentAvatarUrl;

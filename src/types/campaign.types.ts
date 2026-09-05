@@ -35,6 +35,7 @@ export interface CampaignCopy {
       phoneLabel: string;
       phonePlaceholder: string;
       phoneOptionalHint: string;
+      phoneRequiredError: string;
       phoneInvalidError: string;
       consent: string;
       cta: string;

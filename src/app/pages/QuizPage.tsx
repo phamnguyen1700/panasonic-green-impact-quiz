@@ -1,5 +1,10 @@
+import { CampaignExperience } from "@/features/campaign";
 import { QuizScreen } from "@/features/quiz";
 
 export function QuizPage() {
-  return <QuizScreen />;
+  return (
+    <CampaignExperience>
+      <QuizScreen />
+    </CampaignExperience>
+  );
 }

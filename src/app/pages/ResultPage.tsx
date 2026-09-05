@@ -1,5 +1,10 @@
+import { CampaignExperience } from "@/features/campaign";
 import { ResultScreen } from "@/features/result";
 
 export function ResultPage() {
-  return <ResultScreen />;
+  return (
+    <CampaignExperience>
+      <ResultScreen />
+    </CampaignExperience>
+  );
 }

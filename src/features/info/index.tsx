@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { CampaignBadgeImage, PanasonicGreenImpactImage } from "@/components/BrandAssets";
 import { MotionScreen } from "@/components/MotionScreen";
 import { ScreenBackground } from "@/components/ScreenBackground";
@@ -9,7 +7,7 @@ import { assets } from "@/config/assets.config";
 import { FloatingForestCards } from "@/features/home/components/FloatingForestCards";
 import { useAppFlow } from "@/hooks/useAppFlow";
 import { useIsMobile } from "@/hooks/use-mobile";
-import type { PlayerInfo } from "@/types/player.types";
+import { usePlayerStore } from "@/store/playerStore";
 
 import { CampaignIntro } from "./components/CampaignIntro";
 import { PlayerInfoForm } from "./components/PlayerInfoForm";
@@ -18,7 +16,8 @@ import { PlayerPhotoForm } from "./components/PlayerPhotoForm";
 export function InfoScreen() {
   const { goBack, goNext } = useAppFlow("info");
   const isMobile = useIsMobile();
-  const [player, setPlayer] = useState<PlayerInfo | null>(null);
+  const player = usePlayerStore((state) => state.player);
+  const resetPlayer = usePlayerStore((state) => state.resetPlayer);
 
   return (
     <MotionScreen>
@@ -45,13 +44,9 @@ export function InfoScreen() {
 
             <div className="mt-5 flex w-full justify-center">
               {player ? (
-                <PlayerPhotoForm
-                  player={player}
-                  onSubmitted={goNext}
-                  onBack={() => setPlayer(null)}
-                />
+                <PlayerPhotoForm player={player} onSubmitted={goNext} onBack={resetPlayer} />
               ) : (
-                <PlayerInfoForm onSubmitted={setPlayer} onBack={goBack} />
+                <PlayerInfoForm onBack={goBack} />
               )}
             </div>
           </ContentContainer>
@@ -64,13 +59,9 @@ export function InfoScreen() {
 
             <div className="flex w-full justify-center lg:w-auto">
               {player ? (
-                <PlayerPhotoForm
-                  player={player}
-                  onSubmitted={goNext}
-                  onBack={() => setPlayer(null)}
-                />
+                <PlayerPhotoForm player={player} onSubmitted={goNext} onBack={resetPlayer} />
               ) : (
-                <PlayerInfoForm onSubmitted={setPlayer} onBack={goBack} />
+                <PlayerInfoForm onBack={goBack} />
               )}
             </div>
           </ContentContainer>

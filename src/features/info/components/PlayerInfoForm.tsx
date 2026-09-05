@@ -9,13 +9,13 @@ import { usePlayerInfoForm } from "@/hooks/usePlayerInfoForm";
 import type { PlayerInfo } from "@/types/player.types";
 
 interface PlayerInfoFormProps {
-  onSubmitted: (player: PlayerInfo) => void;
+  onSubmitted?: (player: PlayerInfo) => void;
   onBack: () => void;
 }
 
 export function PlayerInfoForm({ onSubmitted, onBack }: PlayerInfoFormProps) {
   const copy = campaign.info.form;
-  const { values, errors, setField, handleSubmit, isValid } = usePlayerInfoForm(onSubmitted);
+  const { values, errors, setField, handleSubmit } = usePlayerInfoForm(onSubmitted);
 
   return (
     <GlassPanel tone="deep" className="flex h-[23rem] w-[28rem] max-w-full rounded-[2.25rem]">
@@ -68,7 +68,6 @@ export function PlayerInfoForm({ onSubmitted, onBack }: PlayerInfoFormProps) {
           </CampaignButton>
           <CampaignButton
             type="submit"
-            disabled={!isValid}
             wrapperClassName="w-full"
             className="h-12 w-full px-6 text-sm"
           >

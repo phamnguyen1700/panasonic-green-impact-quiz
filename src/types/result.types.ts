@@ -34,9 +34,3 @@ export interface ResultSubmission {
   answers: QuizAnswer[];
   completedAt: string;
 }
-
-export interface StoredOutcome {
-  resultId: ForestResultId;
-  answers: QuizAnswer[];
-  completedAt: string;
-}

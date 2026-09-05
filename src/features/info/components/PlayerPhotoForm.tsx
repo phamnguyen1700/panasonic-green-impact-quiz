@@ -7,11 +7,10 @@ import { CampaignButton } from "@/components/CampaignButton";
 import { GlassPanel } from "@/components/GlassPanel";
 import { campaign } from "@/config/campaign.config";
 import { staggerContainer, staggerItem } from "@/config/motion.config";
-import { setPlayerAvatar } from "@/services/playerAvatar.service";
+import { playerAvatarSchema } from "@/schema/player";
+import { createPlayerAvatarPreview } from "@/services/playerAvatar.service";
+import { usePlayerStore } from "@/store/playerStore";
 import type { PlayerInfo } from "@/types/player.types";
-import { STORAGE_KEYS, writeStorage } from "@/utils/storage";
-
-const MAX_IMAGE_SIZE = 400 * 1024 * 1024;
 
 interface PlayerPhotoFormProps {
   player: PlayerInfo;
@@ -21,6 +20,7 @@ interface PlayerPhotoFormProps {
 
 export function PlayerPhotoForm({ player, onSubmitted, onBack }: PlayerPhotoFormProps) {
   const inputId = useId();
+  const setPlayerAvatar = usePlayerStore((state) => state.setPlayerAvatar);
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -35,36 +35,33 @@ export function PlayerPhotoForm({ player, onSubmitted, onBack }: PlayerPhotoForm
       return;
     }
 
-    if (!nextFile.type.startsWith("image/")) {
-      setError("Bạn hãy chọn đúng file ảnh nhé.");
+    const parsed = playerAvatarSchema.safeParse({ file: nextFile });
+    if (!parsed.success) {
+      setError(parsed.error.flatten().fieldErrors.file?.[0] ?? "Bạn hãy chọn đúng file ảnh nhé.");
       setFile(null);
       setPreview(null);
       return;
     }
 
-    if (nextFile.size > MAX_IMAGE_SIZE) {
-      setError("Ảnh cần nhỏ hơn 400MB.");
-      setFile(null);
-      setPreview(null);
-      return;
-    }
-
-    const nextPreview = setPlayerAvatar(nextFile);
+    const nextPreview = createPlayerAvatarPreview(nextFile);
     setFile(nextFile);
     setPreview(nextPreview);
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!file) {
-      setError("Bạn cần thêm một ảnh trước khi vào quiz.");
+    const parsed = playerAvatarSchema.safeParse({ file });
+    if (!parsed.success || !preview) {
+      setError(
+        parsed.success
+          ? "Bạn cần thêm một ảnh trước khi vào quiz."
+          : (parsed.error.flatten().fieldErrors.file?.[0] ??
+              "Bạn cần thêm một ảnh trước khi vào quiz."),
+      );
       return;
     }
 
-    writeStorage(STORAGE_KEYS.player, {
-      ...player,
-      avatarFileName: file.name,
-    });
+    setPlayerAvatar({ avatarUrl: preview, avatarFileName: file.name });
     onSubmitted();
   };
 
@@ -119,7 +116,6 @@ export function PlayerPhotoForm({ player, onSubmitted, onBack }: PlayerPhotoForm
           </CampaignButton>
           <CampaignButton
             type="submit"
-            disabled={!file}
             wrapperClassName="w-full"
             className="h-12 w-full px-6 text-sm"
           >

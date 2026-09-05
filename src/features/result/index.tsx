@@ -15,9 +15,8 @@ import { useAppFlow } from "@/hooks/useAppFlow";
 import { useResultCapture } from "@/hooks/useResultCapture";
 import { useResultShare } from "@/hooks/useResultShare";
 import { analytics } from "@/services/analytics.service";
-import type { PlayerInfo } from "@/types/player.types";
-import type { StoredOutcome } from "@/types/result.types";
-import { STORAGE_KEYS, clearStorage, readStorage } from "@/utils/storage";
+import { clearPlayerAvatar } from "@/services/playerAvatar.service";
+import { usePlayerStore } from "@/store/playerStore";
 
 import { DownloadResultButton } from "./components/DownloadResultButton";
 import { ResultCardModal } from "./components/ResultCardModal";
@@ -30,22 +29,27 @@ export function ResultScreen() {
   const copy = campaign.result;
   const { go } = useAppFlow("result");
 
-  const [player, setPlayer] = useState<PlayerInfo | null>(null);
-  const [stored, setStored] = useState<StoredOutcome | null>(null);
+  const player = usePlayerStore((state) => state.player);
+  const outcome = usePlayerStore((state) => state.outcome);
+  const resetPlayer = usePlayerStore((state) => state.resetPlayer);
   const [modalOpen, setModalOpen] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
+  const hasResult = Boolean(player?.name && player.phone && outcome);
 
   useEffect(() => {
     analytics.screenView("result");
-    setPlayer(readStorage<PlayerInfo>(STORAGE_KEYS.player));
-    setStored(readStorage<StoredOutcome>(STORAGE_KEYS.outcome));
+    if (!hasResult) {
+      go("info");
+      return undefined;
+    }
+
     const timeout = window.setTimeout(() => setModalOpen(true), 2200);
     return () => window.clearTimeout(timeout);
-  }, []);
+  }, [go, hasResult]);
 
   const result = useMemo(
-    () => getResultById(stored?.resultId ?? DEFAULT_RESULT_ID),
-    [stored?.resultId],
+    () => getResultById(outcome?.resultId ?? DEFAULT_RESULT_ID),
+    [outcome?.resultId],
   );
 
   const capture = useResultCapture({
@@ -77,9 +81,9 @@ export function ResultScreen() {
   };
 
   const handleReplay = () => {
-    clearStorage(STORAGE_KEYS.outcome);
-    clearStorage(STORAGE_KEYS.quizAnswers);
-    go("quiz");
+    resetPlayer();
+    clearPlayerAvatar();
+    go("info");
   };
 
   const actions = (

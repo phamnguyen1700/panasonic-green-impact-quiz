@@ -1,28 +1,12 @@
+import { QueryClientProvider } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 
-import { WaterSurface } from "@/components/effects/water-surface";
+import { queryClient } from "@/services/api/queryClient";
 
 export function AppProviders({ children }: { children: ReactNode }) {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <div className="crystall-scope contents">{children}</div>
-
-      <WaterSurface
-        color="hsl(0, 0%, 0%)"
-        highlightColor="hsl(186 100% 96%)"
-        shadowColor="hsl(213 82% 2%)"
-        opacity={0.65}
-        hoverStrength={0.35}
-        clickStrength={10}
-        style={{
-          position: "fixed",
-          inset: 0,
-          width: "100vw",
-          height: "100vh",
-          zIndex: 999,
-          pointerEvents: "none",
-        }}
-      />
-    </>
+    </QueryClientProvider>
   );
 }

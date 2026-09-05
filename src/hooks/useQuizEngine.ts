@@ -5,7 +5,6 @@ import { analytics } from "@/services/analytics.service";
 import type { QuizAnswer } from "@/types/quiz.types";
 import type { QuizOutcome } from "@/types/result.types";
 import { calculateResult } from "@/utils/calculateResult";
-import { STORAGE_KEYS, writeStorage } from "@/utils/storage";
 
 interface UseQuizEngineOptions {
   onComplete?: (outcome: QuizOutcome, answers: QuizAnswer[]) => void;
@@ -38,12 +37,6 @@ export function useQuizEngine({ onComplete }: UseQuizEngineOptions = {}) {
     (finalAnswers: QuizAnswer[]) => {
       const result = calculateResult(finalAnswers);
       setOutcome(result);
-      writeStorage(STORAGE_KEYS.quizAnswers, finalAnswers);
-      writeStorage(STORAGE_KEYS.outcome, {
-        resultId: result.result.id,
-        answers: finalAnswers,
-        completedAt: new Date().toISOString(),
-      });
       onComplete?.(result, finalAnswers);
     },
     [onComplete],

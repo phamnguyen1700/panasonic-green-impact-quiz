@@ -33,6 +33,7 @@ export const campaign: CampaignCopy = {
       phoneLabel: "Số điện thoại",
       phonePlaceholder: "+84",
       phoneOptionalHint: "",
+      phoneRequiredError: "Bạn hãy điền số điện thoại để tiếp tục",
       phoneInvalidError: "Số điện thoại chưa hợp lệ",
       consent:
         "Mọi thông tin sẽ được bảo mật và chỉ phục vụ cho chiến dịch 5 năm Sống khỏe góp xanh.",

@@ -1,16 +1,14 @@
 import { AnimatePresence } from "framer-motion";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 
 import { CampaignButton } from "@/components/CampaignButton";
 import { campaign } from "@/config/campaign.config";
 import { useAppFlow } from "@/hooks/useAppFlow";
+import { useSubmitResult } from "@/hooks/campaign/useSubmitResult";
 import { useQuizEngine } from "@/hooks/useQuizEngine";
 import { useQuizTimer } from "@/hooks/useQuizTimer";
 import { analytics } from "@/services/analytics.service";
-import { getPlayerAvatar } from "@/services/playerAvatar.service";
-import { submitResult } from "@/services/submitResult.service";
-import type { PlayerInfo } from "@/types/player.types";
-import { STORAGE_KEYS, readStorage } from "@/utils/storage";
+import { usePlayerStore } from "@/store/playerStore";
 
 import { QuestionCard } from "./components/QuestionCard";
 import { QuizLayout } from "./components/QuizLayout";
@@ -21,28 +19,36 @@ const SECONDS_PER_QUESTION = 25;
 export function QuizScreen() {
   const copy = campaign.quiz;
   const { go, goBack } = useAppFlow("quiz");
-  const [player, setPlayer] = useState<PlayerInfo | null>(null);
-  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const player = usePlayerStore((state) => state.player);
+  const avatarUrl = usePlayerStore((state) => state.avatarUrl);
+  const setOutcome = usePlayerStore((state) => state.setOutcome);
+  const resultSubmit = useSubmitResult();
+  const canPlay = Boolean(player?.name && player.phone && player.avatarFileName && avatarUrl);
 
   const engine = useQuizEngine({
     onComplete: (outcome, answers) => {
-      const player = readStorage<PlayerInfo>(STORAGE_KEYS.player);
-      void submitResult({
-        player,
-        resultId: outcome.result.id,
-        answers,
-        completedAt: new Date().toISOString(),
-      });
-      go("result");
+      const completedAt = new Date().toISOString();
+      setOutcome({ resultId: outcome.result.id, answers, completedAt });
+      void (async () => {
+        try {
+          await resultSubmit.submit({
+            player,
+            resultId: outcome.result.id,
+            answers,
+            completedAt,
+          });
+        } finally {
+          go("result");
+        }
+      })();
     },
   });
 
   useEffect(() => {
     analytics.screenView("quiz");
     analytics.quizStarted();
-    setPlayer(readStorage<PlayerInfo>(STORAGE_KEYS.player));
-    setAvatarUrl(getPlayerAvatar());
-  }, []);
+    if (!canPlay) go("info");
+  }, [canPlay, go]);
 
   const handleExpire = useCallback(() => {
     if (engine.canAdvance) engine.next();
@@ -72,12 +78,16 @@ export function QuizScreen() {
           </CampaignButton>
           <CampaignButton
             onClick={engine.next}
-            disabled={!engine.canAdvance}
+            disabled={!canPlay || !engine.canAdvance || resultSubmit.isSubmitting}
             size="md"
             wrapperClassName="w-full"
             className="h-12 w-full px-5 text-sm"
           >
-            {engine.isLast ? copy.finish : copy.next}
+            {engine.isLast && resultSubmit.isSubmitting
+              ? "Đang lưu..."
+              : engine.isLast
+                ? copy.finish
+                : copy.next}
           </CampaignButton>
         </div>
       }
