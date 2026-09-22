@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 
-import { adminPlayerService } from "@/services/campaign/player.service";
+import { adminPlayerService } from "@/services/admin";
 import { useAdminPlayersStore } from "@/store/adminPlayersStore";
 import type { AdminPlayersExportQuery, AdminPlayersQuery } from "@/types/playerApi.types";
 

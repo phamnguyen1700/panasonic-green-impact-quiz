@@ -1,6 +1,6 @@
 export interface CreatePlayerRequest {
+  submissionId: string;
   name: string;
-  phone: string;
   result: string;
   score: number;
   completeAt: string;
@@ -9,12 +9,12 @@ export interface CreatePlayerRequest {
 export interface CreatePlayerResponse {
   id: string;
   createdAt: string;
+  alreadySubmitted: boolean;
 }
 
 export interface AdminPlayer {
   id: string;
   name: string;
-  phone: string;
   result: string;
   score: number;
   completedAt: string;

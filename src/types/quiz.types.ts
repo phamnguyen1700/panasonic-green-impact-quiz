@@ -26,6 +26,8 @@ export interface QuizAnswer {
   questionId: string;
   optionId: string;
   answeredAt: string;
+  durationSeconds?: number;
+  remainingSeconds?: number;
 }
 
 export interface QuizProgressState {

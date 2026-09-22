@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import type { SubmitResultOutcome } from "@/services/submitResult.service";
+import type { SubmitResultOutcome } from "@/services/result";
 import type { ResultSubmission } from "@/types/result.types";
 
 interface CampaignResultState {

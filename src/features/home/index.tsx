@@ -1,70 +1,86 @@
 import { CampaignBadgeImage, PanasonicGreenImpactImage } from "@/components/BrandAssets";
-import { CampaignButton } from "@/components/CampaignButton";
 import { MotionScreen } from "@/components/MotionScreen";
 import { ScreenBackground } from "@/components/ScreenBackground";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullscreenStage } from "@/components/layout/FullscreenStage";
 import { assets } from "@/config/assets.config";
 import { campaign } from "@/config/campaign.config";
-import { useAppFlow } from "@/hooks/useAppFlow";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useAppFlow, useIsMobile } from "@/hooks/app";
+import { usePlayerStore } from "@/store/playerStore";
+import { useState } from "react";
 
-import { FloatingForestCards } from "./components/FloatingForestCards";
-import { HomeForestCarousel } from "./components/HomeForestCarousel";
 import { HomeHero } from "./components/HomeHero";
 
 export function HomeScreen() {
   const { goNext } = useAppFlow("home");
   const isMobile = useIsMobile();
+  const setPlayerInfo = usePlayerStore((state) => state.setPlayerInfo);
+  const existingName = usePlayerStore((state) => state.player?.name ?? "");
+  const [playerName, setPlayerName] = useState(existingName);
+  const [nameError, setNameError] = useState<string | undefined>();
+
+  const handleNameChange = (value: string) => {
+    setPlayerName(value);
+    if (nameError) setNameError(undefined);
+  };
+
+  const handleStart = () => {
+    const normalizedName = playerName.trim();
+    if (!normalizedName) {
+      setNameError(campaign.info.form.nameRequiredError);
+      return;
+    }
+
+    setPlayerInfo({ name: normalizedName, createdAt: new Date().toISOString() });
+    goNext();
+  };
 
   return (
     <MotionScreen>
-      <ScreenBackground image={assets.backgrounds.home} scrim="medium" particles={16} />
+      <ScreenBackground image={assets.backgrounds.home} scrim="soft" particles={16} />
 
-      <FullscreenStage>
+      <FullscreenStage className="lg:h-[100svh] lg:overflow-hidden">
         {isMobile ? (
           <ContentContainer className="flex items-center justify-between pt-12 pb-3">
-            <CampaignBadgeImage className="h-16" />
-            <PanasonicGreenImpactImage className="h-14" />
+            <PanasonicGreenImpactImage className="h-8" />
+            <CampaignBadgeImage className="h-10" />
           </ContentContainer>
         ) : (
           <ContentContainer className="flex items-center justify-between py-8">
-            <CampaignBadgeImage className="h-15" />
             <PanasonicGreenImpactImage className="h-12" />
+            <CampaignBadgeImage className="h-15" />
           </ContentContainer>
         )}
 
         {isMobile ? (
           <ContentContainer className="relative flex min-h-0 flex-1 flex-col items-center">
-            <div className="mt-35">
+            <div className="mt-20 w-full">
               <HomeHero
-                onStart={goNext}
+                onStart={handleStart}
                 align="center"
                 eyebrowPlacement="hidden"
-                showActions={false}
-                showSupporting={false}
+                showSupporting={true}
+                buttonClassName="h-12 min-w-[11.5rem] px-7 text-sm"
+                playerName={playerName}
+                nameError={nameError}
+                onNameChange={handleNameChange}
               />
             </div>
-            <div className="relative z-10 min-h-[15rem] w-full flex-1">
-              <HomeForestCarousel className="absolute inset-x-0 top-2" />
-            </div>
-            <ContentContainer className="pointer-events-auto absolute inset-x-0 bottom-20 z-30 flex justify-center">
-              <CampaignButton withArrow onClick={goNext} className="h-14 min-w-[13.75rem] px-8">
-                {campaign.home.cta}
-              </CampaignButton>
-            </ContentContainer>
           </ContentContainer>
         ) : (
-          <ContentContainer className="flex flex-1 flex-col items-center gap-10 pb-20 lg:flex-row lg:justify-between lg:gap-6">
-            <HomeHero
-              onStart={goNext}
-              eyebrowPlacement="hidden"
-              buttonClassName="min-w-[13rem] px-10"
-            />
-            <div className="w-full max-w-[42rem] lg:w-1/2">
-              <FloatingForestCards />
-            </div>
-          </ContentContainer>
+          <>
+            <ContentContainer className="relative z-40 flex flex-1 flex-col items-center justify-center text-center xl:-translate-y-20">
+              <HomeHero
+                onStart={handleStart}
+                align="center"
+                eyebrowPlacement="hidden"
+                buttonClassName="h-11 min-w-[10.5rem] px-6 text-sm"
+                playerName={playerName}
+                nameError={nameError}
+                onNameChange={handleNameChange}
+              />
+            </ContentContainer>
+          </>
         )}
       </FullscreenStage>
     </MotionScreen>

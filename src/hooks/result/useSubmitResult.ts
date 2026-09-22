@@ -1,11 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useCallback } from "react";
 
-import {
-  getResultSubmissionKey,
-  submitResult,
-  type SubmitResultOutcome,
-} from "@/services/submitResult.service";
+import { getResultSubmissionKey, submitResult, type SubmitResultOutcome } from "@/services/result";
 import { useCampaignResultStore } from "@/store/campaignResultStore";
 import type { ResultSubmission } from "@/types/result.types";
 
@@ -43,8 +39,8 @@ export function useSubmitResult() {
       const submissionKey = getResultSubmissionKey(submission);
       const current = useCampaignResultStore.getState();
 
-      if (current.lastSubmissionKey === submissionKey) {
-        return current.lastOutcome ?? { ok: true, persisted: false, skipped: true };
+      if (current.lastSubmissionKey === submissionKey && current.lastOutcome?.ok) {
+        return current.lastOutcome;
       }
 
       return mutation.mutateAsync(submission);

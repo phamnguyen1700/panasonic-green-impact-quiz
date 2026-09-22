@@ -7,7 +7,7 @@ import { InfoPage } from "@/app/pages/InfoPage";
 import { QuizPage } from "@/app/pages/QuizPage";
 import { ResultPage } from "@/app/pages/ResultPage";
 
-import { RouteMeta } from "./app/RouteMeta";
+import { RouteMeta } from "./RouteMeta";
 
 export function App() {
   return (

@@ -29,6 +29,7 @@ export interface QuizOutcome {
 }
 
 export interface ResultSubmission {
+  submissionId: string;
   player: PlayerInfo | null;
   resultId: ForestResultId;
   answers: QuizAnswer[];

@@ -32,11 +32,10 @@ export function AdminPlayersTable({ players, isLoading }: AdminPlayersTableProps
   return (
     <div className="overflow-hidden rounded-lg border border-slate-200 bg-white">
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[760px] text-left text-sm">
+        <table className="w-full min-w-[680px] text-left text-sm">
           <thead className="bg-slate-50 text-xs font-semibold tracking-wide text-slate-500 uppercase">
             <tr>
               <th className="px-4 py-3">Tên</th>
-              <th className="px-4 py-3">Số điện thoại</th>
               <th className="px-4 py-3">Kết quả</th>
               <th className="px-4 py-3 text-right">Điểm</th>
               <th className="px-4 py-3">Hoàn thành</th>
@@ -53,7 +52,6 @@ export function AdminPlayersTable({ players, isLoading }: AdminPlayersTableProps
                 }
               >
                 <td className="px-4 py-3 font-medium text-slate-950">{player.name}</td>
-                <td className="px-4 py-3">{player.phone}</td>
                 <td className="px-4 py-3">{player.result}</td>
                 <td className="px-4 py-3 text-right tabular-nums">{player.score}</td>
                 <td className="px-4 py-3 whitespace-nowrap">{formatDate(player.completedAt)}</td>

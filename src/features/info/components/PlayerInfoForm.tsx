@@ -5,7 +5,7 @@ import { GlassPanel } from "@/components/GlassPanel";
 import { TextInput } from "@/components/TextInput";
 import { campaign } from "@/config/campaign.config";
 import { staggerContainer, staggerItem } from "@/config/motion.config";
-import { usePlayerInfoForm } from "@/hooks/usePlayerInfoForm";
+import { usePlayerInfoForm } from "@/hooks/player";
 import type { PlayerInfo } from "@/types/player.types";
 
 interface PlayerInfoFormProps {
@@ -35,19 +35,6 @@ export function PlayerInfoForm({ onSubmitted, onBack }: PlayerInfoFormProps) {
             onChange={(event) => setField("name", event.target.value)}
             error={errors.name}
             autoComplete="name"
-          />
-        </motion.div>
-
-        <motion.div variants={staggerItem}>
-          <TextInput
-            label={copy.phoneLabel}
-            hint={copy.phoneOptionalHint}
-            placeholder={copy.phonePlaceholder}
-            value={values.phone}
-            onChange={(event) => setField("phone", event.target.value)}
-            error={errors.phone}
-            inputMode="tel"
-            autoComplete="tel"
           />
         </motion.div>
 

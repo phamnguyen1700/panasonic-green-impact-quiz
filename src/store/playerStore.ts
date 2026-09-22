@@ -5,6 +5,7 @@ import type { QuizAnswer } from "@/types/quiz.types";
 import type { ForestResultId } from "@/types/result.types";
 
 export interface PlayerOutcome {
+  submissionId: string;
   resultId: ForestResultId;
   answers: QuizAnswer[];
   completedAt: string;
@@ -25,7 +26,7 @@ export const usePlayerStore = create<PlayerState>((set) => ({
   player: null,
   avatarUrl: null,
   outcome: null,
-  setPlayerInfo: (player) => set({ player }),
+  setPlayerInfo: (player) => set({ player, avatarUrl: null }),
   setPlayerAvatar: ({ avatarUrl, avatarFileName }) =>
     set((state) => ({
       avatarUrl,

@@ -20,13 +20,13 @@ export function calculateSubmissionScore(submission: ResultSubmission) {
 }
 
 export function toCreatePlayerRequest(submission: ResultSubmission): CreatePlayerRequest | null {
-  if (!submission.player?.name || !submission.player.phone) return null;
+  if (!submission.player?.name) return null;
 
   const result = getResultById(submission.resultId);
 
   return {
+    submissionId: submission.submissionId,
     name: submission.player.name,
-    phone: submission.player.phone,
     result: result.title,
     score: calculateSubmissionScore(submission),
     completeAt: submission.completedAt,

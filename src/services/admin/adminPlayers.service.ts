@@ -7,8 +7,6 @@ import type {
   AdminPlayersExportQuery,
   AdminPlayersListResponse,
   AdminPlayersQuery,
-  CreatePlayerRequest,
-  CreatePlayerResponse,
 } from "@/types/playerApi.types";
 
 function toQueryString(query: AdminPlayersQuery = {}) {
@@ -30,16 +28,6 @@ function getFileNameFromContentDisposition(value: string | undefined) {
 
   const fallbackMatch = value.match(/filename="?([^";]+)"?/i);
   return fallbackMatch?.[1] ?? "panasonic-green-impact-players.xlsx";
-}
-
-export async function createPlayer(body: CreatePlayerRequest, signal?: AbortSignal) {
-  if (!env.apiSubmitEnabled) {
-    if (import.meta.env.DEV) console.info("[campaignApi] submit skipped", body);
-    return null;
-  }
-
-  const response = await apiClient.post<CreatePlayerResponse>(endpoints.players, body, { signal });
-  return response.data;
 }
 
 export const adminPlayerService = {

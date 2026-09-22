@@ -5,8 +5,7 @@ import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullscreenStage } from "@/components/layout/FullscreenStage";
 import { assets } from "@/config/assets.config";
 import { FloatingForestCards } from "@/features/home/components/FloatingForestCards";
-import { useAppFlow } from "@/hooks/useAppFlow";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useAppFlow, useIsMobile } from "@/hooks/app";
 import { usePlayerStore } from "@/store/playerStore";
 
 import { CampaignIntro } from "./components/CampaignIntro";
@@ -21,18 +20,18 @@ export function InfoScreen() {
 
   return (
     <MotionScreen>
-      <ScreenBackground image={assets.backgrounds.info} scrim="strong" particles={10} />
+      <ScreenBackground image={assets.backgrounds.info} scrim="soft" particles={10} />
 
       <FullscreenStage>
         {isMobile ? (
           <ContentContainer className="flex items-center justify-between pt-12 pb-3">
-            <CampaignBadgeImage className="h-16" />
-            <PanasonicGreenImpactImage className="h-14" />
+            <PanasonicGreenImpactImage className="h-8" />
+            <CampaignBadgeImage className="h-10" />
           </ContentContainer>
         ) : (
           <ContentContainer className="flex items-center justify-between py-8">
-            <CampaignBadgeImage className="h-15" />
             <PanasonicGreenImpactImage className="h-12" />
+            <CampaignBadgeImage className="h-15" />
           </ContentContainer>
         )}
 

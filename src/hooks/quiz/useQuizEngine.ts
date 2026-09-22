@@ -1,13 +1,18 @@
 import { useCallback, useMemo, useState } from "react";
 
 import { questions, TOTAL_QUESTIONS } from "@/data/questions";
-import { analytics } from "@/services/analytics.service";
+import { analytics } from "@/services/analytics";
 import type { QuizAnswer } from "@/types/quiz.types";
 import type { QuizOutcome } from "@/types/result.types";
 import { calculateResult } from "@/utils/calculateResult";
 
 interface UseQuizEngineOptions {
   onComplete?: (outcome: QuizOutcome, answers: QuizAnswer[]) => void;
+}
+
+interface AnswerTiming {
+  durationSeconds?: number;
+  remainingSeconds?: number;
 }
 
 export function useQuizEngine({ onComplete }: UseQuizEngineOptions = {}) {
@@ -42,27 +47,32 @@ export function useQuizEngine({ onComplete }: UseQuizEngineOptions = {}) {
     [onComplete],
   );
 
-  const next = useCallback(() => {
-    if (!selectedOptionId) return;
+  const next = useCallback(
+    (timing?: AnswerTiming) => {
+      if (!selectedOptionId) return;
 
-    const answer: QuizAnswer = {
-      questionId: question.id,
-      optionId: selectedOptionId,
-      answeredAt: new Date().toISOString(),
-    };
-    const nextAnswers = [...answers.filter((a) => a.questionId !== question.id), answer];
-    setAnswers(nextAnswers);
-    analytics.questionAnswered(question.id, selectedOptionId, index);
+      const answer: QuizAnswer = {
+        questionId: question.id,
+        optionId: selectedOptionId,
+        answeredAt: new Date().toISOString(),
+        durationSeconds: timing?.durationSeconds,
+        remainingSeconds: timing?.remainingSeconds,
+      };
+      const nextAnswers = [...answers.filter((a) => a.questionId !== question.id), answer];
+      setAnswers(nextAnswers);
+      analytics.questionAnswered(question.id, selectedOptionId, index);
 
-    if (isLast) {
-      finish(nextAnswers);
-      return;
-    }
+      if (isLast) {
+        finish(nextAnswers);
+        return;
+      }
 
-    setDirection(1);
-    setSelectedOptionId(null);
-    setIndex((current) => current + 1);
-  }, [answers, finish, index, isLast, question.id, selectedOptionId]);
+      setDirection(1);
+      setSelectedOptionId(null);
+      setIndex((current) => current + 1);
+    },
+    [answers, finish, index, isLast, question.id, selectedOptionId],
+  );
 
   const back = useCallback(() => {
     if (index === 0) return;

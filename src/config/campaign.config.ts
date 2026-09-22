@@ -13,7 +13,7 @@ export const campaign: CampaignCopy = {
     headlineTail: "nào?",
     supporting:
       "Năm cánh rừng, năm tính cách. Trả lời vài câu hỏi nhẹ nhàng để khám phá khu rừn bí ẩn bên trong tâm hồn bạn và dấu ấn xanh bạn để lại cho thiên nhiên.",
-    cta: "Chơi ngay",
+    cta: "Khám phá ngay",
     footnote: "",
   },
   info: {
@@ -30,11 +30,6 @@ export const campaign: CampaignCopy = {
       nameLabel: "Họ và tên",
       namePlaceholder: "Tên của bạn là...",
       nameRequiredError: "Bạn hãy điền tên để nhận thẻ rừng nhé",
-      phoneLabel: "Số điện thoại",
-      phonePlaceholder: "+84",
-      phoneOptionalHint: "",
-      phoneRequiredError: "Bạn hãy điền số điện thoại để tiếp tục",
-      phoneInvalidError: "Số điện thoại chưa hợp lệ",
       consent:
         "Mọi thông tin sẽ được bảo mật và chỉ phục vụ cho chiến dịch 5 năm Sống khỏe góp xanh.",
       cta: "Tiếp tục",
@@ -47,7 +42,10 @@ export const campaign: CampaignCopy = {
     progressLabel: "Câu",
     timerLabel: "Thời gian",
     timerWarning: "Sắp hết giờ",
-    next: "Câu tiếp theo",
+    timeExpiredTitle: "Hết thời gian",
+    timeExpiredDescription: "Bắt đầu lại nhé",
+    restart: "Bắt đầu lại",
+    next: "Tiến lên",
     finish: "Xem kết quả",
     back: "Quay lại",
     hint: "Chọn điều gần với bạn nhất",

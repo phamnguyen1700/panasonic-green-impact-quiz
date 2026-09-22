@@ -2,11 +2,6 @@ import homeBackground from "@/assets/home-bg.jpg";
 import infoBackground from "@/assets/info-bg.jpg";
 import quizBackground from "@/assets/quiz-bg.jpg";
 import resultBackground from "@/assets/result-bg.jpg";
-import forestPhongHo from "@/assets/forest-phong-ho.jpg";
-import forestDauNguon from "@/assets/forest-dau-nguon.jpg";
-import forestBaoTon from "@/assets/forest-bao-ton.jpg";
-import forestPhucHoi from "@/assets/forest-phuc-hoi.jpg";
-import forestSinhKe from "@/assets/forest-sinh-ke.jpg";
 
 /** All image / element paths live here — never hardcode a path in a component. */
 export const assets = {
@@ -22,13 +17,14 @@ export const assets = {
     logo: "/assets/pana-green-impact.png",
   },
   resultCards: {
-    "phong-ho": forestPhongHo,
-    "dau-nguon": forestDauNguon,
-    "bao-ton": forestBaoTon,
-    "phuc-hoi": forestPhucHoi,
-    "sinh-ke": forestSinhKe,
+    "phong-ho": "/assets/forest-cards/phong-ho.png",
+    "dau-nguon": "/assets/forest-cards/dau-nguon.png",
+    "bao-ton": "/assets/forest-cards/bao-ton.png",
+    "phuc-hoi": "/assets/forest-cards/phuc-hoi.png",
+    "sinh-ke": "/assets/forest-cards/sinh-ke.png",
   },
   elements: {
+    homeBottom: "/assets/home-bottom/bottom.png",
     leaf: "/elements/leaves/leaf.svg",
     particle: "/elements/particles/spark.svg",
   },

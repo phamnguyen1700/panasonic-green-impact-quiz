@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
-import { campaign } from "@/config/campaign.config";
-import { lightSweep, resultReveal, revealText, staggerContainer } from "@/config/motion.config";
+import { resultReveal, revealText, staggerContainer } from "@/config/motion.config";
+import { forestJourneyProfiles } from "@/data/forestJourney";
 import type { ForestResult } from "@/types/result.types";
 
 interface ResultRevealProps {
@@ -10,7 +10,9 @@ interface ResultRevealProps {
 }
 
 export function ResultReveal({ result, playerName }: ResultRevealProps) {
-  const copy = campaign.result;
+  const displayName = playerName?.trim() || "bạn";
+  const profile = forestJourneyProfiles.find((item) => item.resultId === result.id);
+  const trait = profile?.trait ?? result.traits.join(" & ");
 
   return (
     <motion.div
@@ -19,34 +21,32 @@ export function ResultReveal({ result, playerName }: ResultRevealProps) {
       animate="visible"
       className="relative text-center"
     >
-      <motion.p
-        variants={revealText}
-        className="text-xs tracking-[0.24em] text-lime-soft uppercase"
-      >
-        {copy.eyebrow}
-      </motion.p>
-
-      <motion.p variants={revealText} className="mt-4 text-base text-mist/75 sm:text-lg">
-        {playerName ? `${copy.revealName} ${playerName}, ` : ""}
-        {copy.revealLine}
+      <motion.p variants={revealText} className="text-base font-semibold text-mist/80 sm:text-xl">
+        Đại ngàn đã lắng nghe {displayName}!
       </motion.p>
 
       <motion.h1
         variants={resultReveal}
-        className="relative mt-2 inline-block overflow-hidden font-display text-[clamp(2.25rem,7vw,5rem)] leading-[0.98] font-extrabold tracking-tight text-mist"
+        className="mt-3 inline-flex flex-col items-center text-mist"
       >
-        {result.title}
-        <motion.span
-          animate={lightSweep}
-          className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 skew-x-12 bg-gradient-to-r from-transparent via-white/45 to-transparent"
-        />
+        <span className="font-display text-[clamp(1.6rem,4vw,3rem)] leading-tight font-extrabold tracking-tight">
+          Bạn là
+        </span>
+        <span className="relative mt-1 inline-block overflow-hidden font-script text-[clamp(3rem,7.5vw,5.8rem)] leading-[1.12] text-[#fff4cf]">
+          {result.title}
+          <motion.span
+            animate={{ left: ["-55%", "115%"] }}
+            transition={{ duration: 1.8, ease: [0.45, 0, 0.55, 1], repeat: Infinity }}
+            className="pointer-events-none absolute inset-y-0 w-1/2 skew-x-12 bg-gradient-to-r from-transparent via-white/45 to-transparent"
+          />
+        </span>
       </motion.h1>
 
       <motion.p
         variants={revealText}
-        className="mt-3 font-script text-xl text-lime-soft sm:text-2xl"
+        className="mt-3 font-display text-xl font-extrabold tracking-wide text-lime-soft sm:text-2xl"
       >
-        {result.subtitle}
+        {trait}
       </motion.p>
     </motion.div>
   );

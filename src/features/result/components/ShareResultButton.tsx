@@ -17,12 +17,11 @@ export function ShareResultButton({ onShare, isBusy = false }: ShareResultButton
       size="md"
       onClick={() => void onShare()}
       disabled={isBusy}
-      className="min-w-[12rem]"
+      wrapperClassName="min-w-0 flex-1 sm:flex-none"
+      className="min-w-0 px-4 text-xs sm:min-w-[12rem] sm:px-6 sm:text-sm"
     >
-      <span className="inline-flex items-center gap-2">
-        <Share2 className="size-4" aria-hidden />
-        {isBusy ? copy.sharing : copy.share}
-      </span>
+      <Share2 className="size-4 shrink-0" aria-hidden />
+      <span>{isBusy ? copy.sharing : copy.share}</span>
     </CampaignButton>
   );
 }

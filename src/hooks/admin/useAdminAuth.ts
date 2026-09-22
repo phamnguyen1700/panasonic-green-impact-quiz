@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { adminAuthService } from "@/services/campaign/adminAuth.service";
+import { adminAuthService } from "@/services/admin";
 import { useAdminAuthStore } from "@/store/adminAuthStore";
 import type { AdminLoginRequest } from "@/types/adminAuth.types";
 

@@ -78,7 +78,7 @@ export function CampaignButton({
         variant={crystallVariant[variant]}
         size={crystallSize[size]}
         className={cn(
-          "group inline-flex items-center justify-center gap-3 rounded-full font-semibold tracking-tight",
+          "group inline-flex items-center justify-center gap-3 rounded-full font-semibold leading-none tracking-tight",
           "outline-none focus-visible:ring-2 focus-visible:ring-lime-soft focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
           "disabled:cursor-not-allowed disabled:opacity-55",
           "before:pointer-events-none before:absolute before:inset-px before:rounded-full before:bg-[linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0))] before:content-['']",
@@ -89,7 +89,9 @@ export function CampaignButton({
         )}
         {...props}
       >
-        <span className="relative z-10">{children}</span>
+        <span className="relative z-10 inline-flex items-center justify-center gap-2 leading-none">
+          {children}
+        </span>
       </CrystallButton>
     </motion.span>
   );

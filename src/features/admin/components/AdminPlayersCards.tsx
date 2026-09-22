@@ -41,7 +41,6 @@ export function AdminPlayersCards({ players, isLoading }: AdminPlayersCardsProps
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
               <h2 className="truncate text-base font-semibold text-slate-950">{player.name}</h2>
-              <p className="mt-1 text-sm text-slate-500">{player.phone}</p>
             </div>
             <time className="shrink-0 text-right text-xs font-medium text-slate-500">
               {formatDate(player.completedAt)}

@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-import { analytics } from "@/services/analytics.service";
+import { analytics } from "@/services/analytics";
 
 interface UseResultShareOptions {
   resultId: string;

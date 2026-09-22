@@ -32,11 +32,6 @@ export interface CampaignCopy {
       nameLabel: string;
       namePlaceholder: string;
       nameRequiredError: string;
-      phoneLabel: string;
-      phonePlaceholder: string;
-      phoneOptionalHint: string;
-      phoneRequiredError: string;
-      phoneInvalidError: string;
       consent: string;
       cta: string;
       back: string;
@@ -48,6 +43,9 @@ export interface CampaignCopy {
     progressLabel: string;
     timerLabel: string;
     timerWarning: string;
+    timeExpiredTitle: string;
+    timeExpiredDescription: string;
+    restart: string;
     next: string;
     finish: string;
     back: string;

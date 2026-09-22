@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
 
 import { answerItem, answerSelected, transitions } from "@/config/motion.config";
 import { gradients } from "@/config/theme.config";
@@ -23,6 +22,8 @@ interface AnswerOptionProps {
 }
 
 export function AnswerOption({ option, selected, onSelect }: AnswerOptionProps) {
+  const answerText = option.caption ? `${option.label}. ${option.caption}` : option.label;
+
   return (
     <motion.button
       type="button"
@@ -33,38 +34,31 @@ export function AnswerOption({ option, selected, onSelect }: AnswerOptionProps) 
       onClick={() => onSelect(option.id)}
       aria-pressed={selected}
       className={cn(
-        "group relative flex min-h-20 w-full items-center gap-4 overflow-hidden rounded-[1.5rem] border p-4 text-left backdrop-blur-xl sm:min-h-24 sm:p-5",
+        "group relative flex min-h-17 w-full items-center gap-4 overflow-hidden rounded-full border p-3.5 text-left backdrop-blur-xl sm:min-h-20 sm:px-6 sm:py-4",
         "transition-colors outline-none focus-visible:ring-2 focus-visible:ring-lime-soft",
         selected
           ? "border-lime-soft/80 shadow-[var(--shadow-card)]"
-          : "border-transparent hover:border-transparent",
+          : "border-transparent bg-white/[0.075] hover:border-lime-soft/40",
       )}
       style={{
         backgroundImage: selected ? toneGradient[option.tone] : undefined,
-        backgroundColor: selected ? undefined : "oklch(1 0 0 / 0.08)",
       }}
     >
       <span className="min-w-0 flex-1">
         <span
           className={cn(
-            "block text-sm leading-relaxed font-normal sm:text-base",
+            "block text-sm leading-relaxed font-normal sm:text-[0.95rem]",
             selected ? "text-forest-900" : "text-mist",
           )}
         >
-          {option.label}. {option.caption}
+          {answerText}
         </span>
       </span>
 
       {selected ? (
-        <span className="grid size-8 shrink-0 place-items-center rounded-full bg-white/18 text-forest-900">
-          <Check className="size-4" aria-hidden />
-        </span>
-      ) : null}
-
-      {selected ? (
         <motion.span
           layoutId="answer-glow"
-          className="pointer-events-none absolute -right-10 -top-12 size-32 rounded-full bg-white/35 blur-2xl"
+          className="pointer-events-none absolute -right-10 -top-12 size-32 rounded-full bg-white/16 blur-2xl"
         />
       ) : null}
     </motion.button>

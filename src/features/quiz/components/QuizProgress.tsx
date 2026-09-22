@@ -9,6 +9,7 @@ interface QuizProgressProps {
   className?: string;
   barClassName?: string;
   showInlineLabel?: boolean;
+  labelClassName?: string;
 }
 
 export function QuizProgress({
@@ -17,6 +18,7 @@ export function QuizProgress({
   className,
   barClassName,
   showInlineLabel = false,
+  labelClassName,
 }: QuizProgressProps) {
   const ratio = (index + 1) / total;
 
@@ -35,8 +37,13 @@ export function QuizProgress({
           transition={{ duration: motionTokens.duration.base, ease: motionTokens.easing.organic }}
         />
         {showInlineLabel ? (
-          <span className="absolute inset-0 grid place-items-center text-[0.65rem] font-semibold tracking-[0.18em] text-mist uppercase">
-            Câu {index + 1}/{total}
+          <span
+            className={cn(
+              "absolute inset-0 grid place-items-center text-[0.65rem] font-semibold tracking-[0.18em] text-mist uppercase",
+              labelClassName,
+            )}
+          >
+            Chặng {String(index + 1).padStart(2, "0")}/{total}
           </span>
         ) : null}
       </div>

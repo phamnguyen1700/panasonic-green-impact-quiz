@@ -8,7 +8,7 @@ import { GlassPanel } from "@/components/GlassPanel";
 import { campaign } from "@/config/campaign.config";
 import { staggerContainer, staggerItem } from "@/config/motion.config";
 import { playerAvatarSchema } from "@/schema/player";
-import { createPlayerAvatarPreview } from "@/services/playerAvatar.service";
+import { createPlayerAvatarPreview } from "@/services/player";
 import { usePlayerStore } from "@/store/playerStore";
 import type { PlayerInfo } from "@/types/player.types";
 

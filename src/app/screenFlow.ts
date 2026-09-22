@@ -41,11 +41,15 @@ export function pathToScreen(pathname: string): ScreenId {
 }
 
 export function nextScreen(current: ScreenId): ScreenId {
+  if (current === "home") return "quiz";
+
   const index = SCREENS.indexOf(current);
   return SCREENS[Math.min(index + 1, SCREENS.length - 1)]!;
 }
 
 export function previousScreen(current: ScreenId): ScreenId {
+  if (current === "quiz") return "home";
+
   const index = SCREENS.indexOf(current);
   return SCREENS[Math.max(index - 1, 0)]!;
 }

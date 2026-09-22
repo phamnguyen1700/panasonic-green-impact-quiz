@@ -5,23 +5,35 @@ interface UseQuizTimerOptions {
   duration: number;
   /** restarts the countdown whenever this value changes */
   resetKey: string | number;
+  initialRemaining?: number;
   running?: boolean;
+  onTick?: (remaining: number) => void;
   onExpire?: () => void;
+}
+
+function clampRemaining(duration: number, remaining?: number) {
+  return Math.max(0, Math.min(duration, remaining ?? duration));
 }
 
 export function useQuizTimer({
   duration,
   resetKey,
+  initialRemaining,
   running = true,
+  onTick,
   onExpire,
 }: UseQuizTimerOptions) {
-  const [remaining, setRemaining] = useState(duration);
+  const [remaining, setRemaining] = useState(() => clampRemaining(duration, initialRemaining));
   const expireRef = useRef(onExpire);
+  const tickRef = useRef(onTick);
   expireRef.current = onExpire;
+  tickRef.current = onTick;
 
   useEffect(() => {
-    setRemaining(duration);
-  }, [duration, resetKey]);
+    const nextRemaining = clampRemaining(duration, initialRemaining);
+    setRemaining(nextRemaining);
+    tickRef.current?.(nextRemaining);
+  }, [duration, resetKey, initialRemaining]);
 
   useEffect(() => {
     if (!running) return;
@@ -30,10 +42,13 @@ export function useQuizTimer({
       setRemaining((current) => {
         if (current <= 1) {
           window.clearInterval(id);
+          tickRef.current?.(0);
           expireRef.current?.();
           return 0;
         }
-        return current - 1;
+        const nextRemaining = current - 1;
+        tickRef.current?.(nextRemaining);
+        return nextRemaining;
       });
     }, 1000);
 

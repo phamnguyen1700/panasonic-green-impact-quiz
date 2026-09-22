@@ -2,9 +2,8 @@ import { LogOut, RefreshCw, Search } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { useAdminLogin, useAdminLogout, useAdminSession } from "@/hooks/campaign/useAdminAuth";
-import { useAdminPlayers } from "@/hooks/campaign/useAdminPlayers";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useAdminLogin, useAdminLogout, useAdminPlayers, useAdminSession } from "@/hooks/admin";
+import { useIsMobile } from "@/hooks/app";
 import { getApiErrorMessage } from "@/services/api/httpClient";
 import { useAdminAuthStore } from "@/store/adminAuthStore";
 import { useAdminPlayersStore } from "@/store/adminPlayersStore";

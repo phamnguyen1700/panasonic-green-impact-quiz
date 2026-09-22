@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { User } from "lucide-react";
 
 import { CampaignBadgeImage, HomeTitleImage } from "@/components/BrandAssets";
 import { CampaignButton } from "@/components/CampaignButton";
@@ -12,6 +13,9 @@ interface HomeHeroProps {
   showActions?: boolean;
   showSupporting?: boolean;
   buttonClassName?: string;
+  playerName: string;
+  nameError?: string | undefined;
+  onNameChange: (value: string) => void;
 }
 
 export function HomeHero({
@@ -21,6 +25,9 @@ export function HomeHero({
   showActions = true,
   showSupporting = true,
   buttonClassName,
+  playerName,
+  nameError,
+  onNameChange,
 }: HomeHeroProps) {
   const copy = campaign.home;
   const isCentered = align === "center";
@@ -50,8 +57,8 @@ export function HomeHero({
       {showSupporting ? (
         <motion.p
           variants={staggerItem}
-          className={`mt-7 ml-5 text-base leading-relaxed text-mist/80 text-shadow-scene sm:text-lg ${
-            isCentered ? "mx-auto max-w-2xl" : "max-w-md"
+          className={`mt-3 text-sm leading-relaxed text-mist/80 text-shadow-scene sm:text-base ${
+            isCentered ? "mx-auto max-w-2xl" : "ml-5 max-w-md"
           }`}
         >
           {copy.supporting}
@@ -61,14 +68,45 @@ export function HomeHero({
       {showActions ? (
         <motion.div
           variants={staggerItem}
-          className={`mt-10 flex flex-col gap-4 ${isCentered ? "items-center" : "items-start"}`}
+          className={`mt-10 flex w-full flex-col gap-4 ${isCentered ? "items-center" : "items-start"}`}
         >
-          <div className="flex flex-wrap items-center gap-5">
-            <CampaignButton withArrow onClick={onStart} className={buttonClassName}>
-              {copy.cta}
-            </CampaignButton>
-            <span className="text-sm text-mist/65">{copy.footnote}</span>
-          </div>
+          <form
+            className={`flex w-full flex-col gap-4 ${isCentered ? "items-center" : "items-start"}`}
+            onSubmit={(event) => {
+              event.preventDefault();
+              onStart();
+            }}
+          >
+            <div className="w-full max-w-[20rem]">
+              <div className="relative">
+                <input
+                  value={playerName}
+                  onChange={(event) => onNameChange(event.target.value)}
+                  placeholder="Tên của bạn là.."
+                  autoComplete="name"
+                  className={`h-12 w-full rounded-lg border bg-white/10 px-4 pr-11 text-sm font-semibold text-mist shadow-[0_0_28px_oklch(0.88_0.2_128_/_0.16)] backdrop-blur-md transition-colors outline-none placeholder:text-mist/60 hover:border-lime-soft/45 focus:border-lime-soft/80 focus:bg-white/15 ${
+                    nameError ? "border-sun-glow/80" : "border-transparent"
+                  }`}
+                />
+                <User
+                  className="pointer-events-none absolute right-3 top-1/2 size-5 -translate-y-1/2 text-mist/75"
+                  aria-hidden
+                />
+              </div>
+              {nameError ? <p className="mt-2 text-xs text-sun-soft">{nameError}</p> : null}
+            </div>
+
+            <div
+              className={`flex flex-wrap items-center gap-5 ${
+                isCentered ? "justify-center" : "justify-start"
+              }`}
+            >
+              <CampaignButton withArrow type="submit" className={buttonClassName}>
+                {copy.cta}
+              </CampaignButton>
+              <span className="text-sm text-mist/65">{copy.footnote}</span>
+            </div>
+          </form>
         </motion.div>
       ) : null}
     </motion.div>

@@ -2,10 +2,10 @@ import { Download, Loader2 } from "lucide-react";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { useExportAdminPlayers } from "@/hooks/campaign/useAdminPlayers";
+import { useExportAdminPlayers } from "@/hooks/admin";
 import { cn } from "@/lib/utils";
 import { getApiErrorMessage } from "@/services/api/httpClient";
-import { downloadFile } from "@/services/campaign/download.service";
+import { downloadFile } from "@/services/admin";
 import type { AdminPlayersExportQuery } from "@/types/playerApi.types";
 
 interface AdminExportButtonProps {

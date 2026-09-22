@@ -6,7 +6,7 @@ import type { PlayerInfo, PlayerInfoDraft, PlayerInfoErrors } from "@/types/play
 
 export function usePlayerInfoForm(onValid?: (player: PlayerInfo) => void) {
   const setPlayerInfo = usePlayerStore((state) => state.setPlayerInfo);
-  const [values, setValues] = useState<PlayerInfoDraft>({ name: "", phone: "" });
+  const [values, setValues] = useState<PlayerInfoDraft>({ name: "" });
   const [errors, setErrors] = useState<PlayerInfoErrors>({});
   const [submitted, setSubmitted] = useState(false);
 
@@ -23,14 +23,12 @@ export function usePlayerInfoForm(onValid?: (player: PlayerInfo) => void) {
         const fieldErrors = parsed.error.flatten().fieldErrors;
         setErrors({
           name: fieldErrors.name?.[0],
-          phone: fieldErrors.phone?.[0],
         });
         return;
       }
 
       const player: PlayerInfo = {
         name: parsed.data.name,
-        phone: parsed.data.phone,
         createdAt: new Date().toISOString(),
       };
       setPlayerInfo(player);
