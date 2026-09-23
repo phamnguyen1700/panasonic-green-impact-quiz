@@ -4,26 +4,26 @@ import { analytics } from "@/services/analytics";
 
 interface UseResultShareOptions {
   resultId: string;
-  title: string;
   text: string;
-  /** optional PNG of the result poster for native sharing */
-  getFile?: () => Promise<File | null>;
 }
 
-export type ShareChannel = "facebook" | "native" | "clipboard";
+export type ShareChannel = "facebook" | "clipboard";
 
-export function useResultShare({ resultId, title, text, getFile }: UseResultShareOptions) {
+export function useResultShare({ resultId, text }: UseResultShareOptions) {
   const [isSharing, setIsSharing] = useState(false);
   const [lastChannel, setLastChannel] = useState<ShareChannel | null>(null);
 
-  const shareUrl = typeof window === "undefined" ? "" : window.location.origin;
+  const shareUrl =
+    typeof window === "undefined"
+      ? ""
+      : new URL(`/share/${resultId}/`, window.location.origin).toString();
 
   const shareToFacebook = useCallback(() => {
     if (typeof window === "undefined") return;
     const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
       shareUrl,
     )}&quote=${encodeURIComponent(text)}`;
-    window.open(url, "_blank", "noopener,noreferrer,width=680,height=640");
+    window.open(url, "_blank", "noopener,noreferrer");
     analytics.resultShared(resultId, "facebook");
     setLastChannel("facebook");
   }, [resultId, shareUrl, text]);
@@ -31,16 +31,7 @@ export function useResultShare({ resultId, title, text, getFile }: UseResultShar
   const share = useCallback(async () => {
     setIsSharing(true);
     try {
-      const file = getFile ? await getFile() : null;
-      const nav = typeof navigator === "undefined" ? undefined : navigator;
-
-      if (file && nav?.canShare?.({ files: [file] })) {
-        await nav.share({ title, text, files: [file] });
-        analytics.resultShared(resultId, "native");
-        setLastChannel("native");
-        return "native" as const;
-      }
-
+      await navigator.clipboard.writeText(`${text} ${shareUrl}`);
       shareToFacebook();
       return "facebook" as const;
     } catch {
@@ -54,7 +45,7 @@ export function useResultShare({ resultId, title, text, getFile }: UseResultShar
     } finally {
       setIsSharing(false);
     }
-  }, [getFile, resultId, shareToFacebook, shareUrl, text, title]);
+  }, [shareToFacebook, shareUrl, text]);
 
   return { share, shareToFacebook, isSharing, lastChannel, shareUrl };
 }

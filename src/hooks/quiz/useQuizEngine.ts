@@ -13,6 +13,7 @@ interface UseQuizEngineOptions {
 interface AnswerTiming {
   durationSeconds?: number;
   remainingSeconds?: number;
+  optionId?: string;
 }
 
 export function useQuizEngine({ onComplete }: UseQuizEngineOptions = {}) {
@@ -49,18 +50,19 @@ export function useQuizEngine({ onComplete }: UseQuizEngineOptions = {}) {
 
   const next = useCallback(
     (timing?: AnswerTiming) => {
-      if (!selectedOptionId) return;
+      const optionId = timing?.optionId ?? selectedOptionId;
+      if (!optionId) return;
 
       const answer: QuizAnswer = {
         questionId: question.id,
-        optionId: selectedOptionId,
+        optionId,
         answeredAt: new Date().toISOString(),
         durationSeconds: timing?.durationSeconds,
         remainingSeconds: timing?.remainingSeconds,
       };
       const nextAnswers = [...answers.filter((a) => a.questionId !== question.id), answer];
       setAnswers(nextAnswers);
-      analytics.questionAnswered(question.id, selectedOptionId, index);
+      analytics.questionAnswered(question.id, optionId, index);
 
       if (isLast) {
         finish(nextAnswers);

@@ -19,9 +19,10 @@ interface AnswerOptionProps {
   index: number;
   selected: boolean;
   onSelect: (optionId: string) => void;
+  onDoubleSelect?: (optionId: string) => void;
 }
 
-export function AnswerOption({ option, selected, onSelect }: AnswerOptionProps) {
+export function AnswerOption({ option, selected, onSelect, onDoubleSelect }: AnswerOptionProps) {
   const answerText = option.caption ? `${option.label}. ${option.caption}` : option.label;
 
   return (
@@ -32,6 +33,7 @@ export function AnswerOption({ option, selected, onSelect }: AnswerOptionProps) 
       whileTap={{ scale: 0.99 }}
       animate={selected ? answerSelected : { scale: 1 }}
       onClick={() => onSelect(option.id)}
+      onDoubleClick={() => onDoubleSelect?.(option.id)}
       aria-pressed={selected}
       className={cn(
         "group relative flex min-h-17 w-full items-center gap-4 overflow-hidden rounded-full border p-3.5 text-left backdrop-blur-xl sm:min-h-20 sm:px-6 sm:py-4",

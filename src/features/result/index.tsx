@@ -44,17 +44,9 @@ export function ResultScreen() {
     [result.title],
   );
 
-  const getResultCardFile = async () => {
-    const response = await fetch(result.image);
-    const blob = await response.blob();
-    return new File([blob], fileName, { type: blob.type || "image/png" });
-  };
-
   const share = useResultShare({
     resultId: result.id,
-    title: result.title,
     text: `${copy.sharePreviewCaption} ${copy.shareHashtags}`,
-    getFile: getResultCardFile,
   });
 
   const handleDownload = () => {

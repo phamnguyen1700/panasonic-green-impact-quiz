@@ -101,6 +101,16 @@ export function QuizScreen() {
     engine.select(optionId);
   };
 
+  const handleDoubleSelect = (optionId: string) => {
+    if (!canPlay || countdownOpen || timeoutOpen || resultSubmit.isSubmitting) return;
+    rememberCurrentQuestionTime();
+    engine.next({
+      optionId,
+      durationSeconds: SECONDS_PER_QUESTION,
+      remainingSeconds: timer.remaining,
+    });
+  };
+
   const handleRestartAfterTimeout = () => {
     setTimeoutOpen(false);
     setCountdownOpen(true);
@@ -147,6 +157,7 @@ export function QuizScreen() {
             direction={engine.direction}
             selectedOptionId={engine.selectedOptionId}
             onSelect={handleSelect}
+            onDoubleSelect={handleDoubleSelect}
             index={engine.index}
             total={engine.total}
             player={player}

@@ -14,6 +14,7 @@ interface QuestionCardProps {
   direction: number;
   selectedOptionId: string | null;
   onSelect: (optionId: string) => void;
+  onDoubleSelect?: (optionId: string) => void;
   index: number;
   total: number;
   player: PlayerInfo | null;
@@ -24,6 +25,7 @@ export function QuestionCard({
   direction,
   selectedOptionId,
   onSelect,
+  onDoubleSelect,
   index,
   total,
   player,
@@ -47,6 +49,7 @@ export function QuestionCard({
           index={optionIndex}
           selected={selectedOptionId === option.id}
           onSelect={onSelect}
+          onDoubleSelect={onDoubleSelect}
         />
       ))}
     </motion.div>
