@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 
+import { env } from "@/config/env.config";
 import { analytics } from "@/services/analytics";
 
 interface UseResultShareOptions {
@@ -9,6 +10,21 @@ interface UseResultShareOptions {
 
 export type ShareChannel = "facebook" | "clipboard";
 
+function getShareOrigin() {
+  if (typeof window === "undefined") return "";
+  if (env.shareBaseUrl) return env.shareBaseUrl;
+
+  const { origin, hostname, protocol } = window.location;
+  const previewMarker = "-git-";
+
+  if (hostname.endsWith(".vercel.app") && hostname.includes(previewMarker)) {
+    const [projectName] = hostname.split(previewMarker);
+    return `${protocol}//${projectName}.vercel.app`;
+  }
+
+  return origin;
+}
+
 export function useResultShare({ resultId, text }: UseResultShareOptions) {
   const [isSharing, setIsSharing] = useState(false);
   const [lastChannel, setLastChannel] = useState<ShareChannel | null>(null);
@@ -16,7 +32,7 @@ export function useResultShare({ resultId, text }: UseResultShareOptions) {
   const shareUrl =
     typeof window === "undefined"
       ? ""
-      : new URL(`/share/${resultId}/`, window.location.origin).toString();
+      : new URL(`/share/${resultId}/`, getShareOrigin()).toString();
 
   const shareToFacebook = useCallback(() => {
     if (typeof window === "undefined") return;
