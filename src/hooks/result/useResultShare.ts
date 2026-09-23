@@ -1,4 +1,3 @@
-import { useMutation } from "@tanstack/react-query";
 import { useCallback, useState } from "react";
 
 import { env } from "@/config/env.config";
@@ -10,8 +9,6 @@ interface UseResultShareOptions {
 }
 
 export type ShareChannel = "facebook" | "clipboard" | "native";
-
-export type NativeShareResult = "handed-off" | "cancelled" | "unsupported" | "failed";
 
 function getShareOrigin() {
   if (typeof window === "undefined") return "";
@@ -29,9 +26,17 @@ function getShareOrigin() {
   return origin;
 }
 
-export function useResultShare({ resultId, text }: UseResultShareOptions) {
-  const [isFacebookSharing, setIsFacebookSharing] = useState(false);
+function isMobileShareDevice() {
+  if (typeof window === "undefined" || typeof navigator === "undefined") return false;
 
+  return (
+    window.matchMedia("(pointer: coarse)").matches ||
+    /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+  );
+}
+
+export function useResultShare({ resultId, text }: UseResultShareOptions) {
+  const [isSharing, setIsSharing] = useState(false);
   const [lastChannel, setLastChannel] = useState<ShareChannel | null>(null);
 
   const shareUrl =
@@ -39,106 +44,96 @@ export function useResultShare({ resultId, text }: UseResultShareOptions) {
       ? ""
       : new URL(`/share/${resultId}/`, getShareOrigin()).toString();
 
-  // Existing Facebook Sharing
   const shareToFacebook = useCallback(() => {
     if (typeof window === "undefined") return;
 
     const url = new URL("https://www.facebook.com/sharer/sharer.php");
 
     url.searchParams.set("u", shareUrl);
-    url.searchParams.set("hashtag", "#5NamSongKhoeGopXanh\n#PGI2026\n");
+    url.searchParams.set("quote", text);
 
     window.open(url.toString(), "_blank", "noopener,noreferrer");
 
     analytics.resultShared(resultId, "facebook");
     setLastChannel("facebook");
-  }, [resultId, shareUrl]);
+  }, [resultId, shareUrl, text]);
 
-  // Existing sharing flow
-  const share = useCallback(async () => {
-    setIsFacebookSharing(true);
-
-    try {
-      await navigator.clipboard.writeText(`${text} ${shareUrl}`);
-
-      shareToFacebook();
-
-      return "facebook" as const;
-    } catch {
-      try {
-        await navigator.clipboard.writeText(`${text} ${shareUrl}`);
-
-        setLastChannel("clipboard");
-
-        return "clipboard" as const;
-      } catch {
-        return null;
-      }
-    } finally {
-      setIsFacebookSharing(false);
-    }
-  }, [shareToFacebook, shareUrl, text]);
-
-  // Native Share Mutation
-  const nativeShareMutation = useMutation<NativeShareResult, Error, Promise<void>>({
-    mutationKey: ["result-share", "native", resultId],
-
-    retry: false,
-
-    mutationFn: async (sharePromise) => {
-      try {
-        await sharePromise;
-
-        analytics.resultShared(resultId, "native");
-        setLastChannel("native");
-
-        return "handed-off";
-      } catch (error) {
-        if (error instanceof DOMException && error.name === "AbortError") {
-          return "cancelled";
-        }
-
-        console.error("Native share failed:", error);
-
-        return "failed";
-      }
-    },
-  });
-
-  const shareNative = useCallback((): Promise<NativeShareResult> => {
+  const shareNative = useCallback(async () => {
     if (typeof navigator === "undefined" || typeof navigator.share !== "function") {
-      return Promise.resolve("unsupported");
+      return false;
     }
 
     try {
-      // Start directly from the user's click.
-      // Do not await anything before this call.
-      const sharePromise = navigator.share({
+      await navigator.share({
         title: "Bạn là loại rừng nào? | Panasonic Green Impact",
         text,
         url: shareUrl,
       });
 
-      // TanStack Query tracks the native share lifecycle.
-      return nativeShareMutation.mutateAsync(sharePromise);
-    } catch (error) {
-      console.error("Native share failed:", error);
+      analytics.resultShared(resultId, "native");
+      setLastChannel("native");
 
-      return Promise.resolve("failed");
+      return true;
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        return true;
+      }
+
+      return false;
     }
-  }, [text, shareUrl, nativeShareMutation.mutateAsync]);
+  }, [resultId, shareUrl, text]);
+
+  const copyShareText = useCallback(async () => {
+    if (typeof navigator === "undefined" || !navigator.clipboard) return false;
+
+    try {
+      await navigator.clipboard.writeText(`${text}\n${shareUrl}`);
+      return true;
+    } catch {
+      return false;
+    }
+  }, [shareUrl, text]);
+
+  const share = useCallback(async () => {
+    setIsSharing(true);
+
+    try {
+      if (isMobileShareDevice()) {
+        const didShareNative = await shareNative();
+
+        if (didShareNative) {
+          return "native" as const;
+        }
+      }
+
+      const didCopy = await copyShareText();
+
+      shareToFacebook();
+
+      return didCopy ? ("facebook" as const) : null;
+    } finally {
+      setIsSharing(false);
+    }
+  }, [copyShareText, shareNative, shareToFacebook]);
+
+  const copyToClipboard = useCallback(async () => {
+    const didCopy = await copyShareText();
+
+    if (didCopy) {
+      setLastChannel("clipboard");
+      return "clipboard" as const;
+    }
+
+    return null;
+  }, [copyShareText]);
 
   return {
     share,
     shareNative,
     shareToFacebook,
+    copyToClipboard,
 
-    isSharing: isFacebookSharing || nativeShareMutation.isPending,
-
-    isNativeSharing: nativeShareMutation.isPending,
-
-    nativeShareStatus: nativeShareMutation.data,
-
+    isSharing,
     lastChannel,
     shareUrl,
   };

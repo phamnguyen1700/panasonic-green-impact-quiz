@@ -57,7 +57,7 @@ export function ResultContent({
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="mx-auto grid w-full max-w-[51rem] items-start gap-5 lg:grid-cols-[minmax(0,20rem)_minmax(0,21rem)] lg:items-stretch lg:justify-center lg:gap-0"
+            className="mx-auto grid w-full max-w-[51rem] items-start gap-5 lg:grid-cols-[minmax(0,20rem)_minmax(0,21rem)] lg:items-stretch lg:justify-center lg:gap-5"
           >
             <motion.div
               variants={staggerItem}

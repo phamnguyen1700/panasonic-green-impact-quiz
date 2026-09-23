@@ -75,9 +75,14 @@ export function ResultScreen() {
     }
   };
 
-  const handleShare = () => {
+  const handleShare = async () => {
     setNotice(null);
-    share.shareToFacebook();
+    const channel = await share.share();
+
+    if (channel === "clipboard") {
+      setNotice(copy.shareFallback);
+      window.setTimeout(() => setNotice(null), 2600);
+    }
   };
 
   const handleReplay = () => {
