@@ -118,9 +118,7 @@ export function QuestionCard({
               </div>
             </aside>
 
-            <section className="min-w-0 lg:h-full lg:pl-7">
-              {answers}
-            </section>
+            <section className="min-w-0 lg:h-full lg:pl-7">{answers}</section>
           </div>
         )}
       </GlassPanel>

@@ -49,6 +49,45 @@ export const staggerItem: Variants = {
   visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: transitions.organic },
 };
 
+export const homeStepPanel: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: duration.base, ease: easing.entrance, staggerChildren: 0.09 },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: duration.fast,
+      ease: easing.exit,
+      staggerChildren: 0.04,
+      staggerDirection: -1,
+    },
+  },
+};
+
+interface HomeStepExit {
+  x?: number;
+  y?: number;
+}
+
+export const homeStepItem: Variants = {
+  hidden: ({ x = 0, y = -18 }: HomeStepExit = {}) => ({
+    opacity: 0,
+    x: -x,
+    y: -y,
+    filter: "blur(8px)",
+  }),
+  visible: { opacity: 1, x: 0, y: 0, filter: "blur(0px)", transition: transitions.organic },
+  exit: ({ x = 0, y = -18 }: HomeStepExit = {}) => ({
+    opacity: 0,
+    x,
+    y,
+    filter: "blur(8px)",
+    transition: { duration: duration.fast, ease: easing.exit },
+  }),
+};
+
 export const revealText: Variants = {
   hidden: { opacity: 0, y: "0.35em", filter: "blur(8px)" },
   visible: {
@@ -202,6 +241,8 @@ export const motionPresets = {
   fadeScale,
   staggerContainer,
   staggerItem,
+  homeStepPanel,
+  homeStepItem,
   floatingSlow,
   floatingMedium,
   cardHover,

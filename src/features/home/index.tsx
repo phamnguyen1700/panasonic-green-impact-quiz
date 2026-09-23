@@ -18,6 +18,7 @@ export function HomeScreen() {
   const existingName = usePlayerStore((state) => state.player?.name ?? "");
   const [playerName, setPlayerName] = useState(existingName);
   const [nameError, setNameError] = useState<string | undefined>();
+  const [step, setStep] = useState<"intro" | "rules">("intro");
 
   const handleNameChange = (value: string) => {
     setPlayerName(value);
@@ -32,6 +33,10 @@ export function HomeScreen() {
     }
 
     setPlayerInfo({ name: normalizedName, createdAt: new Date().toISOString() });
+    setStep("rules");
+  };
+
+  const handleBeginJourney = () => {
     goNext();
   };
 
@@ -57,6 +62,8 @@ export function HomeScreen() {
             <div className="mt-20 w-full">
               <HomeHero
                 onStart={handleStart}
+                onBeginJourney={handleBeginJourney}
+                step={step}
                 align="center"
                 eyebrowPlacement="hidden"
                 showSupporting={true}
@@ -72,6 +79,8 @@ export function HomeScreen() {
             <ContentContainer className="relative z-40 flex flex-1 flex-col items-center justify-center text-center xl:-translate-y-20">
               <HomeHero
                 onStart={handleStart}
+                onBeginJourney={handleBeginJourney}
+                step={step}
                 align="center"
                 eyebrowPlacement="hidden"
                 buttonClassName="h-11 min-w-[10.5rem] px-6 text-sm"

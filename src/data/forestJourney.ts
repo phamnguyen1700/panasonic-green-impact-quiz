@@ -123,7 +123,8 @@ export const forestJourneyQuestions: ForestJourneyQuestion[] = [
       {
         id: "q2a",
         key: "A",
-        label: "Một vạt rừng xanh non đang bừng sáng dưới ánh nắng, không khí trong lành và dễ chịu.",
+        label:
+          "Một vạt rừng xanh non đang bừng sáng dưới ánh nắng, không khí trong lành và dễ chịu.",
         resultCode: "PH",
       },
       {
@@ -266,7 +267,8 @@ export const forestJourneyQuestions: ForestJourneyQuestion[] = [
   {
     id: "q6",
     eyebrow: "Câu 06",
-    prompt: "Màn đêm buông xuống, một mình trong lều nghe tiếng thú rừng kêu và gió rít bên ngoài, bạn sẽ:",
+    prompt:
+      "Màn đêm buông xuống, một mình trong lều nghe tiếng thú rừng kêu và gió rít bên ngoài, bạn sẽ:",
     options: [
       {
         id: "q6a",
@@ -277,7 +279,8 @@ export const forestJourneyQuestions: ForestJourneyQuestion[] = [
       {
         id: "q6b",
         key: "B",
-        label: "Kiểm tra lại chốt khóa lều, chuẩn bị sẵn gậy sinh tồn bên cạnh để sẵn sàng ứng phó.",
+        label:
+          "Kiểm tra lại chốt khóa lều, chuẩn bị sẵn gậy sinh tồn bên cạnh để sẵn sàng ứng phó.",
         resultCode: "VB",
       },
       {
@@ -303,7 +306,8 @@ export const forestJourneyQuestions: ForestJourneyQuestion[] = [
   {
     id: "q7",
     eyebrow: "Câu 07",
-    prompt: "Sáng hôm sau, bạn vô tình phát hiện một dòng suối ngầm đẹp ẩn sâu trong hang đá, phản ứng của bạn:",
+    prompt:
+      "Sáng hôm sau, bạn vô tình phát hiện một dòng suối ngầm đẹp ẩn sâu trong hang đá, phản ứng của bạn:",
     options: [
       {
         id: "q7a",
@@ -314,7 +318,8 @@ export const forestJourneyQuestions: ForestJourneyQuestion[] = [
       {
         id: "q7b",
         key: "B",
-        label: "Đứng trên bờ quan sát độ sâu và dòng chảy, đảm bảo an toàn tuyệt đối mới tiến lại gần.",
+        label:
+          "Đứng trên bờ quan sát độ sâu và dòng chảy, đảm bảo an toàn tuyệt đối mới tiến lại gần.",
         resultCode: "VB",
       },
       {
@@ -332,7 +337,8 @@ export const forestJourneyQuestions: ForestJourneyQuestion[] = [
       {
         id: "q7e",
         key: "E",
-        label: "Tìm cách hứng nước đầy các bình chứa để đảm bảo nguồn nước dùng cho cả chặng đường còn lại.",
+        label:
+          "Tìm cách hứng nước đầy các bình chứa để đảm bảo nguồn nước dùng cho cả chặng đường còn lại.",
         resultCode: "SK",
       },
     ],
@@ -351,7 +357,8 @@ export const forestJourneyQuestions: ForestJourneyQuestion[] = [
       {
         id: "q8b",
         key: "B",
-        label: "Tìm một phiến đá kín gió ngồi nghỉ đúng 10 phút để hồi phục thể trạng rồi mới đi tiếp.",
+        label:
+          "Tìm một phiến đá kín gió ngồi nghỉ đúng 10 phút để hồi phục thể trạng rồi mới đi tiếp.",
         resultCode: "VB",
       },
       {
@@ -389,19 +396,22 @@ export const forestJourneyQuestions: ForestJourneyQuestion[] = [
       {
         id: "q9b",
         key: "B",
-        label: 'Gia cố lại mái nhà và kéo rào chắn kiên cố xung quanh để biến nơi đây thành "pháo đài" an toàn.',
+        label:
+          'Gia cố lại mái nhà và kéo rào chắn kiên cố xung quanh để biến nơi đây thành "pháo đài" an toàn.',
         resultCode: "VB",
       },
       {
         id: "q9c",
         key: "C",
-        label: "Âm thầm sửa sang lại đường dẫn lên nhà, làm lại bậc thang vững chãi để dễ dàng đi lại.",
+        label:
+          "Âm thầm sửa sang lại đường dẫn lên nhà, làm lại bậc thang vững chãi để dễ dàng đi lại.",
         resultCode: "DN",
       },
       {
         id: "q9d",
         key: "D",
-        label: "Giữ nguyên vẻ hoang sơ, trang trí thêm bằng hoa dại và rêu xanh để ngôi nhà hòa làm một với tự nhiên.",
+        label:
+          "Giữ nguyên vẻ hoang sơ, trang trí thêm bằng hoa dại và rêu xanh để ngôi nhà hòa làm một với tự nhiên.",
         resultCode: "BT",
       },
       {

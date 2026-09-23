@@ -1,17 +1,5 @@
 export type ForestTone = "mint" | "sun" | "aqua" | "sky" | "moss";
 
-export interface ForestPersonality {
-  id: string;
-  /** e.g. "Rừng phòng hộ" */
-  name: string;
-  /** e.g. "Đầu nguồn" */
-  region: string;
-  /** two-word trait pair shown on the card face */
-  traits: [string, string];
-  description: string;
-  tone: ForestTone;
-}
-
 export interface CampaignCopy {
   brand: { name: string; tagline: string; years: string };
   home: {
@@ -19,8 +7,10 @@ export interface CampaignCopy {
     headlineTop: string;
     headlineMain: string;
     headlineTail: string;
-    supporting: string;
+    supporting: [string, string];
+    rules: [string, string];
     cta: string;
+    startJourney: string;
     footnote: string;
   };
   info: {
@@ -36,7 +26,6 @@ export interface CampaignCopy {
       cta: string;
       back: string;
     };
-    previewTitle: string;
   };
   quiz: {
     eyebrow: string;

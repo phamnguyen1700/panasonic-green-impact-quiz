@@ -1,4 +1,4 @@
-import type { CampaignCopy, ForestPersonality } from "@/types/campaign.types";
+import type { CampaignCopy } from "@/types/campaign.types";
 
 export const campaign: CampaignCopy = {
   brand: {
@@ -11,9 +11,16 @@ export const campaign: CampaignCopy = {
     headlineTop: "Bạn là",
     headlineMain: "loại rừng",
     headlineTail: "nào?",
-    supporting:
-      "Năm cánh rừng, năm tính cách. Trả lời vài câu hỏi nhẹ nhàng để khám phá khu rừn bí ẩn bên trong tâm hồn bạn và dấu ấn xanh bạn để lại cho thiên nhiên.",
+    supporting: [
+      "Trong 5 năm qua, hành trình Sống Khỏe Góp Xanh của Panasonic đã phủ xanh 22 cánh rừng từ Bắc chí Nam. Mỗi khu rừng mang một dấu ấn riêng biệt: từ dịu dàng, điềm tĩnh đến sôi nổi, kiên cường.",
+      "Còn bạn thì sao? Hãy bước vào rừng, trải nghiệm các tình huống bất ngờ trên đường đi và khám phá xem bạn mang năng lượng của cánh rừng nào của Panasonic nhé!",
+    ],
+    rules: [
+      "Trên hành trình khám phá đại ngàn, bạn sẽ đối mặt với 10 tình huống trải nghiệm khác nhau.",
+      'Hãy chọn nhanh theo phản xạ tự nhiên nhất để tìm thấy "bản thể rừng" đang ẩn giấu bên trong nhé!',
+    ],
     cta: "Khám phá ngay",
+    startJourney: "Bắt đầu hành trình",
     footnote: "",
   },
   info: {
@@ -35,7 +42,6 @@ export const campaign: CampaignCopy = {
       cta: "Tiếp tục",
       back: "Quay lại",
     },
-    previewTitle: "5 tính cách rừng đang chờ bạn",
   },
   quiz: {
     eyebrow: "Hành trình vào rừng",
@@ -69,46 +75,3 @@ export const campaign: CampaignCopy = {
     shareFallback: "Đã sao chép nội dung chia sẻ",
   },
 };
-
-export const forestPersonalities: ForestPersonality[] = [
-  {
-    id: "phong-ho",
-    name: "Rừng phòng hộ",
-    region: "Ven biển",
-    traits: ["Dịu Dàng", "Bản Lĩnh"],
-    description: "Chắn gió, giữ cát, âm thầm che chở cho cả một vùng làng.",
-    tone: "moss",
-  },
-  {
-    id: "dau-nguon",
-    name: "Rừng đầu nguồn",
-    region: "Thượng nguồn",
-    traits: ["Âm Thầm", "Kiên Định"],
-    description: "Giữ nước, giữ đất, bền bỉ nuôi những dòng chảy đi xa.",
-    tone: "mint",
-  },
-  {
-    id: "bao-ton",
-    name: "Rừng bảo tồn",
-    region: "Đa dạng",
-    traits: ["Bao Dung", "Sâu Sắc"],
-    description: "Ôm trọn muôn loài, trân trọng từng khác biệt nhỏ nhất.",
-    tone: "sun",
-  },
-  {
-    id: "phuc-hoi",
-    name: "Rừng phục hồi",
-    region: "Tái sinh",
-    traits: ["Lạc Quan", "Kiên Cường"],
-    description: "Từ vùng đất trống, kiên trì xanh lại từng ngày một.",
-    tone: "aqua",
-  },
-  {
-    id: "sinh-ke",
-    name: "Rừng cộng đồng",
-    region: "Sinh kế",
-    traits: ["Ấm Áp", "Bền Bỉ"],
-    description: "Gắn kết con người, nuôi lớn sinh kế cùng màu xanh.",
-    tone: "sky",
-  },
-];

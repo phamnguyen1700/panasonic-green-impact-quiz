@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-
 import { resultReveal, revealText, staggerContainer } from "@/config/motion.config";
 import { forestJourneyProfiles } from "@/data/forestJourney";
 import type { ForestResult } from "@/types/result.types";
@@ -21,18 +20,18 @@ export function ResultReveal({ result, playerName }: ResultRevealProps) {
       animate="visible"
       className="relative text-center"
     >
-      <motion.p variants={revealText} className="text-base font-semibold text-mist/80 sm:text-xl">
+      <motion.p variants={revealText} className="text-sm font-semibold text-mist/80 sm:text-lg">
         Đại ngàn đã lắng nghe {displayName}!
       </motion.p>
 
       <motion.h1
         variants={resultReveal}
-        className="mt-3 inline-flex flex-col items-center text-mist"
+        className="mt-2 inline-flex flex-col items-center text-mist"
       >
-        <span className="font-display text-[clamp(1.6rem,4vw,3rem)] leading-tight font-extrabold tracking-tight">
+        <span className="font-display text-[clamp(1.25rem,3.25vw,2.25rem)] leading-tight font-extrabold tracking-tight">
           Bạn là
         </span>
-        <span className="relative mt-1 inline-block overflow-hidden font-script text-[clamp(3rem,7.5vw,5.8rem)] leading-[1.12] text-[#fff4cf]">
+        <span className="relative mt-1 inline-block overflow-hidden font-script text-[clamp(2.35rem,6vw,4.6rem)] leading-[1.12] text-[#fff4cf]">
           {result.title}
           <motion.span
             animate={{ left: ["-55%", "115%"] }}
@@ -44,7 +43,7 @@ export function ResultReveal({ result, playerName }: ResultRevealProps) {
 
       <motion.p
         variants={revealText}
-        className="mt-3 font-display text-xl font-extrabold tracking-wide text-lime-soft sm:text-2xl"
+        className="mt-2 font-display text-lg font-extrabold tracking-wide text-lime-soft sm:text-xl"
       >
         {trait}
       </motion.p>
