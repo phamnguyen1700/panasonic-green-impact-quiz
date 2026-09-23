@@ -35,6 +35,10 @@ function isMobileShareDevice() {
   );
 }
 
+function getPrimaryHashtag(text: string) {
+  return text.match(/#[^\s#]+/)?.[0] ?? "#SongKhoeGopXanh";
+}
+
 export function useResultShare({ resultId, text }: UseResultShareOptions) {
   const [isSharing, setIsSharing] = useState(false);
   const [lastChannel, setLastChannel] = useState<ShareChannel | null>(null);
@@ -51,6 +55,7 @@ export function useResultShare({ resultId, text }: UseResultShareOptions) {
 
     url.searchParams.set("u", shareUrl);
     url.searchParams.set("quote", text);
+    url.searchParams.set("hashtag", getPrimaryHashtag(text));
 
     window.open(url.toString(), "_blank", "noopener,noreferrer");
 
