@@ -69,7 +69,11 @@ export const campaign: CampaignCopy = {
     sharing: "Đang mở chia sẻ…",
     replay: "Chơi lại",
     sharePreviewTitle: "Xem trước khi chia sẻ",
-    sharePreviewCaption: "Mình vừa khám phá khu rừng trong mình. Còn bạn là loại rừng nào?",
+    sharePreviewCaption:
+      "🌿 Bạn là loại rừng nào?\n\n" +
+      "Mỗi người đều mang trong mình một dấu ấn riêng, giống như những cánh rừng mà Panasonic đang góp phần vun trồng.\n\n" +
+      "Cùng mình khám phá khu rừng trong bạn qua hành trình 5 năm Sống khỏe góp xanh nhé!",
+
     shareHashtags: "#SongKhoeGopXanh #PanasonicGreenImpact",
     saved: "Đã lưu thẻ kết quả về máy",
     shareFallback: "Đã sao chép nội dung chia sẻ",

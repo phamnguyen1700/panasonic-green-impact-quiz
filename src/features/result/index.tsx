@@ -19,12 +19,15 @@ export function ResultScreen() {
   const player = usePlayerStore((state) => state.player);
   const outcome = usePlayerStore((state) => state.outcome);
   const resetPlayer = usePlayerStore((state) => state.resetPlayer);
+
   const [notice, setNotice] = useState<string | null>(null);
   const [isDownloading, setIsDownloading] = useState(false);
+
   const hasResult = Boolean(player?.name && outcome);
 
   useEffect(() => {
     analytics.screenView("result");
+
     if (!hasResult) {
       go("home");
     }
@@ -34,6 +37,7 @@ export function ResultScreen() {
     () => getResultById(outcome?.resultId ?? DEFAULT_RESULT_ID),
     [outcome?.resultId],
   );
+
   const resultProfile = useMemo(
     () => forestJourneyProfiles.find((profile) => profile.resultId === result.id),
     [result.id],
@@ -46,19 +50,24 @@ export function ResultScreen() {
 
   const share = useResultShare({
     resultId: result.id,
-    text: `${copy.sharePreviewCaption} ${copy.shareHashtags}`,
+    text: `${copy.sharePreviewCaption}\n\n${copy.shareHashtags}`,
   });
 
   const handleDownload = () => {
     setIsDownloading(true);
+
     try {
       const link = document.createElement("a");
+
       link.href = result.image;
       link.download = fileName;
+
       document.body.appendChild(link);
       link.click();
       link.remove();
+
       analytics.resultDownloaded(result.id);
+
       setNotice(copy.saved);
       window.setTimeout(() => setNotice(null), 2600);
     } finally {
@@ -66,12 +75,9 @@ export function ResultScreen() {
     }
   };
 
-  const handleShare = async () => {
-    const channel = await share.share();
-    if (channel === "clipboard") {
-      setNotice(copy.shareFallback);
-      window.setTimeout(() => setNotice(null), 2600);
-    }
+  const handleShare = () => {
+    setNotice(null);
+    share.shareToFacebook();
   };
 
   const handleReplay = () => {
