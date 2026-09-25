@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { CampaignBadgeImage, PanasonicGreenImpactImage } from "@/components/BrandAssets";
+import { BrandLogoHeader } from "@/components/BrandLogoHeader";
 import { MotionScreen } from "@/components/MotionScreen";
 import { ScreenBackground } from "@/components/ScreenBackground";
 import { ContentContainer } from "@/components/layout/ContentContainer";
@@ -20,10 +20,7 @@ export function QuizLayout({ header, children, footer }: QuizLayoutProps) {
       <ScreenBackground image={assets.backgrounds.quiz} scrim="strong" particles={10} />
 
       <FullscreenStage className="lg:h-[100svh] lg:overflow-hidden">
-        <ContentContainer className="flex shrink-0 items-center justify-between py-4 sm:py-5 lg:py-6">
-          <CampaignBadgeImage className="h-10 sm:h-12 lg:h-14" />
-          <PanasonicGreenImpactImage className="h-9 sm:h-11 lg:h-12" />
-        </ContentContainer>
+        <BrandLogoHeader />
 
         <ContentContainer className="flex min-h-0 flex-1 flex-col pb-3 sm:pb-4">
           {header ? <div className="mb-4">{header}</div> : null}

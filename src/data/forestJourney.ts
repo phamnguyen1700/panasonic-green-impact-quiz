@@ -38,25 +38,25 @@ export const forestJourneyProfiles: ForestJourneyProfile[] = [
     code: "PH",
     resultId: "phuc-hoi",
     title: "Rừng Phục Hồi",
-    trait: "Lạc Quan & Kiên Cường",
+    trait: "Kiên Cường & Lạc Quan",
     personalityDetail:
-      "Luôn tích cực và không ngừng tiến về phía trước. Khó khăn không làm những người này nản chí mà chỉ khiến họ thêm lì lợm. Đây là kiểu người có khả năng truyền lửa và dẫn dắt đồng đội.",
+      "Luôn tràn đầy năng lượng\nYêu đời và thích khám phá\nTự tin đứng dậy sau mỗi lần vấp ngã\n\nChính là tinh thần của những cánh rừng đang hồi sinh tại Xuân Liên, Phong Điền - kiên cường trả lại màu xanh trù phú cho thiên nhiên.",
   },
   {
     code: "VB",
     resultId: "phong-ho",
     title: "Rừng Phòng Hộ Ven Biển",
-    trait: "Dịu Dàng & Bản Lĩnh",
+    trait: "Bản Lĩnh & Dịu Dàng",
     personalityDetail:
-      "Bên ngoài nhẹ nhàng, bên trong vững vàng. Bình thường rất điềm đạm, nhưng khi người mình thương bị đối xử bất công thì sẵn sàng đứng ra bảo vệ và không ngại va chạm.",
+      "Nội tâm mạnh mẽ\nGiao diện ôn hoà, dịu dàng\n\nBạn chính là rừng Đước ở Hưng Yên, Sóc Trăng, Bạc Liêu hay Nghệ An - dịu dàng thướt tha nhưng hễ thiên tai ập đến là chủ động làm lá chắn kiên trung bảo vệ cả bản làng.",
   },
   {
     code: "DN",
     resultId: "dau-nguon",
     title: "Rừng Phòng Hộ Đầu Nguồn",
-    trait: "Âm Thầm & Kiên Định",
+    trait: "Âm Thầm & Bản Lĩnh",
     personalityDetail:
-      "Ít nói, không thích phô trương, nhưng đáng tin tuyệt đối. Lặng lẽ nhận phần khó, tự xử lý mà chẳng cần ai công nhận. Đã tin điều gì thì giữ đến cùng, chẳng sóng gió nào lay chuyển.",
+      'Không khoa trương\nHướng nội\nTinh thần trách nhiệm\n\nTương tự cánh rừng phòng hộ từ Hà Tĩnh, Quảng Bình, Sơn La đến Gia Lai, Phú Yên - giữ đất giữ nước và "gánh" cả vùng hạ lưu.',
   },
   {
     code: "BT",
@@ -64,15 +64,15 @@ export const forestJourneyProfiles: ForestJourneyProfile[] = [
     title: "Rừng Bảo Tồn",
     trait: "Bao Dung & Sâu Sắc",
     personalityDetail:
-      "Tuýp người thích lắng nghe nhiều hơn nói. Đây là những người có chiều sâu tâm hồn, họ không vội phán xét một sự việc, mà luôn tìm ý nghĩa phía sau. Họ trân trọng sự khác biệt cá nhân và những giá trị bền vững hơn là hào nhoáng nhất thời.",
+      "“Cờ xanh” di động chính hiệu\nBiết lắng nghe và thấu hiểu\nTrân trọng mọi sự khác biệt\n\nNhư những cánh rừng tại các Vườn Quốc Gia như Bến Em, Mường Nhé - chốn bình yên chở che cho muôn loài.",
   },
   {
     code: "SK",
     resultId: "sinh-ke",
     title: "Rừng Sinh Kế",
-    trait: "Chân Thành & Thiết Thực",
+    trait: "Chân Thành & Chu Toàn",
     personalityDetail:
-      "Chân thành và tinh tế, sự quan tâm của họ không nằm ở lời nói suông mà gói gọn trong từng hành động chăm sóc nhỏ nhất mỗi ngày. Những người này thường đóng vai trò là hậu phương vững chãi và bình yên cho mọi người xung quanh.",
+      "Tư duy sắc sảo\nKhéo vén khéo lo\nTrách nhiệm và tận tâm\n\nNhư những cánh rừng sinh kế trải dài từ Bắc chí Nam - âm thầm vun đắp nền kinh tế xanh và mang lại cuộc sống ấm no cho bà con bản địa.",
   },
 ];
 

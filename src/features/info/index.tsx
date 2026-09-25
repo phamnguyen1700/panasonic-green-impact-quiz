@@ -29,10 +29,7 @@ export function InfoScreen() {
             <CampaignBadgeImage className="h-10" />
           </ContentContainer>
         ) : (
-          <ContentContainer className="flex items-center justify-between py-8">
-            <PanasonicGreenImpactImage className="h-12" />
-            <CampaignBadgeImage className="h-15" />
-          </ContentContainer>
+          <ContentContainer className="flex items-center justify-between py-8"></ContentContainer>
         )}
 
         {isMobile ? (

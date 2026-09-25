@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Download, RotateCcw, Share2 } from "lucide-react";
 
-import { CampaignBadgeImage, PanasonicGreenImpactImage } from "@/components/BrandAssets";
+import { BrandLogoHeader } from "@/components/BrandLogoHeader";
 import { CampaignButton } from "@/components/CampaignButton";
 import { MotionScreen } from "@/components/MotionScreen";
 import { ScreenBackground } from "@/components/ScreenBackground";
@@ -45,10 +45,7 @@ export function ResultContent({
       <ScreenBackground image={assets.backgrounds.result} scrim="strong" particles={16} />
 
       <FullscreenStage>
-        <ContentContainer className="flex items-center justify-between pt-11 pb-2 sm:py-6">
-          <PanasonicGreenImpactImage className="h-8 sm:h-11" />
-          <CampaignBadgeImage className="h-10 sm:h-13" />
-        </ContentContainer>
+        <BrandLogoHeader />
 
         <ContentContainer className="flex flex-1 -translate-y-2 flex-col justify-center gap-5 pb-7 lg:-translate-y-10 lg:gap-6 lg:pb-9">
           <ResultReveal result={result} playerName={playerName} />
@@ -70,7 +67,7 @@ export function ResultContent({
               variants={staggerItem}
               className="mx-auto flex h-full w-full max-w-sm flex-col justify-start text-center lg:text-left"
             >
-              <p className="text-sm leading-relaxed text-mist/85 lg:text-[0.95rem]">
+              <p className="whitespace-pre-line text-sm leading-relaxed text-mist/85 lg:text-[0.95rem]">
                 {personalityDetail}
               </p>
 

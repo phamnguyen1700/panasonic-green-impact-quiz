@@ -17,8 +17,8 @@ export const assets = {
     logo: "/assets/pana-green-impact.png",
   },
   resultCards: {
-    "phong-ho": "/assets/forest-cards/phong-ho.png",
-    "dau-nguon": "/assets/forest-cards/dau-nguon.png",
+    "phong-ho": "/assets/forest-cards/phong-ho-ven-bien.png",
+    "dau-nguon": "/assets/forest-cards/phong-ho-dau-nguon.png",
     "bao-ton": "/assets/forest-cards/bao-ton.png",
     "phuc-hoi": "/assets/forest-cards/phuc-hoi.png",
     "sinh-ke": "/assets/forest-cards/sinh-ke.png",

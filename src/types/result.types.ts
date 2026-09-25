@@ -14,6 +14,10 @@ export interface ForestResult {
   impact: string;
   /** design-system tone token driving the card gradient */
   tone: ForestTone;
+  /** glassmorphism base color for the visual result card */
+  cardColor: string;
+  /** optional glow tint layered behind the cutout card image */
+  cardGlowColor?: string;
   /** resolved asset path — always sourced from assets.config.ts */
   image: string;
 }

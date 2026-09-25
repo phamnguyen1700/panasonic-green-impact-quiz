@@ -16,6 +16,8 @@ export const resultRules: ForestResult[] = [
     traits: ["Dịu dàng", "Bản lĩnh", "Đáng tin"],
     impact: "Một cánh rừng phòng hộ giữ cho làng ven biển đứng vững qua từng mùa bão.",
     tone: "moss",
+    cardColor: "#f1ffc2",
+    cardGlowColor: "#f1ffc2",
     image: assets.resultCards["phong-ho"],
   },
   {
@@ -28,6 +30,8 @@ export const resultRules: ForestResult[] = [
     traits: ["Âm thầm", "Kiên định", "Sâu sắc"],
     impact: "Rừng đầu nguồn giữ đất, giữ nước, nuôi những dòng sông đi thật xa.",
     tone: "mint",
+    cardColor: "#58c8ff",
+    cardGlowColor: "#58c8ff",
     image: assets.resultCards["dau-nguon"],
   },
   {
@@ -40,6 +44,8 @@ export const resultRules: ForestResult[] = [
     traits: ["Bao dung", "Tò mò", "Tinh tế"],
     impact: "Rừng bảo tồn là ngôi nhà chung của hàng nghìn loài đang cần được ở lại.",
     tone: "sun",
+    cardColor: "#5ea452",
+    cardGlowColor: "#5ea452",
     image: assets.resultCards["bao-ton"],
   },
   {
@@ -52,6 +58,8 @@ export const resultRules: ForestResult[] = [
     traits: ["Lạc quan", "Kiên cường", "Tươi mới"],
     impact: "Mỗi mầm cây phục hồi là một mảng đồi trọc được trả lại màu xanh.",
     tone: "aqua",
+    cardColor: "#c8f6a7",
+    cardGlowColor: "#c8f6a7",
     image: assets.resultCards["phuc-hoi"],
   },
   {
@@ -64,6 +72,8 @@ export const resultRules: ForestResult[] = [
     traits: ["Ấm áp", "Gắn kết", "Bền bỉ"],
     impact: "Rừng cộng đồng nuôi lớn sinh kế, để người giữ rừng và rừng nuôi người.",
     tone: "sky",
+    cardColor: "#f4d95d",
+    cardGlowColor: "#f4d95d",
     image: assets.resultCards["sinh-ke"],
   },
 ];

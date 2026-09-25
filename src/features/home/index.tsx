@@ -1,4 +1,4 @@
-import { CampaignBadgeImage, PanasonicGreenImpactImage } from "@/components/BrandAssets";
+import { BrandLogoHeader } from "@/components/BrandLogoHeader";
 import { MotionScreen } from "@/components/MotionScreen";
 import { ScreenBackground } from "@/components/ScreenBackground";
 import { ContentContainer } from "@/components/layout/ContentContainer";
@@ -9,6 +9,7 @@ import { useAppFlow, useIsMobile } from "@/hooks/app";
 import { usePlayerStore } from "@/store/playerStore";
 import { useState } from "react";
 
+import { FloatingForestCards } from "./components/FloatingForestCards";
 import { HomeHero } from "./components/HomeHero";
 
 export function HomeScreen() {
@@ -42,23 +43,15 @@ export function HomeScreen() {
 
   return (
     <MotionScreen>
-      <ScreenBackground image={assets.backgrounds.home} scrim="soft" particles={16} />
+      <ScreenBackground image={assets.backgrounds.home} scrim="medium" particles={16} />
 
       <FullscreenStage className="lg:h-[100svh] lg:overflow-hidden">
-        {isMobile ? (
-          <ContentContainer className="flex items-center justify-between pt-12 pb-3">
-            <PanasonicGreenImpactImage className="h-8" />
-            <CampaignBadgeImage className="h-10" />
-          </ContentContainer>
-        ) : (
-          <ContentContainer className="flex items-center justify-between py-8">
-            <PanasonicGreenImpactImage className="h-12" />
-            <CampaignBadgeImage className="h-15" />
-          </ContentContainer>
-        )}
+        <FloatingForestCards fixed />
+
+        <BrandLogoHeader />
 
         {isMobile ? (
-          <ContentContainer className="relative flex min-h-0 flex-1 flex-col items-center">
+          <ContentContainer className="relative z-20 flex min-h-0 flex-1 flex-col items-center">
             <div className="mt-20 w-full">
               <HomeHero
                 onStart={handleStart}
@@ -76,7 +69,7 @@ export function HomeScreen() {
           </ContentContainer>
         ) : (
           <>
-            <ContentContainer className="relative z-40 flex flex-1 flex-col items-center justify-center text-center xl:-translate-y-20">
+            <ContentContainer className="relative z-20 flex flex-1 flex-col items-center justify-center text-center xl:-translate-y-20">
               <HomeHero
                 onStart={handleStart}
                 onBeginJourney={handleBeginJourney}
