@@ -45,6 +45,7 @@ export function ResultScreen() {
   const share = useResultShare({
     resultId: result.id,
     text: `${copy.sharePreviewCaption}\n\n${copy.shareHashtags}`,
+    imageUrl: result.downloadImage,
   });
 
   const handleDownload = () => {

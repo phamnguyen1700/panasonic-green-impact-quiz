@@ -16,7 +16,7 @@ export const campaign: CampaignCopy = {
       "Còn bạn thì sao?\nHãy bước vào rừng, trải nghiệm các tình huống bất ngờ trên đường đi\nvà khám phá xem bạn mang năng lượng của cánh rừng nào của Panasonic nhé!",
     ],
     rules: [
-      "Trên hành trình khám phá đại ngàn, bạn sẽ đối mặt với\n10 tình huống trải nghiệm khác nhau. Hãy chọn nhanh\ntheo phản xạ tự nhiên nhất để tìm thấy \"bản thể rừng\"\nđang ẩn giấu bên trong nhé!",
+      'Trên hành trình khám phá đại ngàn, bạn sẽ đối mặt với\n10 tình huống trải nghiệm khác nhau. Hãy chọn nhanh\ntheo phản xạ tự nhiên nhất để tìm thấy "bản thể rừng"\nđang ẩn giấu bên trong nhé!',
       "",
     ],
     cta: "Khám phá ngay",
@@ -74,7 +74,7 @@ export const campaign: CampaignCopy = {
       "Mỗi người đều mang trong mình một dấu ấn riêng, giống như những cánh rừng mà Panasonic đang góp phần vun trồng.\n\n" +
       "Cùng mình khám phá khu rừng trong bạn qua hành trình 5 năm Sống khỏe góp xanh nhé!",
 
-    shareHashtags: "#SongKhoeGopXanh #PanasonicGreenImpact",
+    shareHashtags: "#5namsongkhoegopxanh #PanasonicGreenImpact2026",
     saved: "Đã lưu thẻ kết quả về máy",
     shareFallback: "Đã sao chép nội dung chia sẻ",
   },

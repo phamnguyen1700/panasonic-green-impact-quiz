@@ -6,6 +6,7 @@ import { analytics } from "@/services/analytics";
 interface UseResultShareOptions {
   resultId: string;
   text: string;
+  imageUrl?: string;
 }
 
 export type ShareChannel = "facebook" | "clipboard" | "native";
@@ -35,10 +36,12 @@ function isMobileShareDevice() {
 }
 
 function getPrimaryHashtag(text: string) {
-  return text.match(/#[^\s#]+/)?.[0] ?? "#SongKhoeGopXanh";
+  // Facebook's sharer endpoint accepts one dedicated hashtag parameter;
+  // the full text still contains both requested hashtags in the post copy.
+  return text.match(/#[^\s#]+/)?.[0] ?? "#5namsongkhoegopxanh";
 }
 
-export function useResultShare({ resultId, text }: UseResultShareOptions) {
+export function useResultShare({ resultId, text, imageUrl }: UseResultShareOptions) {
   const [isSharing, setIsSharing] = useState(false);
   const [lastChannel, setLastChannel] = useState<ShareChannel | null>(null);
 
@@ -68,6 +71,28 @@ export function useResultShare({ resultId, text }: UseResultShareOptions) {
     }
 
     try {
+      if (imageUrl && typeof navigator.canShare === "function") {
+        const imageResponse = await fetch(imageUrl);
+        if (imageResponse.ok) {
+          const imageBlob = await imageResponse.blob();
+          const imageFile = new File([imageBlob], `panasonic-result-${resultId}.png`, {
+            type: imageBlob.type || "image/png",
+          });
+
+          if (navigator.canShare({ files: [imageFile] })) {
+            await navigator.share({
+              title: "Bạn là loại rừng nào? | Panasonic Green Impact",
+              text,
+              files: [imageFile],
+            });
+
+            analytics.resultShared(resultId, "native");
+            setLastChannel("native");
+            return true;
+          }
+        }
+      }
+
       await navigator.share({
         title: "Bạn là loại rừng nào? | Panasonic Green Impact",
         text,
@@ -85,7 +110,7 @@ export function useResultShare({ resultId, text }: UseResultShareOptions) {
 
       return false;
     }
-  }, [resultId, shareUrl, text]);
+  }, [imageUrl, resultId, shareUrl, text]);
 
   const copyShareText = useCallback(async () => {
     if (typeof navigator === "undefined" || !navigator.clipboard) return false;
