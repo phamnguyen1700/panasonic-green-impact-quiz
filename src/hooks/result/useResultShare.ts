@@ -29,10 +29,9 @@ function getShareOrigin() {
 function isMobileShareDevice() {
   if (typeof window === "undefined" || typeof navigator === "undefined") return false;
 
-  return (
-    window.matchMedia("(pointer: coarse)").matches ||
-    /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
-  );
+  // Do not use pointer-coarse here: desktop touchscreens can expose it and
+  // would incorrectly open the native share sheet instead of Facebook.
+  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 }
 
 function getPrimaryHashtag(text: string) {
