@@ -74,7 +74,7 @@ export const campaign: CampaignCopy = {
       "Mỗi người đều mang trong mình một dấu ấn riêng, giống như những cánh rừng mà Panasonic đang góp phần vun trồng.\n\n" +
       "Cùng mình khám phá khu rừng trong bạn qua hành trình 5 năm Sống khỏe góp xanh nhé!",
 
-    shareHashtags: "#5namsongkhoegopxanh\n#PanasonicGreenImpact2026",
+    shareHashtags: "#5namsongkhoegopxanh #panasonicgreenimpact2026",
     saved: "Đã lưu thẻ kết quả về máy",
     shareFallback: "Đã sao chép nội dung chia sẻ",
   },
