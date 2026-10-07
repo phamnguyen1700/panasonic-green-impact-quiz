@@ -9,6 +9,7 @@ interface ScreenBackgroundProps {
   /** how strong the dark scrim over the photo is */
   scrim?: "soft" | "medium" | "strong";
   particles?: number;
+  bottomFade?: boolean;
   className?: string;
 }
 
@@ -18,6 +19,7 @@ export function ScreenBackground({
   image,
   scrim = "medium",
   particles = 14,
+  bottomFade = true,
   className,
 }: ScreenBackgroundProps) {
   return (
@@ -50,10 +52,12 @@ export function ScreenBackground({
         ))}
       </div>
 
-      <div
-        className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-forest-900 to-transparent"
-        style={{ zIndex: zIndex.particles }}
-      />
+      {bottomFade ? (
+        <div
+          className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-forest-900 to-transparent"
+          style={{ zIndex: zIndex.particles }}
+        />
+      ) : null}
     </div>
   );
 }

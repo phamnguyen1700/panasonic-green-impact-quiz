@@ -17,11 +17,18 @@ export const assets = {
     logo: "/assets/pana-green-impact.png",
   },
   resultCards: {
-    "phong-ho": "/assets/forest-cards/phong-ho-ven-bien.png",
-    "dau-nguon": "/assets/forest-cards/phong-ho-dau-nguon.png",
-    "bao-ton": "/assets/forest-cards/bao-ton.png",
-    "phuc-hoi": "/assets/forest-cards/phuc-hoi.png",
-    "sinh-ke": "/assets/forest-cards/sinh-ke.png",
+    "phong-ho": "/assets/forest-cards/result-card/THẺ KẾT QUẢ - KHÔNG NỀ NỀN - PHÒNG HỘ VEN BIỂN.png",
+    "dau-nguon": "/assets/forest-cards/result-card/THẺ KẾT QUẢ - KHÔNG NỀ NỀN - PHÒNG HỘ ĐẦU NGUỒN.png",
+    "bao-ton": "/assets/forest-cards/result-card/THẺ KẾT QUẢ - KHÔNG NỀ NỀN - BẢO TỒN ĐA DẠNG SINH HỌC.png",
+    "phuc-hoi": "/assets/forest-cards/result-card/THẺ KẾT QUẢ - KHÔNG NỀ NỀN - PHỤC HỒI.png",
+    "sinh-ke": "/assets/forest-cards/result-card/THẺ KẾT QUẢ - KHÔNG NỀ NỀN - SINH KẾ.png",
+  },
+  downloadCards: {
+    "phong-ho": "/assets/forest-cards/download-card/THẺ KẾT QUẢ - CÓ NỀN - PHÒNG HỘ VEN BIỂN.png",
+    "dau-nguon": "/assets/forest-cards/download-card/THẺ KẾT QUẢ - CÓ NỀN - PHÒNG HỘ ĐẦU NGUỒN.png",
+    "bao-ton": "/assets/forest-cards/download-card/THẺ KẾT QUẢ - CÓ NỀN - BẢO TỒN ĐA DẠNG SINH HỌC.png",
+    "phuc-hoi": "/assets/forest-cards/download-card/THẺ KẾT QUẢ - CÓ NỀN - PHỤC HỒI.png",
+    "sinh-ke": "/assets/forest-cards/download-card/THẺ KẾT QUẢ - CÓ NỀN - SINH KẾ.png",
   },
   elements: {
     homeBottom: "/assets/home-bottom/bottom.png",

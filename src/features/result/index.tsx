@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
 import { campaign } from "@/config/campaign.config";
-import { forestJourneyProfiles } from "@/data/forestJourney";
 import { DEFAULT_RESULT_ID, getResultById } from "@/data/resultRules";
 import { useAppFlow } from "@/hooks/app";
 import { useResultShare } from "@/hooks/result";
@@ -38,11 +37,6 @@ export function ResultScreen() {
     [outcome?.resultId],
   );
 
-  const resultProfile = useMemo(
-    () => forestJourneyProfiles.find((profile) => profile.resultId === result.id),
-    [result.id],
-  );
-
   const fileName = useMemo(
     () => buildFileName([campaign.brand.name, result.title]),
     [result.title],
@@ -59,7 +53,7 @@ export function ResultScreen() {
     try {
       const link = document.createElement("a");
 
-      link.href = result.image;
+      link.href = result.downloadImage;
       link.download = fileName;
 
       document.body.appendChild(link);
@@ -95,7 +89,6 @@ export function ResultScreen() {
     <ResultContent
       result={result}
       playerName={player?.name}
-      personalityDetail={resultProfile?.personalityDetail}
       notice={notice}
       isDownloading={isDownloading}
       isSharing={share.isSharing}

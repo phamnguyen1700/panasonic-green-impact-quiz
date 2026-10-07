@@ -31,7 +31,7 @@ export function ResultReveal({ result, playerName }: ResultRevealProps) {
         <span className="font-display text-[clamp(1.25rem,3.25vw,2.25rem)] leading-tight font-extrabold tracking-tight">
           Bạn là
         </span>
-        <span className="relative mt-1 inline-block overflow-hidden font-script text-[clamp(2.35rem,6vw,4.6rem)] leading-[1.12] text-[#fff4cf]">
+        <span className="relative mt-1 inline-block overflow-hidden font-display text-[clamp(2.35rem,6vw,4.6rem)] leading-[1.12] font-extrabold text-[#fff4cf]">
           {result.title}
           <motion.span
             animate={{ left: ["-55%", "115%"] }}

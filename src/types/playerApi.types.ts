@@ -6,9 +6,13 @@ export interface CreatePlayerRequest {
   completeAt: string;
 }
 
+export type PlayerSubmissionStatus = "accepted" | "already_submitted";
+
 export interface CreatePlayerResponse {
-  id: string;
-  createdAt: string;
+  submissionId: string;
+  status: PlayerSubmissionStatus;
+  id: string | null;
+  createdAt: string | null;
   alreadySubmitted: boolean;
 }
 

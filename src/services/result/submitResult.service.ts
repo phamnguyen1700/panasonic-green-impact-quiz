@@ -27,7 +27,9 @@ function wait(delayMs: number) {
 function shouldRetrySubmit(error: unknown) {
   if (!(error instanceof ApiError)) return true;
 
-  return error.status === 0 || error.status === 429 || error.status >= 500;
+  // A 429 includes Retry-After and must be surfaced to the user instead of
+  // being retried immediately with the same client/IP rate-limit bucket.
+  return error.status === 0 || error.status >= 500;
 }
 
 /** Single entry point the UI calls once a quiz run is finished. */

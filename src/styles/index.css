@@ -7,6 +7,7 @@ body,
 }
 
 body {
+  margin: 0;
   font-family: var(--font-body);
   background-color: var(--forest-900);
   color: var(--mist);

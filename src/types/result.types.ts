@@ -20,6 +20,8 @@ export interface ForestResult {
   cardGlowColor?: string;
   /** resolved asset path — always sourced from assets.config.ts */
   image: string;
+  /** full-background asset used when the user downloads the result card */
+  downloadImage: string;
 }
 
 export interface ResultScore {

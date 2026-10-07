@@ -18,11 +18,7 @@ export function FloatingForestCards({
         src={assets.elements.homeBottom}
         alt=""
         aria-hidden
-        className={cn(
-          "pointer-events-none fixed inset-x-0 -bottom-35 z-10 h-auto w-screen max-w-none",
-          "[mask-image:linear-gradient(to_top,black_0%,black_72%,transparent_100%)]",
-          "[-webkit-mask-image:linear-gradient(to_top,black_0%,black_72%,transparent_100%)]",
-        )}
+        className="pointer-events-none fixed inset-x-0 bottom-0 z-[5] h-auto w-screen max-w-none origin-bottom scale-[1.06]"
       />
     );
   }

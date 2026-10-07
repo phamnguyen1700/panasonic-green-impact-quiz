@@ -43,11 +43,10 @@ export function HomeScreen() {
 
   return (
     <MotionScreen>
-      <ScreenBackground image={assets.backgrounds.home} scrim="medium" particles={16} />
+      <ScreenBackground image={assets.backgrounds.home} scrim="soft" particles={16} bottomFade={false} />
+      <FloatingForestCards fixed />
 
       <FullscreenStage className="lg:h-[100svh] lg:overflow-hidden">
-        <FloatingForestCards fixed />
-
         <BrandLogoHeader />
 
         {isMobile ? (

@@ -41,17 +41,23 @@ export function HomeHero({
 }: HomeHeroProps) {
   const copy = campaign.home;
   const isCentered = align === "center";
-  const panelViewportClassName = "relative min-h-[13.5rem] w-full";
+  const panelViewportClassName = "relative mt-6 min-h-[13.5rem] w-full";
   const panelClassName = `absolute inset-x-0 top-0 flex w-full flex-col gap-4 ${
     isCentered ? "items-center" : "items-start"
   }`;
-  const copyGroupClassName = `flex flex-col gap-3 ${isCentered ? "items-center" : "items-start"}`;
-  const copyClassName = `text-xs leading-relaxed text-mist/80 text-shadow-scene sm:text-sm ${
-    isCentered ? "mx-auto max-w-4xl" : "ml-5 max-w-2xl"
+  const copyGroupClassName = `flex w-full flex-col gap-4 text-left ${
+    isCentered ? "mx-auto max-w-4xl items-start" : "items-start"
   }`;
-  const rulesCopyClassName = `text-xs leading-relaxed text-mist/80 text-shadow-scene sm:text-sm ${
-    isCentered ? "mx-auto max-w-md" : "ml-5 max-w-sm"
+  const copyClassName = `text-sm leading-[1.3] text-mist/80 text-shadow-scene sm:text-base lg:text-lg ${
+    isCentered ? "mx-auto w-full max-w-[46rem]" : "max-w-2xl"
   }`;
+  const questionClassName = `mx-auto w-full text-lg font-bold leading-tight text-mist/80 text-shadow-scene sm:text-xl lg:text-2xl ${
+    isCentered ? "" : "max-w-2xl"
+  }`;
+  const rulesCopyClassName = `text-sm leading-[1.3] text-mist/80 text-shadow-scene sm:text-base lg:text-lg ${
+    isCentered ? "mx-auto max-w-[46rem]" : "max-w-[28rem]"
+  }`;
+  const [questionHeading, ...questionBodyLines] = copy.supporting[1].split("\n");
   const exitAround = {
     first: { x: isCentered ? -34 : -24, y: -20 },
     second: { x: isCentered ? 34 : 18, y: -16 },
@@ -76,7 +82,7 @@ export function HomeHero({
 
       <motion.div variants={revealText} className={isCentered ? "mx-auto" : ""}>
         <HomeTitleImage
-          className={isCentered ? "mx-auto max-h-45 max-w-[28rem]" : "max-w-[34rem]"}
+          className={isCentered ? "mx-auto max-h-52 max-w-[32rem]" : "max-w-[34rem]"}
         />
       </motion.div>
 
@@ -94,16 +100,24 @@ export function HomeHero({
               >
                 {showSupporting ? (
                   <div className={copyGroupClassName}>
-                    {copy.supporting.map((line, index) => (
-                      <motion.p
-                        key={line}
-                        custom={index === 0 ? exitAround.first : exitAround.second}
-                        variants={homeStepItem}
-                        className={copyClassName}
-                      >
-                        {line}
-                      </motion.p>
-                    ))}
+                  <motion.p
+                    custom={exitAround.first}
+                    variants={homeStepItem}
+                    className={`${copyClassName} whitespace-pre-line`}
+                  >
+                    {copy.supporting[0]}
+                  </motion.p>
+
+                  <motion.div
+                    custom={exitAround.second}
+                    variants={homeStepItem}
+                    className="mx-auto flex w-full max-w-[46rem] flex-col gap-1"
+                  >
+                    <p className={questionClassName}>{questionHeading}</p>
+                    <p className={`${copyClassName} whitespace-pre-line`}>
+                      {questionBodyLines.join("\n")}
+                    </p>
+                  </motion.div>
                   </div>
                 ) : null}
 
@@ -159,16 +173,13 @@ export function HomeHero({
                 className={panelClassName}
               >
                 <div className={copyGroupClassName}>
-                  {copy.rules.map((line, index) => (
-                    <motion.p
-                      key={line}
-                      custom={index === 0 ? exitAround.first : exitAround.second}
-                      variants={homeStepItem}
-                      className={rulesCopyClassName}
-                    >
-                      {line}
-                    </motion.p>
-                  ))}
+                  <motion.p
+                    custom={exitAround.first}
+                    variants={homeStepItem}
+                    className={`${rulesCopyClassName} whitespace-pre-line`}
+                  >
+                    {copy.rules.filter(Boolean).join("\n")}
+                  </motion.p>
                 </div>
 
                 <motion.div

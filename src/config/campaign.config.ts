@@ -12,12 +12,12 @@ export const campaign: CampaignCopy = {
     headlineMain: "loại rừng",
     headlineTail: "nào?",
     supporting: [
-      "Trong 5 năm qua, hành trình Sống Khỏe Góp Xanh của Panasonic đã phủ xanh 22 cánh rừng từ Bắc chí Nam. Mỗi khu rừng mang một dấu ấn riêng biệt: từ dịu dàng, điềm tĩnh đến sôi nổi, kiên cường.",
-      "Còn bạn thì sao? Hãy bước vào rừng, trải nghiệm các tình huống bất ngờ trên đường đi và khám phá xem bạn mang năng lượng của cánh rừng nào của Panasonic nhé!",
+      "Trong 5 năm qua, hành trình Sống Khỏe Góp Xanh của Panasonic đã phủ xanh\n22 cánh rừng từ Bắc chí Nam. Mỗi khu rừng mang một dấu ấn riêng biệt:\ntừ dịu dàng, điềm tĩnh đến sôi nổi, kiên cường.",
+      "Còn bạn thì sao?\nHãy bước vào rừng, trải nghiệm các tình huống bất ngờ trên đường đi\nvà khám phá xem bạn mang năng lượng của cánh rừng nào của Panasonic nhé!",
     ],
     rules: [
-      "Trên hành trình khám phá đại ngàn, bạn sẽ đối mặt với 10 tình huống trải nghiệm khác nhau.",
-      'Hãy chọn nhanh theo phản xạ tự nhiên nhất để tìm thấy "bản thể rừng" đang ẩn giấu bên trong nhé!',
+      "Trên hành trình khám phá đại ngàn, bạn sẽ đối mặt với\n10 tình huống trải nghiệm khác nhau. Hãy chọn nhanh\ntheo phản xạ tự nhiên nhất để tìm thấy \"bản thể rừng\"\nđang ẩn giấu bên trong nhé!",
+      "",
     ],
     cta: "Khám phá ngay",
     startJourney: "Bắt đầu hành trình",

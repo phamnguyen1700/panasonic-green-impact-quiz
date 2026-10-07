@@ -18,7 +18,6 @@ import { ResultReveal } from "./ResultShowcase";
 interface ResultContentProps {
   result: ForestResult;
   playerName?: string | undefined;
-  personalityDetail?: string | undefined;
   notice?: string | null;
   isDownloading: boolean;
   isSharing: boolean;
@@ -30,7 +29,6 @@ interface ResultContentProps {
 export function ResultContent({
   result,
   playerName,
-  personalityDetail,
   notice,
   isDownloading,
   isSharing,
@@ -54,25 +52,21 @@ export function ResultContent({
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="mx-auto grid w-full max-w-[51rem] items-start gap-5 lg:grid-cols-[minmax(0,20rem)_minmax(0,21rem)] lg:items-stretch lg:justify-center lg:gap-5"
+            className="mx-auto flex w-full max-w-[51rem] flex-col items-center gap-5"
           >
             <motion.div
               variants={staggerItem}
-              className="mx-auto flex w-full max-w-[18.5rem] items-start justify-center lg:max-w-[20rem]"
+              className="mx-auto flex w-full max-w-[20rem] items-start justify-center lg:max-w-[22rem]"
             >
               <ResultCard result={result} />
             </motion.div>
 
             <motion.div
               variants={staggerItem}
-              className="mx-auto flex h-full w-full max-w-sm flex-col justify-start text-center lg:text-left"
+              className="mx-auto flex w-full max-w-sm flex-col justify-start text-center"
             >
-              <p className="whitespace-pre-line text-sm leading-relaxed text-mist/85 lg:text-[0.95rem]">
-                {personalityDetail}
-              </p>
-
-              <div className="mt-6 lg:mt-auto">
-                <div className="flex w-full flex-nowrap justify-center gap-3 lg:justify-start">
+              <div>
+                <div className="flex w-full flex-nowrap justify-center gap-3">
                   <CampaignButton
                     size="md"
                     onClick={onDownload}
@@ -97,7 +91,7 @@ export function ResultContent({
                   </CampaignButton>
                 </div>
 
-                <div className="mt-3 flex justify-center lg:justify-end">
+                <div className="mt-3 flex justify-center">
                   <button
                     type="button"
                     onClick={onReplay}

@@ -19,6 +19,7 @@ export const resultRules: ForestResult[] = [
     cardColor: "#f1ffc2",
     cardGlowColor: "#f1ffc2",
     image: assets.resultCards["phong-ho"],
+    downloadImage: assets.downloadCards["phong-ho"],
   },
   {
     id: "dau-nguon",
@@ -33,6 +34,7 @@ export const resultRules: ForestResult[] = [
     cardColor: "#58c8ff",
     cardGlowColor: "#58c8ff",
     image: assets.resultCards["dau-nguon"],
+    downloadImage: assets.downloadCards["dau-nguon"],
   },
   {
     id: "bao-ton",
@@ -47,6 +49,7 @@ export const resultRules: ForestResult[] = [
     cardColor: "#5ea452",
     cardGlowColor: "#5ea452",
     image: assets.resultCards["bao-ton"],
+    downloadImage: assets.downloadCards["bao-ton"],
   },
   {
     id: "phuc-hoi",
@@ -61,6 +64,7 @@ export const resultRules: ForestResult[] = [
     cardColor: "#c8f6a7",
     cardGlowColor: "#c8f6a7",
     image: assets.resultCards["phuc-hoi"],
+    downloadImage: assets.downloadCards["phuc-hoi"],
   },
   {
     id: "sinh-ke",
@@ -75,6 +79,7 @@ export const resultRules: ForestResult[] = [
     cardColor: "#f4d95d",
     cardGlowColor: "#f4d95d",
     image: assets.resultCards["sinh-ke"],
+    downloadImage: assets.downloadCards["sinh-ke"],
   },
 ];
 

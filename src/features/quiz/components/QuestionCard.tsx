@@ -34,6 +34,8 @@ export function QuestionCard({
   const isMobile = useIsMobile();
 
   const playerPrompt = `${displayName} ơi, trong tình huống này bạn sẽ xử lý thế nào?`;
+  const playerPromptClassName =
+    "mx-auto max-w-[32rem] text-left text-base leading-[1.3] font-semibold text-mist sm:text-lg lg:text-xl xl:text-2xl";
 
   const answers = (
     <motion.div
@@ -81,6 +83,8 @@ export function QuestionCard({
                 {question.prompt}
               </motion.h1>
 
+              <p className={`${playerPromptClassName} mt-4 w-full`}>{playerPrompt}</p>
+
               {answers}
             </section>
 
@@ -106,7 +110,7 @@ export function QuestionCard({
               </div>
 
               <div className="self-end">
-                <p className="mx-auto max-w-96 text-center text-base leading-relaxed font-semibold text-mist">
+                <p className={playerPromptClassName}>
                   {playerPrompt}
                 </p>
 
