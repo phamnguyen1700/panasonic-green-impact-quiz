@@ -8,7 +8,7 @@ import type { ForestResult, ForestResultId } from "@/types/result.types";
 export const resultRules: ForestResult[] = [
   {
     id: "phong-ho",
-    title: "Rừng Phòng Hộ",
+    title: "Rừng Phòng Hộ Ven Biển",
     subtitle: "Người che chở thầm lặng",
     forestType: "Rừng ven biển",
     description:
@@ -23,7 +23,7 @@ export const resultRules: ForestResult[] = [
   },
   {
     id: "dau-nguon",
-    title: "Rừng Đầu Nguồn",
+    title: "Rừng Phòng Hộ Đầu Nguồn",
     subtitle: "Người giữ mạch nước",
     forestType: "Rừng thượng nguồn",
     description:
@@ -38,7 +38,7 @@ export const resultRules: ForestResult[] = [
   },
   {
     id: "bao-ton",
-    title: "Rừng Bảo Tồn",
+    title: "Rừng Bảo Tồn Đa Dạng Sinh Học",
     subtitle: "Người ôm trọn khác biệt",
     forestType: "Rừng đa dạng sinh học",
     description:
@@ -68,7 +68,7 @@ export const resultRules: ForestResult[] = [
   },
   {
     id: "sinh-ke",
-    title: "Rừng Cộng Đồng",
+    title: "Rừng Sinh Kế",
     subtitle: "Người kết nối sinh kế",
     forestType: "Rừng sinh kế",
     description:
