@@ -162,6 +162,7 @@ export function HomeHero({
                     <span className="text-sm text-mist/65">{copy.footnote}</span>
                   </div>
                 </motion.form>
+
               </motion.div>
             ) : (
               <motion.div

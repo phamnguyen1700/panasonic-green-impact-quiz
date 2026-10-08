@@ -83,6 +83,22 @@ export function HomeScreen() {
             </ContentContainer>
           </>
         )}
+
+        <p className="pointer-events-auto absolute inset-x-4 bottom-3 z-30 mx-auto max-w-3xl text-center text-[9px] leading-relaxed text-mist/60 sm:inset-x-6 sm:bottom-4 sm:text-[11px]">
+          Bằng việc cung cấp thông tin cho Panasonic trong quá trình tham gia chương trình,
+          người tham gia hiểu và đồng ý với việc Panasonic thu thập, sử dụng và chia sẻ dữ liệu cá
+          nhân của bạn nhằm mục đích xác minh, trao thưởng theo cách thức phù hợp và tuân thủ với
+          Thông báo Bảo mật của Panasonic tại{" "}
+          <a
+            href="https://www.panasonic.com/vn/privacy-notice.html"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-mist/50 underline-offset-2 transition-colors hover:text-mist"
+          >
+            panasonic.com/vn/privacy-notice.html
+          </a>
+          .
+        </p>
       </FullscreenStage>
     </MotionScreen>
   );
