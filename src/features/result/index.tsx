@@ -72,6 +72,7 @@ export function ResultScreen() {
   const handleShare = async () => {
     setNotice(copy.shareHashtagNotice);
     const channel = await share.share();
+    setNotice(null);
 
     if (channel === "clipboard") {
       setNotice(copy.shareFallback);

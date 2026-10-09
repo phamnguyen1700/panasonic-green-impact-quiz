@@ -84,10 +84,21 @@ export function ResultContent({
                     onClick={onShare}
                     disabled={isSharing}
                     wrapperClassName="min-w-0 flex-1 sm:flex-none"
-                    className="h-11 min-w-0 px-4 text-xs sm:min-w-[10.25rem] sm:px-4"
+                    className={`h-11 min-w-0 px-4 text-xs sm:min-w-[10.25rem] sm:px-4 ${
+                      isSharing
+                        ? "bg-lime-soft/20 text-lime-soft shadow-[0_0_18px_rgba(154,229,61,0.28)] disabled:opacity-100"
+                        : ""
+                    }`}
                   >
-                    <Share2 className="size-4 shrink-0" aria-hidden />
-                    <span>{isSharing ? copy.sharing : copy.share}</span>
+                    {!isSharing ? <Share2 className="size-4 shrink-0" aria-hidden /> : null}
+                    {isSharing ? (
+                      <span className="flex min-w-0 flex-col text-[9px] leading-tight text-lime-soft sm:text-[10px]">
+                        <span>Đã lưu hashtag</span>
+                        <span>Hãy lan tỏa cùng Panasonic nhé</span>
+                      </span>
+                    ) : (
+                      <span>{copy.share}</span>
+                    )}
                   </CampaignButton>
                 </div>
 
@@ -102,7 +113,7 @@ export function ResultContent({
                   </button>
                 </div>
 
-                {notice ? (
+                {notice && !isSharing ? (
                   <motion.p
                     initial={{ opacity: 0, y: -6 }}
                     animate={{ opacity: 1, y: 0 }}

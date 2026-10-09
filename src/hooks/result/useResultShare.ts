@@ -10,6 +10,8 @@ interface UseResultShareOptions {
 
 export type ShareChannel = "facebook" | "clipboard" | "native";
 
+const SHARE_NOTICE_DELAY_MS = 3000;
+
 function getShareOrigin() {
   if (typeof window === "undefined") return "";
   if (env.shareBaseUrl) return env.shareBaseUrl;
@@ -105,6 +107,7 @@ export function useResultShare({ resultId, text }: UseResultShareOptions) {
       // Save the full caption, link and all hashtags before opening any share UI.
       // This remains available when Facebook ignores prefilled text on mobile.
       await copyShareText();
+      await new Promise((resolve) => window.setTimeout(resolve, SHARE_NOTICE_DELAY_MS));
 
       if (isMobileShareDevice()) {
         const didShareNative = await shareNative();
