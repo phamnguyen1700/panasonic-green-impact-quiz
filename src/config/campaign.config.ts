@@ -35,7 +35,7 @@ export const campaign: CampaignCopy = {
     ],
     form: {
       nameLabel: "Họ và tên",
-      namePlaceholder: "Tên của bạn là...",
+      namePlaceholder: "Bạn muốn Panasonic gọi mình là...",
       nameRequiredError: "Bạn hãy điền tên để nhận thẻ rừng nhé",
       consent:
         "Mọi thông tin sẽ được bảo mật và chỉ phục vụ cho chiến dịch 5 năm Sống khỏe góp xanh.",
@@ -74,7 +74,11 @@ export const campaign: CampaignCopy = {
       "Mỗi người đều mang trong mình một dấu ấn riêng, giống như những cánh rừng mà Panasonic đang góp phần vun trồng.\n\n" +
       "Cùng mình khám phá khu rừng trong bạn qua hành trình 5 năm Sống khỏe góp xanh nhé!",
 
-    shareHashtags: "#PanasonicGreenImpact2026",
+    shareHashtags:
+      "#PanasonicVietnam #Songkhoegopxanh\n" +
+      "#5NamSongkhoegopxanh #TựHàoKỷLụcTriệuCây #TriệuTácĐộngLành\n" +
+      "#TrongCayCungPanasonic #Banlaloairungnao",
+    shareHashtagNotice: "Đã lưu hashtag – hãy lan tỏa cùng Panasonic nhé",
     saved: "Đã lưu thẻ kết quả về máy",
     shareFallback: "Đã sao chép nội dung chia sẻ",
   },

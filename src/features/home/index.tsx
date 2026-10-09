@@ -43,7 +43,12 @@ export function HomeScreen() {
 
   return (
     <MotionScreen>
-      <ScreenBackground image={assets.backgrounds.home} scrim="soft" particles={16} bottomFade={false} />
+      <ScreenBackground
+        image={assets.backgrounds.home}
+        scrim="strong"
+        particles={16}
+        bottomFade={false}
+      />
       <FloatingForestCards fixed />
 
       <FullscreenStage className="lg:h-[100svh] lg:overflow-hidden">
@@ -84,11 +89,11 @@ export function HomeScreen() {
           </>
         )}
 
-        <p className="pointer-events-auto absolute inset-x-4 bottom-3 z-30 mx-auto max-w-3xl text-center text-[9px] leading-relaxed text-mist/60 sm:inset-x-6 sm:bottom-4 sm:text-[11px]">
-          Bằng việc cung cấp thông tin cho Panasonic trong quá trình tham gia chương trình,
-          người tham gia hiểu và đồng ý với việc Panasonic thu thập, sử dụng và chia sẻ dữ liệu cá
-          nhân của bạn nhằm mục đích xác minh, trao thưởng theo cách thức phù hợp và tuân thủ với
-          Thông báo Bảo mật của Panasonic tại{" "}
+        <p className="pointer-events-auto absolute inset-x-4 bottom-3 z-30 mx-auto max-w-5xl text-center text-[8px] leading-relaxed text-mist/60 sm:inset-x-6 sm:bottom-4 sm:text-[17px]">
+          Bằng việc cung cấp thông tin cho Panasonic trong quá trình tham gia chương trình, người
+          tham gia hiểu và đồng ý với việc Panasonic thu thập, sử dụng và chia sẻ dữ liệu cá nhân
+          của bạn nhằm mục đích xác minh, trao thưởng theo cách thức phù hợp và tuân thủ với Thông
+          báo Bảo mật của Panasonic tại{" "}
           <a
             href="https://www.panasonic.com/vn/privacy-notice.html"
             target="_blank"

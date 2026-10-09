@@ -45,7 +45,6 @@ export function ResultScreen() {
   const share = useResultShare({
     resultId: result.id,
     text: `${copy.sharePreviewCaption}\n\n${copy.shareHashtags}`,
-    imageUrl: result.downloadImage,
   });
 
   const handleDownload = () => {
@@ -71,7 +70,7 @@ export function ResultScreen() {
   };
 
   const handleShare = async () => {
-    setNotice(null);
+    setNotice(copy.shareHashtagNotice);
     const channel = await share.share();
 
     if (channel === "clipboard") {

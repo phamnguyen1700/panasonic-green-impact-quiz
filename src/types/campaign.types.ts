@@ -55,6 +55,7 @@ export interface CampaignCopy {
     sharePreviewTitle: string;
     sharePreviewCaption: string;
     shareHashtags: string;
+    shareHashtagNotice: string;
     saved: string;
     shareFallback: string;
   };

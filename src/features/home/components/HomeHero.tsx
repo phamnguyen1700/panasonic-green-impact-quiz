@@ -100,24 +100,24 @@ export function HomeHero({
               >
                 {showSupporting ? (
                   <div className={copyGroupClassName}>
-                  <motion.p
-                    custom={exitAround.first}
-                    variants={homeStepItem}
-                    className={`${copyClassName} whitespace-pre-line`}
-                  >
-                    {copy.supporting[0]}
-                  </motion.p>
+                    <motion.p
+                      custom={exitAround.first}
+                      variants={homeStepItem}
+                      className={`${copyClassName} whitespace-pre-line`}
+                    >
+                      {copy.supporting[0]}
+                    </motion.p>
 
-                  <motion.div
-                    custom={exitAround.second}
-                    variants={homeStepItem}
-                    className="mx-auto flex w-full max-w-[46rem] flex-col gap-1"
-                  >
-                    <p className={questionClassName}>{questionHeading}</p>
-                    <p className={`${copyClassName} whitespace-pre-line`}>
-                      {questionBodyLines.join("\n")}
-                    </p>
-                  </motion.div>
+                    <motion.div
+                      custom={exitAround.second}
+                      variants={homeStepItem}
+                      className="mx-auto flex w-full max-w-[46rem] flex-col gap-1"
+                    >
+                      <p className={questionClassName}>{questionHeading}</p>
+                      <p className={`${copyClassName} whitespace-pre-line`}>
+                        {questionBodyLines.join("\n")}
+                      </p>
+                    </motion.div>
                   </div>
                 ) : null}
 
@@ -137,7 +137,7 @@ export function HomeHero({
                       <input
                         value={playerName}
                         onChange={(event) => onNameChange(event.target.value)}
-                        placeholder="Tên của bạn là.."
+                        placeholder="Bạn muốn Panasonic gọi mình là..."
                         autoComplete="name"
                         className={`h-12 w-full rounded-lg border bg-white/10 px-4 pr-11 text-sm font-semibold text-mist shadow-[0_0_28px_oklch(0.88_0.2_128_/_0.16)] backdrop-blur-md transition-colors outline-none placeholder:text-mist/60 hover:border-lime-soft/45 focus:border-lime-soft/80 focus:bg-white/15 ${
                           nameError ? "border-sun-glow/80" : "border-transparent"
@@ -162,7 +162,6 @@ export function HomeHero({
                     <span className="text-sm text-mist/65">{copy.footnote}</span>
                   </div>
                 </motion.form>
-
               </motion.div>
             ) : (
               <motion.div

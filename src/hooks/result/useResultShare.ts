@@ -6,7 +6,6 @@ import { analytics } from "@/services/analytics";
 interface UseResultShareOptions {
   resultId: string;
   text: string;
-  imageUrl?: string;
 }
 
 export type ShareChannel = "facebook" | "clipboard" | "native";
@@ -36,12 +35,10 @@ function isMobileShareDevice() {
 }
 
 function getPrimaryHashtag(text: string) {
-  // Facebook's sharer endpoint accepts one dedicated hashtag parameter;
-  // the full text still contains both requested hashtags in the post copy.
-  return text.match(/#[^\s#]+/)?.[0] ?? "#5namsongkhoegopxanh";
+  return text.match(/#[^\s#]+/)?.[0] ?? "#PanasonicVietnam";
 }
 
-export function useResultShare({ resultId, text, imageUrl }: UseResultShareOptions) {
+export function useResultShare({ resultId, text }: UseResultShareOptions) {
   const [isSharing, setIsSharing] = useState(false);
   const [lastChannel, setLastChannel] = useState<ShareChannel | null>(null);
 
@@ -71,28 +68,6 @@ export function useResultShare({ resultId, text, imageUrl }: UseResultShareOptio
     }
 
     try {
-      if (imageUrl && typeof navigator.canShare === "function") {
-        const imageResponse = await fetch(imageUrl);
-        if (imageResponse.ok) {
-          const imageBlob = await imageResponse.blob();
-          const imageFile = new File([imageBlob], `panasonic-result-${resultId}.png`, {
-            type: imageBlob.type || "image/png",
-          });
-
-          if (navigator.canShare({ files: [imageFile] })) {
-            await navigator.share({
-              title: "Bạn là loại rừng nào? | Panasonic Green Impact",
-              text,
-              files: [imageFile],
-            });
-
-            analytics.resultShared(resultId, "native");
-            setLastChannel("native");
-            return true;
-          }
-        }
-      }
-
       await navigator.share({
         title: "Bạn là loại rừng nào? | Panasonic Green Impact",
         text,
@@ -110,7 +85,7 @@ export function useResultShare({ resultId, text, imageUrl }: UseResultShareOptio
 
       return false;
     }
-  }, [imageUrl, resultId, shareUrl, text]);
+  }, [resultId, shareUrl, text]);
 
   const copyShareText = useCallback(async () => {
     if (typeof navigator === "undefined" || !navigator.clipboard) return false;
@@ -127,6 +102,10 @@ export function useResultShare({ resultId, text, imageUrl }: UseResultShareOptio
     setIsSharing(true);
 
     try {
+      // Save the full caption, link and all hashtags before opening any share UI.
+      // This remains available when Facebook ignores prefilled text on mobile.
+      await copyShareText();
+
       if (isMobileShareDevice()) {
         const didShareNative = await shareNative();
 
@@ -135,11 +114,9 @@ export function useResultShare({ resultId, text, imageUrl }: UseResultShareOptio
         }
       }
 
-      const didCopy = await copyShareText();
-
       shareToFacebook();
 
-      return didCopy ? ("facebook" as const) : null;
+      return "facebook" as const;
     } finally {
       setIsSharing(false);
     }
